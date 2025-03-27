@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="popup-content">
+        <span class="close-popup" onclick="window.parent.closePopup()">×</span>
+
+        <h2>Book an Appointment</h2>
+        <form action="submit_form.php" method="POST">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="issue">Describe Your Issue</label>
+            <textarea id="issue" name="issue" rows="4" required></textarea>
+
+            <label for="service">Select Service</label>
+            <select id="service" name="service" required>
+                <option value="">Choose a Service</option>
+                <option value="Physiotherapy">Physiotherapy</option>
+                <option value="Neurorehabilitation">Neurorehabilitation</option>
+                <option value="Pain Management">Pain Management</option>
+                <option value="Orthopedic Therapy">Orthopedic Therapy</option>
+            </select>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="location">Your Location</label>
+            <input type="text" id="location" name="location" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

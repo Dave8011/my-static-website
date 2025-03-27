@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | The Rehab House</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="The Rehab House Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <!-- Search Box with Icon -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
+            <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <section class="services-header">
+            <h1>Our Specialised Rehabilitation Programs</h1>
+            <p>We offer cutting-edge rehabilitation techniques designed for faster and more effective recovery.</p>
+        </section>
+
+        <hr>
+        
+        <section class="service-list">
+            <h2>Our Key Programs</h2>
+            <hr><br>
+            <div class="service-container">
+                <!-- Service Cards -->
+                <div class="service-card" onclick="toggleDetails('service1')">
+                    <img src="images/balance-training.jpg" alt="Balance & Postural Control">
+                    <div class="service-content">
+                        <h3>Balance & Postural Control</h3>
+                        <p class="service-details" id="service1">Fall Prevention Strategies using Interactive Motion Sensors.</p>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleDetails('service2')">
+                    <img src="images/vestibular-therapy.jpg" alt="Vestibular Rehabilitation">
+                    <div class="service-content">
+                        <h3>Vestibular Rehabilitation</h3>
+                        <p class="service-details" id="service2">Specialized therapy to treat balance disorders.</p>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleDetails('service3')">
+                    <img src="images/visual-therapy.jpg" alt="Visual Therapy">
+                    <div class="service-content">
+                        <h3>Visual Therapy</h3>
+                        <p class="service-details" id="service3">Improving vision deficits caused by neurological conditions.</p>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleDetails('service4')">
+                    <img src="images/spasticity-management.jpg" alt="Spasticity & Posture Management">
+                    <div class="service-content">
+                        <h3>Spasticity & Posture Management</h3>
+                        <p class="service-details" id="service4">Helping patients correct posture and improve mobility.</p>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleDetails('service5')">
+                    <img src="images/cognitive-training.jpg" alt="Cognition-Enhancing Activities">
+                    <div class="service-content">
+                        <h3>Cognition-Enhancing Activities</h3>
+                        <p class="service-details" id="service5">Memory, Attention, and Mental Agility Training using Board & Screen Games.</p>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleDetails('service6')">
+                    <img src="images/pain-management.jpg" alt="Pain Management">
+                    <div class="service-content">
+                        <h3>Pain Management</h3>
+                        <p class="service-details" id="service6">Includes Dry Needling, Cupping, Manipulations, Kinesiotaping, and Electrotherapy Machines.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr><br>
+
+        <!-- 7 Unique Sections -->
+        <section class="rehab-sections">
+            <h2>Our 7 Unique Sections for Comprehensive Rehabilitation</h2>
+            <ul>
+                <li>✔ Gait & Mobility Training</li>
+                <li>✔ Equipment-based Strength & Conditioning</li>
+                <li>✔ Electrotherapeutic Modalities</li>
+                <li>✔ Hand Function & Fine Motor Training</li>
+                <li>✔ Cognitive Rehabilitation</li>
+                <li>✔ Robotic Rehabilitation</li>
+                <li>✔ Supervised IPD Facility</li>
+            </ul>
+        </section>
+        <br>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-left">&copy; 2025 The Rehab House</p>
+
+            <!-- Social Media -->
+            <div class="footer-right">
+                <h2>Follow Us</h2>
+                <a href="#" class="social-icon"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                <a href="#" class="social-icon"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                <a href="#" class="social-icon"><img src="images/twitter-icon.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
