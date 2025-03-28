@@ -50,3 +50,13 @@ function triggerSearch() {
         window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
     }
 }
+document.addEventListener("DOMContentLoaded", function() {
+        const cards = document.querySelectorAll(".highlight-card");
+
+        cards.forEach(card => {
+            card.addEventListener("mouseover", function() {
+                cards.forEach(c => c.classList.remove("expanded"));
+                this.classList.add("expanded");
+            });
+        });
+    });
