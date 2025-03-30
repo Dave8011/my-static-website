@@ -687,6 +687,7 @@ button:hover {
     background: var(--secondary-color);
 }
 
+
 /* ============================= 
    Responsive Design for Mobile
 ============================= */
@@ -706,30 +707,27 @@ button:hover {
         width: 120px; /* Adjust logo size */
     }
 
-    /* Navigation and search wrapper */
+    /* Navigation container with menu */
     .nav-container {
         display: flex;
         align-items: center;
-        gap: 15px; /* Spacing between menu and search icon */
     }
 
-    /* Hide default nav items for mobile (will be shown in mobile menu) */
+    /* Hide full navigation menu for mobile */
     nav ul {
         display: none;
     }
 
-    /* Show hamburger menu */
+    /* Show only the hamburger menu */
     .menu-icon {
         display: block;
         font-size: 24px;
         cursor: pointer;
     }
 
-    /* Search icon beside menu */
-    .search-icon {
-        display: block;
-        font-size: 24px;
-        cursor: pointer;
+    /* Hide the search bar on mobile */
+    .search-bar {
+        display: none;
     }
 
     /* Mobile menu dropdown (hidden by default) */
@@ -761,6 +759,7 @@ button:hover {
         border-bottom: none;
     }
 }
+
 
 /* =============================
    404 Page Styling
