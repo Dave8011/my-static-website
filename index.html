@@ -1,111 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | The Rehab House - test</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>The Rehab House - Home</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="The Rehab House Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about_us.html">About Us</a></li>
-                <li><a href="services.html">Our Services</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-        <!-- Search Box with Icon -->
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
-            <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
-        </div>
+        <!-- Fixed header will be added later -->
     </header>
-
-    <!-- Hero Section -->
+    
     <section class="hero">
-        <h2>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</h2>
+        <div class="hero-content">
+            <h1>THE REHAB HOUSE</h1>
+            <p>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</p>
+        </div>
     </section>
-
-   <!-- Highlights Section -->
-<section id="highlights">
-    <div class="highlights-container">
-        <!-- Central Circle -->
-        <div class="main-circle">
-            <h2>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</h2>
+    
+    <section class="infographic">
+        <div class="circle" id="mainCircle">Positive Rehab Environment</div>
+        <div class="arms">
+            <div class="arm" data-info="Wheelchair accessible entry available">Wheelchair-Accessible</div>
+            <div class="arm" data-info="Elevator access to all floors">Lift Available</div>
+            <div class="arm" data-info="Flexible day care for rehab">Day Care Facility</div>
+            <div class="arm" data-info="Admission available for in-depth therapy">Admission Facility</div>
+            <div class="arm" data-info="Multiple therapy sessions tailored daily">Multiple Physiotherapy Sessions</div>
+            <div class="arm" data-info="All major therapies under one roof">Physical, Cognitive, Occupational, Speech Therapy</div>
+            <div class="arm" data-info="Specialists available for holistic care">In-house Nutritionist, Psychologist, Orthotist</div>
+            <div class="arm" data-info="On-site diagnostic services available">Diagnostic Tests (Blood Tests, X-rays, etc.)</div>
+            <div class="arm" data-info="From manual therapy to robotic-assisted rehab">Manual Therapy to Robotic Rehabilitation</div>
+            <div class="arm" data-info="Tailored recovery plans for every patient">Personalized Rehabilitation Plans</div>
         </div>
-        
-        <!-- Highlight Cards -->
-        <div class="highlight-cards">
-            <div class="highlight-card" data-desc= test>
-                <img src="img/icon1.png" alt="Feature 1">
-                <h3>✔ Wheelchair-Accessible</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 2">
-                <img src="img/icon2.png" alt="Feature 2">
-                <h3>✔ Lift Available</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 3">
-                <img src="img/icon3.png" alt="Feature 3">
-                <h3>✔ Day Care Facility</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 4">
-                <img src="img/icon4.png" alt="Feature 4">
-                <h3>✔ Admission Facility for Rehabilitation</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 5">
-                <img src="img/icon4.png" alt="Feature 5">
-                <h3>✔ Multiple Physiotherapy Sessions per Day</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 6">
-                <img src="img/icon4.png" alt="Feature 6">
-                <h3>✔ Physical, Cognitive, Occupational, Speech Therapy – All under One Roof</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 7">
-                <img src="img/icon4.png" alt="Feature 7">
-                <h3>✔ In-house Nutritionist, Psychologist, Orthotist</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 8">
-                <img src="img/icon4.png" alt="Feature 8">
-                <h3>✔ Diagnostic Tests: Blood Tests, X-rays, DEXA Scan, ECG, Neurogenetic Testing</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 9">
-                <img src="img/icon4.png" alt="Feature 9">
-                <h3>✔ Manual Therapy to Robotic Rehabilitation</h3>
-            </div>
-            <div class="highlight-card" data-desc="Description for Feature 10">
-                <img src="img/icon4.png" alt="Feature 10">
-                <h3>✔ Personalized Rehabilitation Plans</h3>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Footer -->
+        <div id="infoBox" class="hidden"></div>
+    </section>
+    
     <footer>
-        <div class="footer-content">
-            <p class="footer-left">&copy; 2025 The Rehab House</p>
-
-            <!-- Social Media -->
-            <div class="footer-right">
-                <h2>Follow Us</h2>
-                <a href="#" class="social-icon"><img src="images/facebook-icon.png" alt="Facebook"></a>
-                <a href="#" class="social-icon"><img src="images/instagram-icon.png" alt="Instagram"></a>
-                <a href="#" class="social-icon"><img src="images/twitter-icon.png" alt="Twitter"></a>
-            </div>
-        </div>
+        <!-- Fixed footer will be added later -->
     </footer>
 
-
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
