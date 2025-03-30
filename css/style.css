@@ -1381,76 +1381,74 @@ button:hover {
    Responsive Design for Mobile
 ============================= */
 
+/* Mobile Styles */
 @media (max-width: 768px) {
-
-    /* Make header a flex container */
     header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 15px;
-    }
-
-    /* Logo on the left */
-    .logo img {
-        width: 120px; /* Adjust logo size */
-    }
-
-    /* Navigation container with menu */
-    .nav-container {
-        display: flex;
-        align-items: center;
-    }
-
-    /* Hide full navigation menu for mobile */
-    nav ul {
-        display: none;
-    }
-
-    /* Show only the hamburger menu */
-    .menu-icon {
-        display: block;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-    .search-bar {
-        display: none !important;
-    }
-}
-
-    /* Mobile menu dropdown (hidden by default) */
-    .mobile-menu {
-        display: none;
         flex-direction: column;
-        position: absolute;
-        top: 60px; /* Adjust based on header height */
-        right: 15px;
-        background: white;
-        border-radius: 5px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        width: 200px;
+        align-items: flex-start;
     }
 
-    /* Show mobile menu when active */
-    .mobile-menu.active {
-        display: flex;
+    .logo img {
+        width: 200px; /* Adjust logo size for mobile */
     }
 
-    /* Style mobile menu items */
-    .mobile-menu li {
-        text-align: center;
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero {
+        height: auto; /* Adjust hero section height */
         padding: 10px;
-        border-bottom: 1px solid #ddd;
     }
 
-    .mobile-menu li:last-child {
-        border-bottom: none;
+    .hero h2 {
+        font-size: 30px; /* Adjust font size for mobile */
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .service-container {
+        grid-template-columns: 1fr; /* Single column layout for services */
+    }
+
+    .team-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .team-member {
+        width: 100%; /* Full width for team member cards */
+        padding: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
+/* Extra Small Devices (Phones) */
+@media (max-width: 480px) {
+    nav ul {
+        padding: 0;
+        gap: 5px;
+    }
 
+    .hero h2 {
+        font-size: 24px; /* Further adjust font size */
+    }
+
+    .service-card {
+        padding: 10px;
+    }
+
+    .team-member {
+        padding: 10px;
+    }
+}
 
 /* =============================
 
