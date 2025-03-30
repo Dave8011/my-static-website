@@ -725,10 +725,11 @@ button:hover {
         cursor: pointer;
     }
 
-    /* Hide the search bar on mobile */
+    @media (max-width: 768px) {
     .search-bar {
-        display: none;
+        display: none !important;
     }
+}
 
     /* Mobile menu dropdown (hidden by default) */
     .mobile-menu {
