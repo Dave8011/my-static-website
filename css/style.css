@@ -693,49 +693,74 @@ button:hover {
 
 @media (max-width: 768px) {
 
-    /* Ensure header is a flex container */
+    /* Make header a flex container */
     header {
         display: flex;
-        flex-direction: column;
-        align-items: center; /* Centers everything inside */
-        text-align: center;
+        justify-content: space-between;
+        align-items: center;
         padding: 10px 15px;
     }
 
-    /* Adjust logo size */
+    /* Logo on the left */
     .logo img {
-        width: 150px;
-        margin-bottom: 10px;
+        width: 120px; /* Adjust logo size */
     }
 
-    /* Make navigation items stack vertically */
-    nav ul {
+    /* Navigation and search wrapper */
+    .nav-container {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 10px;
-        padding: 0;
-        margin: 0;
-        list-style: none; /* Removes default list styling */
+        gap: 15px; /* Spacing between menu and search icon */
     }
 
-    /* Improve spacing for menu items */
-    nav ul li {
-        padding: 5px 0;
-        width: 100%;
-        text-align: center;
+    /* Hide default nav items for mobile (will be shown in mobile menu) */
+    nav ul {
+        display: none;
     }
 
-    /* Optional: Adjust navigation links for better UX */
-    nav ul li a {
+    /* Show hamburger menu */
+    .menu-icon {
         display: block;
-        width: 100%;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Search icon beside menu */
+    .search-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Mobile menu dropdown (hidden by default) */
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        right: 15px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        width: 200px;
+    }
+
+    /* Show mobile menu when active */
+    .mobile-menu.active {
+        display: flex;
+    }
+
+    /* Style mobile menu items */
+    .mobile-menu li {
+        text-align: center;
         padding: 10px;
-        text-decoration: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .mobile-menu li:last-child {
+        border-bottom: none;
     }
 }
-
-
 
 /* =============================
    404 Page Styling
