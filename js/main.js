@@ -1,62 +1,25 @@
-// Ensure DOM is fully loaded before running scripts
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Website Loaded Successfully!");
-});
+    const arms = document.querySelectorAll(".arm");
+    const infoBox = document.getElementById("infoBox");
+    const mainCircle = document.getElementById("mainCircle");
 
-// Add scroll event listener for frosted glass effect
-window.addEventListener("scroll", function() {
-    let header = document.querySelector("header");
-    if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
-    }
-});
-
-// Function to Open Doctor Profile Popup
-function openProfile(doctor) {
-    let profilePopup = document.getElementById("profilePopup");
-    let popupOverlay = document.getElementById("popupOverlay");
-    let profileFrame = document.getElementById("profileFrame");
-
-    if (doctor === "vidhi") {
-        profileFrame.src = "profiles/dr-vidhi.html";
-    } else if (doctor === "vinit") {
-        profileFrame.src = "profiles/dr-vinit.html";
-    }
-
-    // Show popup
-    profilePopup.style.display = "block";
-    popupOverlay.style.display = "block";
-}
-
-// Function to Close Doctor Profile Popup
-function closePopup() {
-    document.getElementById("profilePopup").style.display = "none";
-    document.getElementById("popupOverlay").style.display = "none";
-    document.getElementById("profileFrame").src = ""; // Reset iframe
-}
-
-// Function to Redirect to Search Results Page
-function handleSearch(event) {
-    if (event.key === "Enter") {
-        triggerSearch();
-    }
-}
-
-function triggerSearch() {
-    let query = document.getElementById("searchInput").value.trim();
-    if (query !== "") {
-        window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
-    }
-}
-document.addEventListener("DOMContentLoaded", function() {
-        const cards = document.querySelectorAll(".highlight-card");
-
-        cards.forEach(card => {
-            card.addEventListener("mouseover", function() {
-                cards.forEach(c => c.classList.remove("expanded"));
-                this.classList.add("expanded");
-            });
+    arms.forEach(arm => {
+        arm.addEventListener("click", function () {
+            // Reset all arms
+            arms.forEach(a => a.style.transform = "scale(0.8)");
+            this.style.transform = "scale(1.2)";
+            
+            // Show info box with details
+            infoBox.textContent = this.getAttribute("data-info");
+            infoBox.classList.remove("hidden");
         });
     });
+
+    // Reset all when clicking outside
+    document.addEventListener("click", function (e) {
+        if (!e.target.classList.contains("arm")) {
+            arms.forEach(a => a.style.transform = "scale(1)");
+            infoBox.classList.add("hidden");
+        }
+    });
+});
