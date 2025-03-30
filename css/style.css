@@ -687,30 +687,54 @@ button:hover {
     background: var(--secondary-color);
 }
 
-
-/* =============================
+/* ============================= 
    Responsive Design for Mobile
 ============================= */
 
 @media (max-width: 768px) {
+
+    /* Ensure header is a flex container */
     header {
+        display: flex;
         flex-direction: column;
+        align-items: center; /* Centers everything inside */
         text-align: center;
         padding: 10px 15px;
     }
+
+    /* Adjust logo size */
     .logo img {
         width: 150px;
-        /* Adjust logo size */
         margin-bottom: 10px;
     }
+
+    /* Make navigation items stack vertically */
     nav ul {
+        display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 10px;
+        padding: 0;
+        margin: 0;
+        list-style: none; /* Removes default list styling */
     }
+
+    /* Improve spacing for menu items */
     nav ul li {
-        margin: 5px 0;
+        padding: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Optional: Adjust navigation links for better UX */
+    nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        text-decoration: none;
     }
 }
+
 
 
 /* =============================
