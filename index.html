@@ -1,44 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Rehab House - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Home | The Rehab House - Update</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
-        <!-- Fixed header will be added later -->
+        <div class="logo">
+            <img src="images/logo.png" alt="The Rehab House Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <!-- Search Box with Icon -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
+            <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
+        </div>
     </header>
-    
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>THE REHAB HOUSE</h1>
-            <p>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</p>
+        <h2>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</h2>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <h1>Why Choose The Rehab House?</h1>
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <p>✔ Wheelchair-Accessible</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Lift Available</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Day Care Facility</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Admission Facility for Rehabilitation</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Multiple Physiotherapy Sessions per Day</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Physical, Cognitive, Occupational, Speech Therapy – All under One Roof</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ In-house Nutritionist, Psychologist, Orthotist</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Diagnostic Tests: Blood Tests, X-rays, DEXA Scan, ECG, Neurogenetic Testing</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Manual Therapy to Robotic Rehabilitation</p>
+            </div>
+            <div class="highlight-card">
+                <p>✔ Personalized Rehabilitation Plans</p>
+            </div>
         </div>
     </section>
-    
-    <section class="infographic">
-        <div class="circle" id="mainCircle">Positive Rehab Environment</div>
-        <div class="arms">
-            <div class="arm" data-info="Wheelchair accessible entry available">Wheelchair-Accessible</div>
-            <div class="arm" data-info="Elevator access to all floors">Lift Available</div>
-            <div class="arm" data-info="Flexible day care for rehab">Day Care Facility</div>
-            <div class="arm" data-info="Admission available for in-depth therapy">Admission Facility</div>
-            <div class="arm" data-info="Multiple therapy sessions tailored daily">Multiple Physiotherapy Sessions</div>
-            <div class="arm" data-info="All major therapies under one roof">Physical, Cognitive, Occupational, Speech Therapy</div>
-            <div class="arm" data-info="Specialists available for holistic care">In-house Nutritionist, Psychologist, Orthotist</div>
-            <div class="arm" data-info="On-site diagnostic services available">Diagnostic Tests (Blood Tests, X-rays, etc.)</div>
-            <div class="arm" data-info="From manual therapy to robotic-assisted rehab">Manual Therapy to Robotic Rehabilitation</div>
-            <div class="arm" data-info="Tailored recovery plans for every patient">Personalized Rehabilitation Plans</div>
-        </div>
-        <div id="infoBox" class="hidden"></div>
-    </section>
-    
+
+    <!-- Footer -->
     <footer>
-        <!-- Fixed footer will be added later -->
+        <div class="footer-content">
+            <p class="footer-left">&copy; 2025 The Rehab House</p>
+
+            <!-- Social Media -->
+            <div class="footer-right">
+                <h2>Follow Us</h2>
+                <a href="#" class="social-icon"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                <a href="#" class="social-icon"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                <a href="#" class="social-icon"><img src="images/twitter-icon.png" alt="Twitter"></a>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>
