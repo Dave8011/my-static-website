@@ -694,113 +694,72 @@ button:hover {
 
 
 @media (max-width: 768px) {
-  /* Adjust header spacing */
   header {
-    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    text-align: center;
+  }
+
+  .logo {
+    margin-bottom: 10px;
   }
 
   .logo img {
     width: 120px;
+    height: auto;
   }
 
-  /* Center nav and increase tap targets */
   nav ul {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
     padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  nav ul li {
+    margin: 0;
   }
 
   nav ul li a {
-    font-size: 20px;
-    padding: 10px 0;
-    display: block;
-  }
-
-  /* Hero section responsive text */
-  .hero {
-    height: auto;
-    padding: 40px 15px;
-  }
-
-  .hero h2 {
-    font-size: 28px;
-  }
-
-  /* Grid sections single-column layout */
-  .service-container,
-  .highlight-grid,
-  .team-container {
-    grid-template-columns: 1fr !important;
-    padding: 10px;
-  }
-
-  .service-card,
-  .highlight-card,
-  .team-member {
-    width: 100% !important;
-    padding: 20px;
-  }
-
-  /* Contact form and section */
-  .contact-form,
-  .contact-info {
-    padding: 20px 10px;
-  }
-
-  form {
-    padding: 15px;
-  }
-
-  /* Footer vertical stack */
-  footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .footer-right {
-    justify-content: center;
-  }
-
-  /* Buttons full-width */
-  button,
-  .btn,
-  .know-more-btn {
-    width: 100%;
     font-size: 16px;
+    padding: 8px 0;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
   }
 
-  /* Search box width full */
   .search-box {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
   }
 
   .search-box input {
     width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
 
   .search-box button {
     width: 100%;
-    margin-top: 5px;
-  }
-
-  /* Popup sizing for mobile */
-  .profile-popup {
-    top: 10%;
-    height: 80%;
-    width: 95%;
-  }
-
-  /* Hide back to top on very small screens if needed */
-  .back-to-top {
-    bottom: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    padding: 8px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
   }
 }
+ 
 
 
 
