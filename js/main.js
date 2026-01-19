@@ -81,3 +81,42 @@ function closePopup() {
     overlay.classList.remove('show');
     // frame.src = ''; // Optional: clear source to stop video playback etc if any
 }
+
+// Appointment System (Mock API)
+// TODO: Replace this with real API call when server is ready
+function saveAppointment(data) {
+    // 1. Get existing appointments
+    let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+
+    // 2. Add new data with timestamp
+    data.date = new Date().toISOString().split('T')[0]; // Simple YYYY-MM-DD
+    data.timestamp = new Date().toISOString();
+    appointments.unshift(data); // Add to top
+
+    // 3. Save back to localStorage
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+
+    return true; // Simulate success
+}
+
+function handleAppointmentSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    // Extract data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Save (Mock API call)
+    saveAppointment(data);
+
+    // Feedback
+    alert("Appointment Request Sent! We will contact you shortly.");
+    form.reset();
+
+    // If inside popup (iframe), close it?
+    // checking if we are inside the iframe logic or main page
+    if (window.parent && window.parent.closePopup && window.frameElement) {
+        window.parent.closePopup();
+    }
+}

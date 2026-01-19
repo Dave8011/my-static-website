@@ -132,39 +132,40 @@
                             <th>Date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Mock Data Row 1 -->
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Requesting consultation for post-stroke rehab.</td>
-                            <td>Neurorehabilitation</td>
-                            <td>+91 98765 43210</td>
-                            <td>Marine Lines, Mumbai</td>
-                            <td>2025-01-18</td>
-                        </tr>
-                        <!-- Mock Data Row 2 -->
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>Back pain management inquiry.</td>
-                            <td>Pain Management</td>
-                            <td>+91 91234 56789</td>
-                            <td>Colaba, Mumbai</td>
-                            <td>2025-01-19</td>
-                        </tr>
-                        <!-- Mock Data Row 3 -->
-                        <tr>
-                            <td>Rahul Gupta</td>
-                            <td>Physiotherapy for knee injury.</td>
-                            <td>Physiotherapy</td>
-                            <td>+91 99887 76655</td>
-                            <td>Churchgate, Mumbai</td>
-                            <td>2025-01-19</td>
-                        </tr>
+                    <tbody id="inquiriesTableBody">
+                        <!-- Data will be populated by JS -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <script>
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.getElementById('inquiriesTableBody');
+
+            // Get data from mock API (localStorage)
+            const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+
+            if (appointments.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No inquiries found.</td></tr>';
+                return;
+            }
+
+            // Populate table
+            tableBody.innerHTML = appointments.map(appt => `
+                <tr>
+                    <td>${appt.name || '-'}</td>
+                    <td>${appt.issue || '-'}</td>
+                    <td><span class="status-badge status-new">${appt.service || 'General'}</span></td>
+                    <td><a href="tel:${appt.phone}">${appt.phone || '-'}</a></td>
+                    <td>${appt.location || '-'}</td>
+                    <td>${appt.date || '-'}</td>
+                </tr>
+            `).join('');
+        });
+    </script>
 </body>
 
 </html>
