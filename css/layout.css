@@ -1,0 +1,135 @@
+/* =============================
+   Fixed Header
+============================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--head-color);
+    color: var(--white-color);
+    padding: 15px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+.scrolled {
+    background: rgba(255, 255, 255, 0.322);
+    /* More transparency */
+    backdrop-filter: blur(10px);
+    /* Increase blur effect */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo and Branding */
+
+.logo {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.logo img {
+    width: 400px;
+    /* Fixed logo size */
+    height: auto;
+    margin-right: 10px;
+}
+
+
+/* Navigation Bar */
+
+nav ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    /* Space between menu items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* =============================
+   Main Content Styles
+============================= */
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* =============================
+   Footer Styling
+============================= */
+
+footer {
+    background-color: #fff;
+    /* White background */
+    color: #b8860b;
+    /* Golden text */
+    padding: 15px 20px;
+    width: 100%;
+    bottom: 0;
+    position: relative;
+    /* Keeps it at bottom */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Align left & right */
+    border-top: 2px solid #b8860b;
+    /* Thin golden border on top */
+}
+
+
+/* Left side: Copyright */
+
+.footer-left {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* Right side: Social Media */
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between icons */
+}
+
+.footer-right h2 {
+    font-size: 16px;
+    margin-right: 10px;
+    /* Space before icons */
+}
+
+
+/* Social Media Icons */
+
+.social-icon img {
+    width: 24px;
+    /* Smaller icons */
+    transition: 0.3s;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+}

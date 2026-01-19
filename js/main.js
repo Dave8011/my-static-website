@@ -33,6 +33,12 @@ function toggleMobileSearch() {
     }
 }
 
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('active');
+}
+
 
 // Service Details Toggle
 function toggleDetails(id) {

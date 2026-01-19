@@ -1,0 +1,255 @@
+/* =============================
+   Hero Section
+============================= */
+
+.hero {
+    background: url('../images/hero-banner.jpg') center/cover no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-color);
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h2 {
+    font-size: 45px;
+    background: rgba(255, 252, 252, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+/* =============================
+   Services Section Helpers
+============================= */
+
+.services-header {
+    margin-bottom: 5px;
+    color: #b8860b;
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* =============================
+   Contact Page Styles
+============================= */
+
+.contact-info {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Center "Meet Our Experts" */
+
+.team-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* Team Section */
+
+.team {
+    text-align: center;
+    padding: 40px;
+    background: var(--light-color);
+}
+
+/* Team Member Styling */
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+/* Team Member Cards */
+
+.team-member {
+    text-align: center;
+    background: white;
+    /* White Card */
+    border-radius: 10px;
+    padding: 50px;
+    width: 500px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    color: #b8860b;
+    /* Golden Text */
+}
+
+
+/* Hover Effect */
+
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Team Member Images */
+
+.team-member img {
+    width: 150px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Know More Button */
+
+.know-more-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.know-more-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+
+/* Hidden Details (Dropdown) */
+
+.team-details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: var(--light-color);
+    color: var(--dark-color);
+    text-align: left;
+}
+
+
+/* Show Details When Active */
+
+.team-details.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+/* =============================
+   404 Page Styles
+============================= */
+
+.error-page {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.error-page h1 {
+    font-size: 100px;
+    color: var(--primary-color);
+}
+
+.error-page p {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.error-page .btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.error-page .btn:hover {
+    background-color: var(--secondary-color);
+}
+
+
+/* Highlights Section */
+
+.highlights {
+    padding: 45px;
+    text-align: center;
+    background: #fff;
+}
+
+.highlights h1 {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+
+/* Grid Layout for Cards */
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Search Results Page Specifics */
+.result-page-header {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.result-page-header h3 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.result-page-header ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.result-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-left: 4px solid var(--secondary-color);
+    transition: background 0.2s;
+}
+
+.result-item:hover {
+    background: #efefef;
+}
+
+.result-item a {
+    text-decoration: none;
+    color: var(--dark-color);
+    display: block;
+}
+
+.loading,
+.no-results {
+    font-size: 18px;
+    color: var(--dark-color);
+    padding: 20px;
+}

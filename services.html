@@ -27,18 +27,23 @@
             <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
             <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
         </div>
+        <button class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
     <!-- Main Content -->
     <main>
-        <section class="services-header">
+        <section class="services-header" id="program-overview">
             <h1>Our Specialised Rehabilitation Programs</h1>
             <p>We offer cutting-edge rehabilitation techniques designed for faster and more effective recovery.</p>
         </section>
 
         <hr>
 
-        <section class="service-list">
+        <section class="service-list" id="key-programs">
             <h2>Our Key Programs</h2>
             <hr><br>
             <div class="service-container">
@@ -99,7 +104,7 @@
         <hr><br>
 
         <!-- 7 Unique Sections -->
-        <section class="rehab-sections">
+        <section class="rehab-sections" id="comprehensive-rehab">
             <h2>Our 7 Uniquely curated Sections for Comprehensive Rehabilitation</h2>
             <ul>
                 <li>✔ Gait & Mobility Training</li>

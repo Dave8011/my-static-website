@@ -1,0 +1,16 @@
+:root {
+    --primary-color: #d4af37;
+    /* Gold */
+    --secondary-color: #EEBD7B;
+    /* Dark Goldenrod */
+    --dark-color: #333333;
+    /* Dark Grey */
+    --light-color: #f8f8f8;
+    /* Light Background */
+    --white-color: #b8860b;
+    /* White */
+    --gold-text: #b8860b;
+    /* Gold Text */
+    --head-color: #fff;
+    /* Green Header */
+}

@@ -27,15 +27,21 @@
             <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
             <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
         </div>
+        <!-- Hamburger Menu -->
+        <button class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <h2>THE REHAB HOUSE<br>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</h2>
     </section>
 
     <!-- Highlights Section -->
-    <section class="highlights">
+    <section class="highlights" id="highlights">
         <h1>Highlights</h1>
         <div class="highlight-grid">
             <div class="highlight-card">
