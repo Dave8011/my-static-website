@@ -57,29 +57,42 @@
         color: var(--white-color);
     }
 
-    /* Search Box on Mobile */
     .search-box {
         margin-top: 0;
         width: auto;
         border: none;
         background: transparent;
-        position: static;
-        margin-right: 15px;
-        /* Space from hamburger */
+        position: relative;
+        /* Changed from static to relative for better control if needed */
+        margin-right: 0;
+        /* Remove margin, handle spacing via flex gap */
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        /* Push search box and hamburger to the right */
     }
 
     .search-box input {
         display: none;
         position: absolute;
         top: 100%;
-        left: 0;
-        width: 100%;
+        right: 0;
+        /* Align to right */
+        left: auto;
+        /* Override left: 0 */
+        width: 250px;
+        /* specific width */
         z-index: 999;
-        border-radius: 0;
-        padding: 15px;
+        border-radius: 5px;
+        /* slight radius */
+        padding: 10px;
+        background-color: #fff;
+        /* Ensure white background */
+        border: 1px solid #ccc;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
-        /* Fix padding issues */
+        margin-top: 10px;
+        /* Space from header */
     }
 
     .search-box.active input {
@@ -94,7 +107,8 @@
     .search-box button img {
         width: 24px;
         height: 24px;
-        filter: invert(1);
+        filter: none;
+        /* Remove invert to make it visible on white header (assuming black icon) */
     }
 
     /* Hero overlapping fix */
