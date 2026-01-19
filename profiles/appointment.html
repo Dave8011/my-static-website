@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book an Appointment</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <div class="popup-content">
         <span class="close-popup" onclick="window.parent.closePopup()">×</span>
 
         <h2>Book an Appointment</h2>
-        <form action="submit_form.php" method="POST">
+        <form action="mailto:contact@therehabhouse.in" method="post" enctype="text/plain">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required>
 
@@ -37,4 +39,5 @@
         </form>
     </div>
 </body>
+
 </html>
