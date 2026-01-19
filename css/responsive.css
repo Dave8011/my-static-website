@@ -3,20 +3,50 @@
 ============================= */
 
 @media (max-width: 768px) {
+    body {
+        padding-top: 0;
+        /* Remove top blank space */
+    }
+
     header {
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-end;
+        /* Align remaining items (search, hamburger) to right */
         padding: 10px 20px;
         position: relative;
+        align-items: center;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* Center perfectly */
+        top: 50%;
+        z-index: 1001;
+        /* Ensure above others relative */
+        width: auto;
     }
 
     .logo img {
-        width: 150px;
+        width: 180px;
+        /* Increased size as requested */
+        max-height: 60px;
+        /* Constraint height to fit header if needed */
+        object-fit: contain;
     }
 
     .hamburger {
         display: flex;
+        background: transparent;
+        /* Ensure transparent background */
         /* Show hamburger on mobile */
+        z-index: 1100;
+    }
+
+    .hamburger span {
+        background: #333;
+        /* Dark color for visibility against white header */
     }
 
     /* Mobile Navigation */
@@ -54,7 +84,8 @@
     nav ul li a {
         display: block;
         padding: 15px 20px;
-        color: var(--white-color);
+        color: var(--gold-text);
+        /* Ensure text is visible (Gold) */
     }
 
     .search-box {
@@ -68,8 +99,8 @@
         /* Remove margin, handle spacing via flex gap */
         display: flex;
         align-items: center;
-        margin-left: auto;
-        /* Push search box and hamburger to the right */
+        margin-left: 0;
+        /* Reset auto margin as we use flex-end on header */
     }
 
     .search-box input {
@@ -82,16 +113,18 @@
         /* Override left: 0 */
         width: 250px;
         /* specific width */
-        z-index: 999;
+        z-index: 1200;
+        /* High Z-index to float above everything */
         border-radius: 5px;
         /* slight radius */
         padding: 10px;
         background-color: #fff;
         /* Ensure white background */
         border: 1px solid #ccc;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        /* Stronger shadow */
         box-sizing: border-box;
-        margin-top: 10px;
+        margin-top: 15px;
         /* Space from header */
     }
 
@@ -105,8 +138,9 @@
     }
 
     .search-box button img {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        /* Slightly larger icon */
+        height: 28px;
         filter: none;
         /* Remove invert to make it visible on white header (assuming black icon) */
     }
