@@ -1,25 +1,77 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const arms = document.querySelectorAll(".arm");
-    const infoBox = document.getElementById("infoBox");
-    const mainCircle = document.getElementById("mainCircle");
+// Search Functions
+function handleSearch(event) {
+    if (event.key === 'Enter') {
+        triggerSearch();
+    }
+}
 
-    arms.forEach(arm => {
-        arm.addEventListener("click", function () {
-            // Reset all arms
-            arms.forEach(a => a.style.transform = "scale(0.8)");
-            this.style.transform = "scale(1.2)";
-            
-            // Show info box with details
-            infoBox.textContent = this.getAttribute("data-info");
-            infoBox.classList.remove("hidden");
-        });
-    });
+function triggerSearch() {
+    const searchBox = document.querySelector('.search-box');
+    const searchInput = document.getElementById('searchInput');
+    const query = searchInput.value.trim();
 
-    // Reset all when clicking outside
-    document.addEventListener("click", function (e) {
-        if (!e.target.classList.contains("arm")) {
-            arms.forEach(a => a.style.transform = "scale(1)");
-            infoBox.classList.add("hidden");
+    if (query) {
+        window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
+    } else {
+        // If query is empty, checking if we need to toggle (Mobile behavior)
+        // If not active, activate. If active but empty, maybe close? 
+        // Let's just toggle.
+        searchBox.classList.toggle('active');
+        if (searchBox.classList.contains('active')) {
+            searchInput.focus();
         }
-    });
-});
+    }
+}
+
+// Mobile Search Toggle (Intended usage: Add a toggle button in HTML or handle in CSS)
+function toggleMobileSearch() {
+    const searchBox = document.querySelector('.search-box');
+    searchBox.classList.toggle('active');
+    const input = document.getElementById('searchInput');
+    if (searchBox.classList.contains('active')) {
+        input.focus();
+    }
+}
+
+
+// Service Details Toggle
+function toggleDetails(id) {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    // Toggle the 'active' class on the parent card
+    const card = element.closest('.service-card');
+    if (card) {
+        card.classList.toggle('active');
+    }
+}
+
+// Profile Popup Functions
+function openProfile(doctor) {
+    const popup = document.getElementById('profilePopup');
+    const overlay = document.getElementById('popupOverlay');
+    const frame = document.getElementById('profileFrame');
+
+    if (!popup || !overlay || !frame) return;
+
+    if (doctor === 'vidhi') {
+        frame.src = 'profiles/dr-vidhi.html';
+    } else if (doctor === 'vinit') {
+        frame.src = 'profiles/dr-vinit.html';
+    }
+
+    popup.classList.add('show');
+    overlay.classList.add('show');
+}
+
+function closePopup() {
+    const popup = document.getElementById('profilePopup');
+    const overlay = document.getElementById('popupOverlay');
+    const frame = document.getElementById('profileFrame');
+
+    if (!popup || !overlay || !frame) return;
+
+    popup.classList.remove('show');
+    overlay.classList.remove('show');
+    // frame.src = ''; // Optional: clear source to stop video playback etc if any
+}
