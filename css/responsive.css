@@ -10,14 +10,17 @@
 
     header {
         display: flex;
-        justify-content: space-between; /* Logo Left, Actions Right */
+        justify-content: space-between;
+        /* Logo Left, Actions Right */
         align-items: center;
         padding: 15px 20px;
+        /* Ensure padding prevents "out of frame" look */
         background: #fff;
     }
 
     .logo {
-        position: static; /* Remove absolute centering */
+        position: static;
+        /* Remove absolute centering */
         transform: none;
         margin: 0;
     }
@@ -40,11 +43,13 @@
         justify-content: center;
         align-items: center;
         gap: 4px;
-        background: #e2b676; /* Gold color */
+        background: #e2b676;
+        /* Gold color */
         border: none;
         width: 45px;
         height: 40px;
-        border-radius: 8px; /* Rounded corners */
+        border-radius: 8px;
+        /* Rounded corners */
         padding: 5px;
         cursor: pointer;
         z-index: 1100;
@@ -54,7 +59,8 @@
         display: block;
         width: 25px;
         height: 3px;
-        background: #fff; /* White lines on gold */
+        background: #fff;
+        /* White lines on gold */
         border-radius: 2px;
     }
 
@@ -103,13 +109,10 @@
         border: none;
         background: transparent;
         position: relative;
-        /* Changed from static to relative for better control if needed */
-        margin-right: 0;
-        /* Remove margin, handle spacing via flex gap */
+        /* Input absolute to this */
         display: flex;
         align-items: center;
-        margin-left: 0;
-        /* Reset auto margin as we use flex-end on header */
+        justify-content: flex-end;
     }
 
     .search-box input {

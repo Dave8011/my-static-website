@@ -151,6 +151,7 @@ function toggleAccordion(header) {
 // Load Testimonials
 document.addEventListener('DOMContentLoaded', () => {
     const testimonialContainer = document.getElementById('testimonial-container');
+    console.log("Loading Testimonials... Container:", testimonialContainer, "Data:", typeof testimonialsData);
     if (testimonialContainer && typeof testimonialsData !== 'undefined') {
         testimonialContainer.innerHTML = testimonialsData.map(t => `
             <div class="testimonial-card">
@@ -158,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h4>- ${t.author}</h4>
             </div>
         `).join('');
+    } else {
+        console.error("Testimonials failed to load. Missing container or data.");
     }
 });
 
@@ -213,7 +216,7 @@ async function hydrateBlogCard(url) {
     }
 }
 
-// Load Blogs (Handles both blog.html placeholders and Homepage hydration)
+// Load Blogs (Handles blog.html placeholders only)
 document.addEventListener('DOMContentLoaded', async () => {
     const blogContainer = document.getElementById('blog-container');
     if (!blogContainer) return;
@@ -229,36 +232,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ph.outerHTML = cardHTML; // Replace placeholder with real card
                 }
             }
-        }
-    }
-    // Case 2: We are on Homepage (Container empty) -> Fetch blog.html to find what to show
-    else if (blogContainer.children.length === 0) {
-        try {
-            const response = await fetch('blog.html');
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            // Find the active placeholders (or already hydrated cards if static build - but we are doing dynamic)
-            // We look for 'blog-placeholder' divs in the fetched blog.html
-            const recentPlaceholders = Array.from(doc.querySelectorAll('.blog-placeholder')).slice(0, 3);
-
-            if (recentPlaceholders.length > 0) {
-                for (const ph of recentPlaceholders) {
-                    const src = ph.getAttribute('data-src');
-                    if (src) {
-                        const cardHTML = await hydrateBlogCard(src);
-                        if (cardHTML) {
-                            blogContainer.insertAdjacentHTML('beforeend', cardHTML);
-                        }
-                    }
-                }
-            } else {
-                blogContainer.innerHTML = '<p>No recent stories found.</p>';
-            }
-        } catch (err) {
-            console.error('Error loading recent blogs:', err);
-            // Fail silently or show message
         }
     }
 });

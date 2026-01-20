@@ -10,17 +10,17 @@ function loadHeader() {
         </div>
         
         <div class="header-actions">
-            <!-- Search Box with Icon -->
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
-                <button onclick="triggerSearch()"><img src="${basePath}images/search-icon.png" alt="Search"></button>
-            </div>
-            <!-- Hamburger Menu -->
+            <!-- Hamburger Menu (Now before Search) -->
             <button class="hamburger" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <!-- Search Box with Icon (Last) -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
+                <button onclick="triggerSearch()"><img src="${basePath}images/search-icon.png" alt="Search"></button>
+            </div>
         </div>
 
         <nav>
