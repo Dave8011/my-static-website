@@ -8,6 +8,16 @@ function loadHeader() {
         <div class="logo">
             <img src="${basePath}images/logo.png" alt="The Rehab House Logo">
         </div>
+
+        <nav>
+            <ul>
+                <li><a href="${basePath}index.html">Home</a></li>
+                <li><a href="${basePath}about_us.html">About Us</a></li>
+                <li><a href="${basePath}services.html">Our Services</a></li>
+                <li><a href="${basePath}blog.html">Blog</a></li>
+                <li><a href="${basePath}contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
         
         <div class="header-actions">
             <!-- Hamburger Menu (Now before Search) -->
@@ -22,16 +32,6 @@ function loadHeader() {
                 <button onclick="triggerSearch()"><img src="${basePath}images/search-icon.png" alt="Search"></button>
             </div>
         </div>
-
-        <nav>
-            <ul>
-                <li><a href="${basePath}index.html">Home</a></li>
-                <li><a href="${basePath}about_us.html">About Us</a></li>
-                <li><a href="${basePath}services.html">Our Services</a></li>
-                <li><a href="${basePath}blog.html">Blog</a></li>
-                <li><a href="${basePath}contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
     </header>`;
     document.getElementById('header-placeholder').innerHTML = headerHTML;
 }

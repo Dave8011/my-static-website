@@ -11,11 +11,12 @@ function triggerSearch() {
     const query = searchInput.value.trim();
 
     if (query) {
-        window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
+        // Search functionality disabled/removed as per request
+        // window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
+        console.log("Search query:", query);
+        alert("Search functionality is currently disabled.");
     } else {
-        // If query is empty, checking if we need to toggle (Mobile behavior)
-        // If not active, activate. If active but empty, maybe close? 
-        // Let's just toggle.
+        // Toggle visibility
         searchBox.classList.toggle('active');
         if (searchBox.classList.contains('active')) {
             searchInput.focus();
@@ -151,16 +152,17 @@ function toggleAccordion(header) {
 // Load Testimonials
 document.addEventListener('DOMContentLoaded', () => {
     const testimonialContainer = document.getElementById('testimonial-container');
-    console.log("Loading Testimonials... Container:", testimonialContainer, "Data:", typeof testimonialsData);
-    if (testimonialContainer && typeof testimonialsData !== 'undefined') {
-        testimonialContainer.innerHTML = testimonialsData.map(t => `
-            <div class="testimonial-card">
-                <p>"${t.text}"</p>
-                <h4>- ${t.author}</h4>
-            </div>
-        `).join('');
-    } else {
-        console.error("Testimonials failed to load. Missing container or data.");
+    if (testimonialContainer) {
+        if (typeof testimonialsData !== 'undefined') {
+            testimonialContainer.innerHTML = testimonialsData.map(t => `
+                <div class="testimonial-card">
+                    <p>"${t.text}"</p>
+                    <h4>- ${t.author}</h4>
+                </div>
+            `).join('');
+        } else {
+            console.error("Testimonials data missing.");
+        }
     }
 });
 

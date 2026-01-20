@@ -26,8 +26,17 @@
 ============================= */
 
 .services-header {
+    padding-top: 120px;
+    /* clear fixed header */
     margin-bottom: 5px;
     color: #b8860b;
+}
+
+.contact-header {
+    padding-top: 120px;
+    /* clear fixed header */
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .service-container {

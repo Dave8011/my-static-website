@@ -2,40 +2,49 @@
    Search Box Styles
 ============================= */
 
+/* Global Expandable Search Box */
 .search-box {
     position: relative;
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #fff;
+    border: none;
+    background: transparent;
 }
 
 .search-box input {
-    width: 200px;
-    padding: 8px;
-    border: none;
-    outline: none;
-    font-size: 14px;
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1200;
+    margin-top: 10px;
+}
+
+.search-box.active input {
+    display: block;
+    /* Show when active */
 }
 
 .search-box button {
-    background: var(--primary-color);
+    background: transparent;
     border: none;
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0;
-    /* Reset global button margin */
-    width: auto;
-    /* Reset global button width */
 }
 
 .search-box button img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 /* Mobile Search Toggle Icon (Hidden by default on Desktop) */
@@ -350,6 +359,7 @@ form button:hover {
     background: var(--white-color);
     transition: all 0.3s linear;
 }
+
 /* =============================
    Testimonials
 ============================= */
@@ -378,7 +388,7 @@ form button:hover {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     text-align: left;
 }
