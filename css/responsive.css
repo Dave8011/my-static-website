@@ -9,44 +9,53 @@
     }
 
     header {
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        /* Align remaining items (search, hamburger) to right */
-        padding: 10px 20px;
-        position: relative;
+        display: flex;
+        justify-content: space-between; /* Logo Left, Actions Right */
         align-items: center;
+        padding: 15px 20px;
+        background: #fff;
     }
 
     .logo {
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        /* Center perfectly */
-        top: 50%;
-        z-index: 1001;
-        /* Ensure above others relative */
-        width: auto;
+        position: static; /* Remove absolute centering */
+        transform: none;
+        margin: 0;
     }
 
     .logo img {
-        width: 180px;
-        /* Increased size as requested */
-        max-height: 60px;
-        /* Constraint height to fit header if needed */
+        height: 60px;
+        width: auto;
         object-fit: contain;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
     }
 
     .hamburger {
         display: flex;
-        background: transparent;
-        /* Ensure transparent background */
-        /* Show hamburger on mobile */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        background: #e2b676; /* Gold color */
+        border: none;
+        width: 45px;
+        height: 40px;
+        border-radius: 8px; /* Rounded corners */
+        padding: 5px;
+        cursor: pointer;
         z-index: 1100;
     }
 
     .hamburger span {
-        background: #333;
-        /* Dark color for visibility against white header */
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #fff; /* White lines on gold */
+        border-radius: 2px;
     }
 
     /* Mobile Navigation */

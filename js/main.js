@@ -140,19 +140,19 @@ function scrollToTop() {
 // FAQ Accordion
 function toggleAccordion(header) {
     const content = header.nextElementSibling;
-    
+
     // Toggle active classes
     header.classList.toggle('active');
     content.classList.toggle('active');
-    
+
     // Close other items (optional - currently allowing multiple open)
 }
 
 // Load Testimonials
 document.addEventListener('DOMContentLoaded', () => {
     const testimonialContainer = document.getElementById('testimonial-container');
-    if (testimonialContainer && typeof siteData !== 'undefined') {
-        testimonialContainer.innerHTML = siteData.testimonials.map(t => `
+    if (testimonialContainer && typeof testimonialsData !== 'undefined') {
+        testimonialContainer.innerHTML = testimonialsData.map(t => `
             <div class="testimonial-card">
                 <p>"${t.text}"</p>
                 <h4>- ${t.author}</h4>
@@ -164,8 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Load FAQs
 document.addEventListener('DOMContentLoaded', () => {
     const faqContainer = document.getElementById('faq-container');
-    if (faqContainer && typeof siteData !== 'undefined') {
-        faqContainer.innerHTML = siteData.faqs.map(faq => `
+    if (faqContainer && typeof faqsData !== 'undefined') {
+        faqContainer.innerHTML = faqsData.map(faq => `
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">${faq.question}</div>
                 <div class="accordion-content">
@@ -176,20 +176,89 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Load Blogs
-document.addEventListener('DOMContentLoaded', () => {
-    const blogContainer = document.getElementById('blog-container');
-    if (blogContainer && typeof siteData !== 'undefined') {
-        blogContainer.innerHTML = siteData.blogs.map(blog => `
+// Helper: Hydrate a single blog card from its source file
+async function hydrateBlogCard(url) {
+    try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Extract Metadata
+        const title = doc.querySelector('h1')?.innerText || 'Untitled Post';
+        const date = doc.querySelector('.text-muted')?.innerText || 'Date Unknown'; // Assumes date has this class
+        let imageSrc = doc.querySelector('article img')?.getAttribute('src') || 'images/logo.png';
+        const excerpt = doc.querySelector('article img + p')?.innerText.substring(0, 100) + '...' || 'Read more to find out...';
+
+        // Fix relative image path (Assumes blog is in blogs/ and image is in ../images/)
+        // If the source image is "../images/foo.jpg", and we are on index.html, we want "images/foo.jpg".
+        if (imageSrc.startsWith('../')) {
+            imageSrc = imageSrc.substring(3); // Remove "../"
+        }
+
+        return `
             <article class="blog-card">
-                <div class="blog-img" style="background: #e2b676; display:flex; align-items:center; justify-content:center; color:white;">Image (Placeholder)</div>
+                <div class="blog-img" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;"></div>
                 <div class="blog-content">
-                    <span class="blog-date">${blog.date}</span>
-                    <h3 class="blog-title">${blog.title}</h3>
-                    <p class="blog-excerpt">${blog.excerpt}</p>
-                    <a href="${blog.link}" class="read-more">Read More →</a>
+                    <span class="blog-date">${date}</span>
+                    <h3 class="blog-title">${title}</h3>
+                    <p class="blog-excerpt">${excerpt}</p>
+                    <a href="${url}" class="read-more">Read More →</a>
                 </div>
             </article>
-        `).join('');
+        `;
+    } catch (err) {
+        console.error(`Failed to load blog from ${url}:`, err);
+        return '';
+    }
+}
+
+// Load Blogs (Handles both blog.html placeholders and Homepage hydration)
+document.addEventListener('DOMContentLoaded', async () => {
+    const blogContainer = document.getElementById('blog-container');
+    if (!blogContainer) return;
+
+    // Case 1: We are on blog.html and see placeholders
+    const placeholders = document.querySelectorAll('.blog-placeholder');
+    if (placeholders.length > 0) {
+        for (const ph of placeholders) {
+            const src = ph.getAttribute('data-src');
+            if (src) {
+                const cardHTML = await hydrateBlogCard(src);
+                if (cardHTML) {
+                    ph.outerHTML = cardHTML; // Replace placeholder with real card
+                }
+            }
+        }
+    }
+    // Case 2: We are on Homepage (Container empty) -> Fetch blog.html to find what to show
+    else if (blogContainer.children.length === 0) {
+        try {
+            const response = await fetch('blog.html');
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            // Find the active placeholders (or already hydrated cards if static build - but we are doing dynamic)
+            // We look for 'blog-placeholder' divs in the fetched blog.html
+            const recentPlaceholders = Array.from(doc.querySelectorAll('.blog-placeholder')).slice(0, 3);
+
+            if (recentPlaceholders.length > 0) {
+                for (const ph of recentPlaceholders) {
+                    const src = ph.getAttribute('data-src');
+                    if (src) {
+                        const cardHTML = await hydrateBlogCard(src);
+                        if (cardHTML) {
+                            blogContainer.insertAdjacentHTML('beforeend', cardHTML);
+                        }
+                    }
+                }
+            } else {
+                blogContainer.innerHTML = '<p>No recent stories found.</p>';
+            }
+        } catch (err) {
+            console.error('Error loading recent blogs:', err);
+            // Fail silently or show message
+        }
     }
 });
