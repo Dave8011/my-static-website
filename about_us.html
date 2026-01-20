@@ -14,30 +14,8 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="The Rehab House Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about_us.html">About Us</a></li>
-                <li><a href="services.html">Our Services</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-        <!-- Search Box with Icon -->
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
-            <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
-        </div>
-        <button class="hamburger" onclick="toggleMobileMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
 
     <section class="hero" id="hero">
         <h2>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</h2>
@@ -120,41 +98,17 @@
                     in their lives after getting treated and discharged from The Rehab House.</p>
             </div>
         </section>
-        </div>
-
-        <div class="difference-card">
-            <h3>Specialized Rehabilitation Programs</h3>
-            <p>We ensure engaging and innovative treatment strategies that keep our patients motivated throughout
-                their rehabilitation journey.</p>
-        </div>
-
-        <div class="difference-card">
-            <h3>Discharge Protocol for a Smooth Transition</h3>
-            <p>Our goal is to help patients **recover faster, regain independence, and return to normal life as soon
-                as possible**.</p>
-        </div>
-        </section>
     </main>
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-left">&copy; 2025 The Rehab House | <a href="admin/login.html"
-                    style="color: inherit; text-decoration: none;">Admin Login</a></p>
-
-            <!-- Social Media -->
-            <div class="footer-right">
-                <h2>Follow Us</h2>
-                <a href="https://www.instagram.com/the_rehab_house/" class="social-icon"><img
-                        src="images/instagram-icon.png" alt="Instagram"></a>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
 
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
     <!-- JavaScript -->
+    <!-- JavaScript -->
+    <script src="js/header_footer.js"></script>
     <script src="js/main.js"></script>
 </body>
 

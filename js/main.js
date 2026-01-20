@@ -147,3 +147,49 @@ function toggleAccordion(header) {
     
     // Close other items (optional - currently allowing multiple open)
 }
+
+// Load Testimonials
+document.addEventListener('DOMContentLoaded', () => {
+    const testimonialContainer = document.getElementById('testimonial-container');
+    if (testimonialContainer && typeof siteData !== 'undefined') {
+        testimonialContainer.innerHTML = siteData.testimonials.map(t => `
+            <div class="testimonial-card">
+                <p>"${t.text}"</p>
+                <h4>- ${t.author}</h4>
+            </div>
+        `).join('');
+    }
+});
+
+// Load FAQs
+document.addEventListener('DOMContentLoaded', () => {
+    const faqContainer = document.getElementById('faq-container');
+    if (faqContainer && typeof siteData !== 'undefined') {
+        faqContainer.innerHTML = siteData.faqs.map(faq => `
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">${faq.question}</div>
+                <div class="accordion-content">
+                    <p>${faq.answer}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+});
+
+// Load Blogs
+document.addEventListener('DOMContentLoaded', () => {
+    const blogContainer = document.getElementById('blog-container');
+    if (blogContainer && typeof siteData !== 'undefined') {
+        blogContainer.innerHTML = siteData.blogs.map(blog => `
+            <article class="blog-card">
+                <div class="blog-img" style="background: #e2b676; display:flex; align-items:center; justify-content:center; color:white;">Image (Placeholder)</div>
+                <div class="blog-content">
+                    <span class="blog-date">${blog.date}</span>
+                    <h3 class="blog-title">${blog.title}</h3>
+                    <p class="blog-excerpt">${blog.excerpt}</p>
+                    <a href="${blog.link}" class="read-more">Read More →</a>
+                </div>
+            </article>
+        `).join('');
+    }
+});

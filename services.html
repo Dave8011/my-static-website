@@ -14,30 +14,8 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="The Rehab House Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about_us.html">About Us</a></li>
-                <li><a href="services.html">Our Services</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-        <!-- Search Box with Icon -->
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
-            <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
-        </div>
-        <button class="hamburger" onclick="toggleMobileMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
 
     <!-- Main Content -->
     <main>
@@ -127,57 +105,21 @@
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
         <h2>Frequently Asked Questions</h2>
-        <div class="accordion">
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">Do I need a doctor's referral?</div>
-                <div class="accordion-content">
-                    <p>While a referral is helpful, it is not mandatory. You can book an appointment directly with our
-                        specialists.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">Is the clinic wheelchair accessible?</div>
-                <div class="accordion-content">
-                    <p>Yes, The Rehab House is fully wheelchair accessible with elevator access and wide corridors.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">What should I wear to my appointment?
-                </div>
-                <div class="accordion-content">
-                    <p>Please wear loose, comfortable clothing that allows for easy movement during therapy sessions.
-                    </p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">Do you offer home visits?</div>
-                <div class="accordion-content">
-                    <p>Yes, we offer home visits for patients who are unable to travel to the clinic. Please contact us
-                        for details.</p>
-                </div>
-            </div>
+        <div class="accordion" id="faq-container">
+            <!-- Loaded from js/data.js -->
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-left">&copy; 2025 The Rehab House | <a href="admin/login.html"
-                    style="color: inherit; text-decoration: none;">Admin Login</a></p>
-
-            <!-- Social Media -->
-            <div class="footer-right">
-                <h2>Follow Us</h2>
-                <a href="https://www.instagram.com/the_rehab_house/" class="social-icon"><img
-                        src="images/instagram-icon.png" alt="Instagram"></a>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
     <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/header_footer.js"></script>
     <script src="js/main.js"></script>
 </body>
 
