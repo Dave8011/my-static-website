@@ -171,10 +171,4 @@
     .footer-right {
         justify-content: center;
     }
-
-    /* Ensure services-header and contact-header also respect mobile spacing if needed */
-    .services-header,
-    .contact-header {
-        /* padding/margin handling if not covered by general flow */
-    }
 }
