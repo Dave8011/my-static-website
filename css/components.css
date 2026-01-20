@@ -350,3 +350,123 @@ form button:hover {
     background: var(--white-color);
     transition: all 0.3s linear;
 }
+/* =============================
+   Testimonials
+============================= */
+.testimonials {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.testimonials h2 {
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.testimonial-card h4 {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-align: right;
+}
+
+/* =============================
+   FAQ Accordion
+============================= */
+.faq-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.accordion {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    background: #f4f4f4;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.accordion-header:hover {
+    background: #e2b676;
+    color: white;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    background: #fff;
+    line-height: 1.6;
+}
+
+.accordion-content.active {
+    display: block;
+}
+
+/* Arrow Icon */
+.accordion-header::after {
+    content: '+';
+    font-size: 20px;
+}
+
+.accordion-header.active::after {
+    content: '-';
+}

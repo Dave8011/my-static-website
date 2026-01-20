@@ -120,3 +120,30 @@ function handleAppointmentSubmit(event) {
         window.parent.closePopup();
     }
 }
+
+// Back to Top functionality
+window.onscroll = function () {
+    const btn = document.getElementById("backToTop");
+    if (btn) {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "flex";
+        } else {
+            btn.style.display = "none";
+        }
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// FAQ Accordion
+function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    
+    // Toggle active classes
+    header.classList.toggle('active');
+    content.classList.toggle('active');
+    
+    // Close other items (optional - currently allowing multiple open)
+}

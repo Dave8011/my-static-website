@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | The Rehab House</title>
+    <meta name="description"
+        content="Read the latest articles on rehabilitation, physiotherapy, and wellness from experts at The Rehab House.">
+    <meta name="keywords" content="Rehab Blog, Physiotherapy Articles, Stroke Recovery Tips, Pain Management Advice">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .blog-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            /* Placeholder */
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 1.25em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .blog-excerpt {
+            color: #555;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="The Rehab House Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <!-- Search Box with Icon -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
+            <button onclick="triggerSearch()"><img src="images/search-icon.png" alt="Search"></button>
+        </div>
+        <button class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <section class="blog-header">
+        <h1>Health & Wellness Insights</h1>
+        <p>Expert advice on recovery, rehabilitation, and staying healthy.</p>
+    </section>
+
+    <section class="blog-grid">
+        <!-- Article 1 -->
+        <article class="blog-card">
+            <div class="blog-img"
+                style="background: #e2b676; display:flex; align-items:center; justify-content:center; color:white;">
+                Image</div>
+            <div class="blog-content">
+                <span class="blog-date">Oct 15, 2025</span>
+                <h3 class="blog-title">5 Tips for Stroke Recovery at Home</h3>
+                <p class="blog-excerpt">Recovering from a stroke is a journey. Here are five essential exercises and
+                    habits to practice at home for a faster recovery...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="blog-card">
+            <div class="blog-img"
+                style="background: #232220; display:flex; align-items:center; justify-content:center; color:white;">
+                Image</div>
+            <div class="blog-content">
+                <span class="blog-date">Nov 02, 2025</span>
+                <h3 class="blog-title">Understanding Vestibular Therapy</h3>
+                <p class="blog-excerpt">Feeling dizzy or off-balance? Learn how vestibular rehabilitation can help treat
+                    vertigo and improve your stability...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="blog-card">
+            <div class="blog-img"
+                style="background: #e2b676; display:flex; align-items:center; justify-content:center; color:white;">
+                Image</div>
+            <div class="blog-content">
+                <span class="blog-date">Dec 10, 2025</span>
+                <h3 class="blog-title">Ergonomics for Back Pain</h3>
+                <p class="blog-excerpt">Working from home? Simple adjustments to your workspace can significantly reduce
+                    back and neck pain...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </article>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-left">&copy; 2025 The Rehab House | <a href="admin/login.html"
+                    style="color: inherit; text-decoration: none;">Admin Login</a></p>
+
+            <!-- Social Media -->
+            <div class="footer-right">
+                <h2>Follow Us</h2>
+                <a href="https://www.instagram.com/the_rehab_house/" class="social-icon"><img
+                        src="images/instagram-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
