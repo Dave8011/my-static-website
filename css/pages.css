@@ -2,12 +2,7 @@
    Hero Section
 ============================= */
 
-/* =============================
-   Hero Section
-============================= */
-
-.hero-home {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-banner.jpg') center/cover no-repeat;
+.hero {
     height: 70vh;
     /* Increased height */
     min-height: 500px;
@@ -20,6 +15,10 @@
     margin-top: -80px;
     /* Offset fixed header space */
     padding-top: 100px;
+}
+
+.hero-home {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-banner.jpg') center/cover no-repeat;
 }
 
 /* Page Specific Hero Banners */
