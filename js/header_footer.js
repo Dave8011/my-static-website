@@ -62,3 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('header-placeholder')) loadHeader();
     if (document.getElementById('footer-placeholder')) loadFooter();
 });
+
+// Sticky Header Effect
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+});

@@ -2,28 +2,34 @@
    Fixed Header
 ============================= */
 
+/* =============================
+   Fixed Header
+============================= */
+
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--head-color);
-    color: var(--white-color);
+    background: rgba(255, 255, 255, 0.95);
+    /* Start slightly transparent */
     padding: 15px 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.scrolled {
-    background: rgba(255, 255, 255, 0.322);
-    /* More transparency */
-    backdrop-filter: blur(10px);
-    /* Increase blur effect */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+header.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    /* Shrink header */
 }
 
 /* Logo and Branding */
@@ -35,10 +41,15 @@ header {
 }
 
 .logo img {
-    width: 400px;
-    /* Fixed logo size */
+    width: 250px;
+    /* Optimized default size */
     height: auto;
-    margin-right: 10px;
+    transition: width 0.4s ease;
+}
+
+header.scrolled .logo img {
+    width: 200px;
+    /* Shrink logo on scroll */
 }
 
 
@@ -46,23 +57,42 @@ header {
 
 nav ul {
     list-style: none;
-    padding: 10px 0;
+    padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px;
-    /* Space between menu items */
+    gap: 30px;
+    /* Increased gap */
 }
 
 nav ul li a {
     text-decoration: none;
-    color: var(--white-color);
-    font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
+    color: var(--dark-color);
+    /* Darker for better contrast on white */
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+    position: relative;
+    letter-spacing: 0.5px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* =============================
@@ -70,7 +100,7 @@ nav ul li a:hover {
 ============================= */
 
 main {
-    padding: 20px;
+    padding: 40px 20px;
     max-width: 1200px;
     margin: auto;
 }
@@ -80,29 +110,38 @@ main {
 ============================= */
 
 footer {
-    background-color: #fff;
-    /* White background */
-    color: #b8860b;
-    /* Golden text */
-    padding: 15px 20px;
-    width: 100%;
-    bottom: 0;
-    position: relative;
-    /* Keeps it at bottom */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* Align left & right */
-    border-top: 2px solid #b8860b;
-    /* Thin golden border on top */
+    background-color: #1a1a1a;
+    /* Dark Luxury background */
+    color: #fff;
+    padding: 40px 20px;
+    border-top: 3px solid var(--primary-color);
+    display: block;
+    /* Change to block for content wrapping */
 }
 
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
 /* Left side: Copyright */
 
 .footer-left {
     font-size: 14px;
-    font-weight: bold;
+    color: #ccc;
+}
+
+.footer-left a {
+    color: var(--secondary-color);
+    transition: 0.3s;
+}
+
+.footer-left a:hover {
+    color: var(--primary-color);
 }
 
 
@@ -111,25 +150,27 @@ footer {
 .footer-right {
     display: flex;
     align-items: center;
-    gap: 10px;
-    /* Space between icons */
+    gap: 15px;
 }
 
 .footer-right h2 {
-    font-size: 16px;
-    margin-right: 10px;
-    /* Space before icons */
+    font-size: 18px;
+    margin: 0;
+    color: var(--primary-color);
+    font-family: var(--font-heading);
 }
 
 
 /* Social Media Icons */
 
 .social-icon img {
-    width: 24px;
-    /* Smaller icons */
+    width: 32px;
+    filter: brightness(0) invert(1);
+    /* Make icons white */
     transition: 0.3s;
 }
 
-.social-icon img:hover {
-    transform: scale(1.1);
+.social-icon:hover img {
+    transform: translateY(-3px) scale(1.1);
+    filter: drop-shadow(0 0 5px var(--primary-color));
 }

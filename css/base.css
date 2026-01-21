@@ -8,7 +8,7 @@ img {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
     background-color: var(--light-color);
@@ -16,13 +16,26 @@ body {
     padding-top: 80px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    margin-top: 0;
+}
+
 h2 {
     color: var(--primary-color);
-    font-size: 26px;
+    font-size: 32px;
+    /* Increased size */
+    font-weight: 700;
 }
 
 h3 {
     color: var(--gold-text);
+    font-weight: 600;
 }
 
 p {

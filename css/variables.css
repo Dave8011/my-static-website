@@ -7,10 +7,19 @@
     /* Dark Grey */
     --light-color: #f8f8f8;
     /* Light Background */
-    --white-color: #b8860b;
+    --white-color: #ffffff;
     /* White */
     --gold-text: #b8860b;
     /* Gold Text */
     --head-color: #fff;
-    /* Green Header */
+    /* Header BG */
+
+    /* Typography */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Gradients & Shadows */
+    --gold-gradient: linear-gradient(135deg, #d4af37 0%, #EEBD7B 100%);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --hover-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
 }

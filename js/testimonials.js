@@ -1,14 +1,14 @@
 const testimonialsData = [
     {
-        text: "The team at The Rehab House is phenomenal. My father recovered from his stroke much faster than we expected thanks to their intensive program.",
-        author: "Rahul Mehta"
+        text: "Outstanding facility and Extraordinary sevice / treatment by Dr Vidhi. Fully satisfied..Highly recommended for others to visit once atleast 👍",
+        author: "Pragnesh Raval"
     },
     {
-        text: "I was suffering from severe back pain for years. The pain management therapy here gave me my life back. Highly recommended!",
-        author: "Priya Sharma"
+        text: "The Rehab House is one of the most professional physiotherapy and neuro-rehab centers I’ve visited in Mumbai. The assessment was extremely detailed, and the treatment plan was explained clearly. You can see the difference in their clinical reasoning and approach. Highly recommended for anyone looking for genuine rehabilitation.",
+        author: "Swati Dubey"
     },
     {
-        text: "Excellent facility with caring staff. The admission facility made it so easy for us to manage my mother's rehab.",
-        author: "Amit Desouza"
+        text: "I have taken multiple consultations from Dr Vineet for my different family members. Each time, it was a wonderful experience and relief came very fast. His most amazing quality is how he handle each patient with lot of care with complete dedication. The centre is very well equipped and maintained very well.",
+        author: "Prashant Kumar"
     }
 ];

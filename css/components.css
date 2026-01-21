@@ -93,19 +93,27 @@
    Buttons
 ============================= */
 
+/* =============================
+   Buttons
+============================= */
+
 button {
-    background-color: var(--primary-color);
+    background: var(--gold-gradient);
     color: var(--white-color);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: background 0.3s ease-in-out;
+    font-size: 16px;
+    border-radius: 50px;
+    /* Pill shape */
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
 }
 
 /* =============================
@@ -114,45 +122,60 @@ button:hover {
 
 .service-card {
     background: #fff;
-    /* White Background */
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
+    border-radius: 16px;
+    /* Smooth corners */
+    padding: 0;
+    /* Let image touch edges */
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-align: center;
     cursor: pointer;
     overflow: hidden;
-    min-height: 250px;
-    /* Ensure equal height */
+    min-height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .service-card img {
     width: 100%;
-    height: 150px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.05);
+    /* Zoom effect */
+}
+
+.service-content {
+    padding: 20px;
 }
 
 .service-content h3 {
     color: var(--primary-color);
-    margin-top: 10px;
-    font-size: 20px;
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .service-details {
     display: none;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: all 0.3s ease-in-out;
+    font-size: 15px;
+    margin-top: 15px;
+    color: #666;
+    line-height: 1.6;
 }
 
 .service-card.active .service-details {
     display: block;
+    animation: fadeIn 0.4s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
 }
 
 /* Fade-in Animation */
@@ -160,7 +183,7 @@ button:hover {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-5px);
+        transform: translateY(10px);
     }
 
     to {
@@ -173,21 +196,31 @@ button:hover {
 
 .highlight-card {
     background: #fff;
-    color: #E2B676;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
+    color: var(--primary-color);
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
     text-align: center;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+
+.highlight-card p {
+    margin: 0;
 }
 
 .highlight-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    background: #dbaf3f;
+    box-shadow: var(--hover-shadow);
+    background: var(--gold-gradient);
     color: #fff;
+    border-color: transparent;
 }
 
 /* =============================
