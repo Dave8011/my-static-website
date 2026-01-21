@@ -46,3 +46,37 @@ This is the static website for The Rehab House, a neuro-rehabilitation center.
 ## Development
 - **Styles**: Located in `css/`. Mobile styles are in `css/responsive.css`.
 - **Scripts**: located in `js/`. `main.js` handles dynamic loading.
+
+## Image Assets & Dimensions
+
+To ensure the best visual quality, please use images with the following dimensions:
+
+| Component | Recommended Size | Aspect Ratio | Usage |
+| :--- | :--- | :--- | :--- |
+| **Main Hero Banner** | 1920 x 800 px | 2.4:1 | Homepage top banner |
+| **Page Banners** | 1920 x 600 px | 3:1 | About, Services, Contact, Blog headers |
+| **Service Cards** | 600 x 450 px | 4:3 | Service listing images |
+| **Blog Cards** | 800 x 450 px | 16:9 | Blog post thumbnails |
+| **Team Photos** | 400 x 400 px | 1:1 (Square) | Doctor profiles |
+
+### How to Change Page Banners
+
+Each page uses a specific CSS class for its banner image. To change a banner:
+
+1.  **Upload the Image**: Save your new image in the `images/` folder (e.g., `new-banner.jpg`).
+2.  **Update CSS**:
+    *   Open `css/pages.css`.
+    *   Search for the relevant class:
+        *   `.hero` (Homepage)
+        *   `.hero-about` (About Us)
+        *   `.hero-services` (Our Services)
+        *   `.hero-contact` (Contact Us)
+        *   `.hero-blog` (Blog)
+    *   Update the `url(...)` property:
+        ```css
+        /* Example for Contact Page */
+        .hero-contact {
+            /* Keep the gradient for text readability */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/new-banner.jpg') center/cover no-repeat;
+        }
+        ```

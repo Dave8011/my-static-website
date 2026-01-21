@@ -18,8 +18,11 @@
     <div id="header-placeholder"></div>
 
     <!-- Hero Section (Consistent Layout) -->
-    <section class="hero" id="hero">
-        <h2>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</h2>
+    <section class="hero hero-contact" id="hero">
+        <div class="hero-content">
+            <h1>Contact Us</h1>
+            <p>South Mumbai's First Neuro-rehabilitation Centre with Admission Facility</p>
+        </div>
     </section>
 
     <!-- Main Content -->
@@ -70,7 +73,7 @@
         </section>
 
         <!-- Book an Appointment Form -->
-        <section class="contact-form">
+        <section class="contact-form" id="booking">
             <h2>Book an Appointment</h2>
             <form onsubmit="handleAppointmentSubmit(event)">
                 <label for="name">Full Name</label>
@@ -103,18 +106,18 @@
             <span class="close-popup" onclick="closePopup()">×</span>
             <iframe id="profileFrame" src="" frameborder="0"></iframe>
         </div>
+    </main>
 
+    <!-- Footer -->
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
 
-        <!-- Footer -->
-        <!-- Footer Component -->
-        <div id="footer-placeholder"></div>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
-        <!-- Back to Top Button -->
-        <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
-
-        <!-- JavaScript -->
-        <script src="js/header_footer.js"></script>
-        <script src="js/main.js"></script>
+    <!-- JavaScript -->
+    <script src="js/header_footer.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

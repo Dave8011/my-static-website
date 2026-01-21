@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results | The Rehab House</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Search Results</h1>
+            <p>Find what you are looking for</p>
+        </div>
+    </section>
+
+    <main>
+        <section class="search-results-container">
+            <h3>Results for: <span id="search-query">...</span></h3>
+            <hr>
+            <div id="results-list" class="result-page-header">
+                <!-- Results will be injected here -->
+                <p class="loading">Searching...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/header_footer.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            const display = document.getElementById('search-query');
+            const list = document.getElementById('results-list');
+
+            if (query) {
+                display.innerText = `"${query}"`;
+                performSearch(query, list);
+            } else {
+                display.innerText = "Nothing";
+                list.innerHTML = '<p class="no-results">Please enter a search term.</p>';
+            }
+        });
+
+        function performSearch(query, container) {
+            // Simple Client-Side Index
+            const siteIndex = [
+                {
+                    title: "Home - The Rehab House",
+                    url: "index.html",
+                    content: "Neuro-rehabilitation, Physiotherapy, Admission Facility, Highlights, Testimonials, Wheelchair-Accessible, Lift available, Day Care Facility, Multiple Physiotherapy sessions per day, Physical, Cognitive, Occupational, Speech Therapy, In house Nutritionist, Psychologist, Orthotist, Diagnostic tests, Blood tests, Xrays, DEXA Scan, ECG, Neurogenetic Testing, Robotic Rehabilitation, Personalized Rehabilitation Plans"
+                },
+                {
+                    title: "About Us",
+                    url: "about_us.html",
+                    content: "Mission, Vision, Team, Dr. Vidhi Dave, Dr. Vinit Gada, Why Us, Stroke, MS, GBS, Spinal cord injury, Parkinson’s disease, Traumatic brain injury, Dementia, Alzheimer's, Vertigo, Orthopedic conditions, Post hip & knee replacement, Spine surgery, Arthritis, Frozen shoulder, Spondylitis, Sports Injuries, Scoliosis, Pediatric Population, Developmental delays, Cerebral Palsy, Autism"
+                },
+                {
+                    title: "Our Services",
+                    url: "services.html",
+                    content: "Physiotherapy, Neurorehabilitation, Pain Management, Orthopedic, Vestibular Rehabilitation, Visual Therapy, Spasticity & Posture Management, Cognition-Enhancing Activities, Balance & Postural Control, Fall Prevention, Motion Sensors, Dry Needling, Cupping, Manipulations, Kinesiotaping, Electrotherapy, Gait & Mobility Training, Strength & Conditioning, Hand function & Fine Motor Training"
+                },
+                {
+                    title: "Contact Us",
+                    url: "contact.html",
+                    content: "Address, Phone Number, Appointment, Map, Location, Booking, Purandare Diagnostic Centre, Girgaon Chowpatty, Charni Road, Mumbai"
+                },
+                {
+                    title: "Blog",
+                    url: "blog.html",
+                    content: "Health Insights, Articles, Updates, Tips, Stroke Recovery, Vestibular Therapy, Ergonomics"
+                }
+            ];
+
+            const lowerQuery = query.toLowerCase();
+            const results = siteIndex.filter(item =>
+                item.title.toLowerCase().includes(lowerQuery) ||
+                item.content.toLowerCase().includes(lowerQuery)
+            );
+
+            if (results.length > 0) {
+                container.innerHTML = '<ul>' + results.map(item => `
+                    <li class="result-item">
+                        <a href="${item.url}">
+                            <h4>${item.title}</h4>
+                            <p>${item.content.substring(0, 100)}...</p>
+                        </a>
+                    </li>
+                `).join('') + '</ul>';
+            } else {
+                container.innerHTML = '<p class="no-results">No results found matching your query.</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>

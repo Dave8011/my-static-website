@@ -11,10 +11,8 @@ function triggerSearch() {
     const query = searchInput.value.trim();
 
     if (query) {
-        // Search functionality disabled/removed as per request
-        // window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
-        console.log("Search query:", query);
-        alert("Search functionality is currently disabled.");
+        // Redirect to search results page
+        window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
     } else {
         // Toggle visibility
         searchBox.classList.toggle('active');

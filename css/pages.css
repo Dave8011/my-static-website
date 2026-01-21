@@ -22,6 +22,23 @@
     padding-top: 100px;
 }
 
+/* Page Specific Hero Banners */
+.hero-about {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/cognitive-training.jpg') center/cover no-repeat;
+}
+
+.hero-services {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/pain-management.jpg') center/cover no-repeat;
+}
+
+.hero-contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero-banner.jpg') center/cover no-repeat;
+}
+
+.hero-blog {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/spasticity-management.jpg') center/cover no-repeat;
+}
+
 .hero-content {
     max-width: 800px;
     animation: fadeIn 1s ease-out;

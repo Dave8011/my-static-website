@@ -163,14 +163,31 @@ footer {
 
 /* Social Media Icons */
 
+/* Social Media Icons */
+
 .social-icon img {
     width: 32px;
-    filter: brightness(0) invert(1);
-    /* Make icons white */
+    filter: invert(1);
+    /* Simple invert to verify visibility */
     transition: 0.3s;
 }
 
 .social-icon:hover img {
     transform: translateY(-3px) scale(1.1);
-    filter: drop-shadow(0 0 5px var(--primary-color));
+    filter: invert(1) drop-shadow(0 0 5px var(--primary-color));
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    footer {
+        padding-bottom: 80px;
+        /* Space for fixed Back to Top button */
+    }
+
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        z-index: 1001;
+        /* Above footer content */
+    }
 }
