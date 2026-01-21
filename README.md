@@ -67,7 +67,7 @@ Each page uses a specific CSS class for its banner image. To change a banner:
 2.  **Update CSS**:
     *   Open `css/pages.css`.
     *   Search for the relevant class:
-        *   `.hero` (Homepage)
+        *   `.hero-home` (Homepage)
         *   `.hero-about` (About Us)
         *   `.hero-services` (Our Services)
         *   `.hero-contact` (Contact Us)
