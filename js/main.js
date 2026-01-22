@@ -235,3 +235,61 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 });
+
+// =============================
+// Schema.org Generator
+// =============================
+function createSchema() {
+    // 1. FAQ Schema
+    if (typeof faqsData !== 'undefined' && faqsData.length > 0) {
+        const faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqsData.map(faq => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                }
+            }))
+        };
+        injectSchema(faqSchema);
+    }
+
+    // 2. Reviews Schema (within LocalBusiness)
+    if (typeof testimonialsData !== 'undefined' && testimonialsData.length > 0) {
+        const reviewSchema = {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "The Rehab House",
+            "image": window.location.origin + "/images/logo.png", // absolute url
+            "telephone": "9653699526",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Purandare Diagnostic Centre, Dr Purandare Hospital, Opposite Girgaon Chowpatty, Charni Road",
+                "addressLocality": "Mumbai",
+                "addressCountry": "IN"
+            },
+            "review": testimonialsData.map(t => ({
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": t.author
+                },
+                "reviewBody": t.text
+            }))
+        };
+        injectSchema(reviewSchema);
+    }
+}
+
+function injectSchema(json) {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(json);
+    document.head.appendChild(script);
+}
+
+// Run Schema Generator
+document.addEventListener('DOMContentLoaded', createSchema);

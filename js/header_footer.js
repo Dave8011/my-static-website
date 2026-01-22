@@ -6,7 +6,9 @@ function loadHeader() {
     const headerHTML = `
     <header>
         <div class="logo">
-            <img src="${basePath}images/logo.png" alt="The Rehab House Logo">
+            <a href="${basePath}index.html">
+                <img src="${basePath}images/logo.png" alt="The Rehab House Logo">
+            </a>
         </div>
 
         <nav>
@@ -68,8 +70,52 @@ function loadFooter() {
                         src="${basePath}images/instagram-icon.png" alt="Instagram"></a>
             </div>
         </div>
-    </footer>`;
+    </footer>
+    
+    <!-- Mobile Sticky CTA (Hidden by default, shown via JS on proper pages) -->
+    <div class="mobile-sticky-cta" id="mobileStickyCTA">
+        <a href="${basePath}contact.html#booking">Book Appointment</a>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919653699526" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    `;
     document.getElementById('footer-placeholder').innerHTML = footerHTML;
+
+    initStickyCTA();
+}
+
+function initStickyCTA() {
+    const stickyCTA = document.getElementById('mobileStickyCTA');
+    if (!stickyCTA) return;
+
+    // Logic: 
+    // 1. Hide on Contact Page (contacts.html)
+    // 2. Hide on Home Page (index.html or root)
+
+    const path = window.location.pathname;
+    const pageName = path.split("/").pop();
+
+    // Check if Home or Contact
+    const isHome = pageName === "" || pageName === "index.html";
+    const isContact = pageName === "contact.html";
+
+    if (isHome || isContact) {
+        // Remove completely
+        stickyCTA.remove();
+        return;
+    }
+
+    // Scroll Logic: Show after scrolling 300px
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            stickyCTA.classList.add('show');
+        } else {
+            stickyCTA.classList.remove('show');
+        }
+    });
 }
 
 // Auto-load on script run

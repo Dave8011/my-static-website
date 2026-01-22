@@ -11,6 +11,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    width: 100%;
     background: rgba(255, 255, 255, 0.95);
     /* Start slightly transparent */
     padding: 15px 20px;
@@ -109,6 +110,17 @@ main {
    Footer Styling
 ============================= */
 
+/* Global Text Spacing Adjustments */
+body {
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+}
+
+p {
+    margin-bottom: 1.2rem;
+}
+
+
 footer {
     background-color: #1a1a1a;
     /* Dark Luxury background */
@@ -124,8 +136,11 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 30px;
+    /* Better spacing between columns */
 }
 
 /* Left side: Copyright */
