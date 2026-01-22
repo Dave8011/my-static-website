@@ -65,9 +65,15 @@ function loadFooter() {
 
             <!-- Social Media -->
             <div class="footer-section">
-                <h3>Follow Us</h3>
-                <a href="https://www.instagram.com/the_rehab_house/" class="social-icon"><img
-                        src="${basePath}images/instagram-icon.png" alt="Instagram"></a>
+                <h3>Social Media</h3>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <a href="https://www.instagram.com/the_rehab_house/" class="social-icon">
+                        <img src="${basePath}images/instagram-icon.png" alt="Instagram">
+                    </a>
+                    <a href="https://wa.me/919653699526" class="social-icon" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
@@ -76,11 +82,6 @@ function loadFooter() {
     <div class="mobile-sticky-cta" id="mobileStickyCTA">
         <a href="${basePath}contact.html#booking">Book Appointment</a>
     </div>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/919653699526" class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
     `;
     document.getElementById('footer-placeholder').innerHTML = footerHTML;
 
