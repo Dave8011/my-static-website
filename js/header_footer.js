@@ -42,13 +42,28 @@ function loadFooter() {
 
     const footerHTML = `
     <footer>
-        <div class="footer-content">
-            <p class="footer-left">&copy; 2025 The Rehab House | <a href="${basePath}admin/login.html"
+        <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="${basePath}index.html" style="color: inherit; text-decoration: none;">Home</a></li>
+                    <li><a href="${basePath}about_us.html" style="color: inherit; text-decoration: none;">About Us</a></li>
+                    <li><a href="${basePath}services.html" style="color: inherit; text-decoration: none;">Our Services</a></li>
+                    <li><a href="${basePath}blog.html" style="color: inherit; text-decoration: none;">Blog</a></li>
+                    <li><a href="${basePath}contact.html" style="color: inherit; text-decoration: none;">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Visit Us</h3>
+                 <p><a href="https://www.google.com/maps/dir//Purandare+Diagnostic+Centre,+Dr+Purandare+Hospital,+Opposite+Girgaon+Chowpatty,+Charni+Road,+Mumbai" target="_blank" style="color: inherit; text-decoration: underline;">Get Directions 📍</a></p>
+                 <p>&copy; 2025 The Rehab House | <a href="${basePath}admin/login.html"
                     style="color: inherit; text-decoration: none;">Admin Login</a></p>
+            </div>
 
             <!-- Social Media -->
-            <div class="footer-right">
-                <h2>Follow Us</h2>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
                 <a href="https://www.instagram.com/the_rehab_house/" class="social-icon"><img
                         src="${basePath}images/instagram-icon.png" alt="Instagram"></a>
             </div>

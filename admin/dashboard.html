@@ -2,65 +2,174 @@
 <html lang="en">
 
 <head>
+    <script>
+        // CRITICAL SECURITY CHECK
+        // This must be the very first thing to run to prevent "flash of content"
+        (function () {
+            // Check for session token
+            const token = sessionStorage.getItem('adminToken');
+
+            if (!token) {
+                // Not logged in? Bounce back to login immediately.
+                window.location.replace('login.html');
+            }
+
+            // Prevent back-button caching
+            // If user logs out and hits "Back", this forces a reload (which runs the check above)
+            window.addEventListener('pageshow', function (event) {
+                if (event.persisted) {
+                    window.location.reload();
+                }
+            });
+        })();
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | The Rehab House</title>
+    <!-- Use main site fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
     <style>
-        body {
-            background-color: #f4f6f9;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+            --success-color: #2ecc71;
+            --warning-color: #f1c40f;
         }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        /* HEADER */
         .dashboard-header {
-            background-color: var(--white-color);
-            background: #fff;
-            padding: 15px 30px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .dashboard-header .logo img {
-            height: 50px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand img {
+            height: 45px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            font-size: 0.95rem;
+            color: #666;
         }
 
         .logout-btn {
             background-color: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 5px 15px;
-            border-radius: 4px;
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            padding: 8px 18px;
+            border-radius: 6px;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .logout-btn:hover {
-            background-color: var(--primary-color);
-            color: #fff;
+            background-color: #e74c3c;
+            color: white;
         }
 
+        /* CONTENT */
         .dashboard-content {
-            padding: 30px;
-            max-width: 1200px;
+            padding: 40px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .card {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            margin-bottom: 20px;
+        /* STATS CARDS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: var(--dark-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* MAIN TABLE CARD */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 0;
+            overflow: hidden;
+            border: none;
+        }
+
+        .card-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
         }
 
         .table-responsive {
@@ -72,64 +181,108 @@
             border-collapse: collapse;
         }
 
-        th,
-        td {
-            text-align: left;
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-        }
-
         th {
             background-color: #f8f9fa;
-            color: var(--primary-color);
+            color: #555;
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            padding: 15px 30px;
+            text-align: left;
+            border-bottom: 2px solid #eee;
+        }
+
+        td {
+            padding: 18px 30px;
+            border-bottom: 1px solid #f1f1f1;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #fafafa;
         }
 
-        .status-badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-new {
+        /* BADGES AND LINKS */
+        .service-badge {
+            display: inline-block;
+            padding: 6px 12px;
             background-color: #e3f2fd;
-            color: #1565c0;
+            color: var(--secondary-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .phone-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .phone-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .empty-state {
+            padding: 50px;
+            text-align: center;
+            color: #888;
         }
     </style>
 </head>
 
 <body>
     <header class="dashboard-header">
-        <div class="logo">
-            <img src="../images/logo.png" alt="The Rehab House Logo">
-            <span
-                style="font-size: 20px; font-weight: bold; margin-left: 10px; color: var(--dark-color); vertical-align: middle;">Admin
-                Panel</span>
+        <div class="brand">
+            <img src="../images/logo.png" alt="Logo">
+            <span class="brand-text">Admin Panel</span>
         </div>
-        <div>
-            <span style="margin-right: 15px;">Welcome, Admin</span>
-            <a href="login.html" class="logout-btn">Logout</a>
+        <div class="user-menu">
+            <div class="user-info">
+                Logged in as <strong>Administrator</strong>
+            </div>
+            <button onclick="handleLogout()" class="logout-btn">Sign Out</button>
         </div>
     </header>
 
     <div class="dashboard-content">
+
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-label">Total Inquiries</div>
+            </div>
+            <div class="stat-card" style="border-left-color: var(--success-color);">
+                <div class="stat-number" id="todayCount">0</div>
+                <div class="stat-label">New Today</div>
+            </div>
+            <div class="stat-card" style="border-left-color: var(--warning-color);">
+                <div class="stat-number">24h</div>
+                <div class="stat-label">Response Target</div>
+            </div>
+        </div>
+
         <div class="card">
-            <h3>Client Inquiries</h3>
+            <div class="card-header">
+                <h3>Recent Appointments & Inquiries</h3>
+            </div>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Describe Your Issue</th>
-                            <th>Service</th>
-                            <th>Phone Number</th>
-                            <th>Client Location</th>
                             <th>Date</th>
+                            <th>Client Name</th>
+                            <th>Service Requested</th>
+                            <th>Contact</th>
+                            <th>Location</th>
+                            <th width="30%">Issue Description</th>
                         </tr>
                     </thead>
                     <tbody id="inquiriesTableBody">
@@ -141,27 +294,49 @@
     </div>
 
     <script>
+        // Logout Logic
+        function handleLogout() {
+            sessionStorage.removeItem('adminToken');
+            // Force replace to prevent back-button return
+            window.location.replace('login.html');
+        }
+
         // Load data on page load
         document.addEventListener('DOMContentLoaded', () => {
             const tableBody = document.getElementById('inquiriesTableBody');
+            const totalCountEl = document.getElementById('totalCount');
+            const todayCountEl = document.getElementById('todayCount');
 
             // Get data from mock API (localStorage)
+            // In a real app, this would be a fetch() call to a secured API endpoint
             const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
 
+            // Sort by date (newest first) - assuming date string format allows basic sorting or just reverse
+            // Since our date format isn't strictly ISO in the mock, we'll just reverse for now as they are engaged sequentially
+            appointments.reverse();
+
+            // Update stats
+            totalCountEl.innerText = appointments.length;
+
+            // Simple "Today" check (imperfect with localized strings, but functional for demo)
+            const todayStr = new Date().toLocaleDateString();
+            const todayCount = appointments.filter(a => a.date && a.date.includes(todayStr)).length;
+            todayCountEl.innerText = todayCount;
+
             if (appointments.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No inquiries found.</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">No inquiries found yet.</td></tr>';
                 return;
             }
 
             // Populate table
             tableBody.innerHTML = appointments.map(appt => `
                 <tr>
-                    <td>${appt.name || '-'}</td>
-                    <td>${appt.issue || '-'}</td>
-                    <td><span class="status-badge status-new">${appt.service || 'General'}</span></td>
-                    <td><a href="tel:${appt.phone}">${appt.phone || '-'}</a></td>
+                    <td style="color: #666; font-size: 0.9rem;">${appt.date || '-'}</td>
+                    <td style="font-weight: 600;">${appt.name || 'Unknown'}</td>
+                    <td><span class="service-badge">${appt.service || 'General'}</span></td>
+                    <td><a href="tel:${appt.phone}" class="phone-link">${appt.phone || '-'}</a></td>
                     <td>${appt.location || '-'}</td>
-                    <td>${appt.date || '-'}</td>
+                    <td style="line-height: 1.4;">${appt.issue || '-'}</td>
                 </tr>
             `).join('');
         });
