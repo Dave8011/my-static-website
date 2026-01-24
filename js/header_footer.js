@@ -7,7 +7,7 @@ function loadHeader() {
     <header>
         <div class="logo">
             <a href="${basePath}index.html">
-                <img src="${basePath}images/logo.png" alt="The Rehab House Logo">
+                <img src="${basePath}images/logo.png" alt="The Rehab House Logo" width="250" height="auto">
             </a>
         </div>
 
@@ -31,7 +31,7 @@ function loadHeader() {
             <!-- Search Box with Icon (Last) -->
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
-                <button onclick="triggerSearch()"><img src="${basePath}images/search-icon.png" alt="Search"></button>
+                <button onclick="triggerSearch()"><img src="${basePath}images/search-icon.png" alt="Search" width="24" height="24"></button>
             </div>
         </div>
     </header>`;
@@ -68,10 +68,10 @@ function loadFooter() {
                 <h3>Social Media</h3>
                 <div style="display: flex; gap: 15px; justify-content: center;">
                     <a href="https://www.instagram.com/the_rehab_house/" class="social-icon">
-                        <img src="${basePath}images/instagram-icon.png" alt="Instagram">
+                        <img src="${basePath}images/instagram-icon.png" alt="Instagram" width="32" height="32">
                     </a>
                     <a href="https://wa.me/919653699526" class="social-icon" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="32" height="32">
                     </a>
                 </div>
             </div>
