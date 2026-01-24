@@ -263,6 +263,7 @@ function createSchema() {
         "@type": "MedicalBusiness",
         "name": "The Rehab House",
         "url": "https://www.therehabhouse.in/",
+        "image": window.location.origin + "/images/logo.png",
         "telephone": "+919653699526",
         "address": {
             "@type": "PostalAddress",
