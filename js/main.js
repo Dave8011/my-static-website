@@ -257,31 +257,27 @@ function createSchema() {
         injectSchema(faqSchema);
     }
 
-    // 2. Reviews Schema (within LocalBusiness)
-    if (typeof testimonialsData !== 'undefined' && testimonialsData.length > 0) {
-        const reviewSchema = {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "The Rehab House",
-            "image": window.location.origin + "/images/logo.png", // absolute url
-            "telephone": "9653699526",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Purandare Diagnostic Centre, Dr Purandare Hospital, Opposite Girgaon Chowpatty, Charni Road",
-                "addressLocality": "Mumbai",
-                "addressCountry": "IN"
-            },
-            "review": testimonialsData.map(t => ({
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": t.author
-                },
-                "reviewBody": t.text
-            }))
-        };
-        injectSchema(reviewSchema);
-    }
+    // 2. MedicalBusiness Schema (Static with AggregateRating)
+    const medicalSchema = {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "The Rehab House",
+        "url": "https://www.therehabhouse.in/",
+        "telephone": "+919653699526",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Purandare Diagnostic Centre, Dr Purandare Hospital, Opposite Girgaon Chowpatty, Charni Road",
+            "addressLocality": "Mumbai",
+            "postalCode": "400007",
+            "addressCountry": "IN"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "17"
+        }
+    };
+    injectSchema(medicalSchema);
 }
 
 function injectSchema(json) {
