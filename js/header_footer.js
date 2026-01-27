@@ -7,7 +7,7 @@ function loadHeader() {
     <header>
         <div class="logo">
             <a href="${basePath}index.html">
-                <img src="${basePath}images/logo.png" alt="The Rehab House Logo" width="250" height="auto">
+                <img src="${basePath}images/logo.png" alt="The Rehab House Logo" width="250" height="41">
             </a>
         </div>
 
@@ -23,7 +23,7 @@ function loadHeader() {
         
         <div class="header-actions">
             <!-- Hamburger Menu (Now before Search) -->
-            <button class="hamburger" onclick="toggleMobileMenu()">
+            <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -31,7 +31,7 @@ function loadHeader() {
             <!-- Search Box with Icon (Last) -->
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
-                <button onclick="triggerSearch()"><img src="${basePath}images/search-icon.png" alt="Search" width="24" height="24"></button>
+                <button onclick="triggerSearch()" aria-label="Search"><img src="${basePath}images/search-icon.png" alt="Search" width="24" height="24"></button>
             </div>
         </div>
     </header>`;
