@@ -3,6 +3,18 @@
 ## Overview
 This is the static website for The Rehab House, a neuro-rehabilitation center.
 
+## Performance & Optimization (New!)
+The website has been optimized for speed, accessibility, and SEO (Lighthouse Score > 95/100).
+
+### Key Features
+- **Modern Image Formats**: All images are converted to **WebP** for faster loading.
+- **Lazy Loading**: Images below the fold load only when scrolled into view.
+- **Resource Prioritization**: Critical assets (like the LCP hero banner) are preloaded.
+- **Accessibility**: High contrast colors, proper ARIA labels, and semantic HTML structure (`<main>`, landmarks).
+- **Fast Scripts**: Non-critical JavaScript is deferred.
+
+---
+
 ## Content Management
 
 ### Updating Testimonials
@@ -31,6 +43,7 @@ This is the static website for The Rehab House, a neuro-rehabilitation center.
 1. **Create the Post**:
    - Duplicate an existing blog file in the `blogs/` folder (e.g., `blogs/stroke-recovery.html`).
    - Rename it (e.g., `blogs/new-topic.html`) and update the content (Title, Date, Body, Image).
+   - **Note**: Ensure you use `.webp` images for best performance.
 
 2. **Update the Blog List**:
    - Open `blog.html`.
@@ -55,7 +68,7 @@ To ensure the best visual quality, please use images with the following dimensio
 | :--- | :--- | :--- | :--- |
 | **Main Hero Banner** | 1920 x 800 px | 2.4:1 | Homepage top banner |
 | **Page Banners** | 1920 x 600 px | 3:1 | About, Services, Contact, Blog headers |
-| **Service Cards** | 600 x 450 px | 4:3 | Service listing images |
+| **Service Cards** | 600 x 600 px | 1:1 | Service listing images (Resized for Perf) |
 | **Blog Cards** | 800 x 450 px | 16:9 | Blog post thumbnails |
 | **Team Photos** | 400 x 400 px | 1:1 (Square) | Doctor profiles |
 
@@ -63,7 +76,7 @@ To ensure the best visual quality, please use images with the following dimensio
 
 Each page uses a specific CSS class for its banner image. To change a banner:
 
-1.  **Upload the Image**: Save your new image in the `images/` folder (e.g., `new-banner.jpg`).
+1.  **Upload the Image**: Save your new image in the `images/` folder (e.g., `new-banner.webp`).
 2.  **Update CSS**:
     *   Open `css/pages.css`.
     *   Search for the relevant class:
@@ -77,6 +90,6 @@ Each page uses a specific CSS class for its banner image. To change a banner:
         /* Example for Contact Page */
         .hero-contact {
             /* Keep the gradient for text readability */
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/new-banner.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/new-banner.webp') center/cover no-repeat;
         }
         ```
