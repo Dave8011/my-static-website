@@ -201,12 +201,14 @@ async function hydrateBlogCard(url) {
 
         return `
             <article class="blog-card">
-                <div class="blog-img" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;"></div>
+                <div class="blog-img-wrapper">
+                    <div class="blog-img" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;"></div>
+                </div>
                 <div class="blog-content">
                     <span class="blog-date">${date}</span>
                     <h3 class="blog-title">${title}</h3>
                     <p class="blog-excerpt">${excerpt}</p>
-                    <a href="${url}" class="read-more">Read More →</a>
+                    <a href="${url}" class="read-more">Read Article</a>
                 </div>
             </article>
         `;
