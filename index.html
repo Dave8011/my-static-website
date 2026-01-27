@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700&display=swap"
         rel="stylesheet">
     <!-- Preload LCP Image -->
-    <link rel="preload" as="image" href="images/hero-banner.jpg">
+    <link rel="preload" as="image" href="images/hero-banner.jpg" fetchpriority="high">
 
     <!-- CSS Optimization (Eliminate @import blocking) -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -99,9 +99,9 @@
 
     <!-- JavaScript -->
     <!-- <script src="js/testimonials.js"></script> -->
-    <script src="js/faqs.js"></script>
-    <script src="js/header_footer.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/faqs.js" defer></script>
+    <script src="js/header_footer.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>
