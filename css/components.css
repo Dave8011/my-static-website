@@ -582,7 +582,20 @@ form button:hover {
     white-space: nowrap;
     position: relative;
     width: 100%;
+    cursor: grab;
+    /* Indicate draggable/scrollable */
 }
+
+/* Pause and Allow Scroll on Hover */
+.google-reviews-container:hover {
+    overflow-x: auto;
+    /* Show scrollbar if needed */
+}
+
+.google-reviews-container:active {
+    cursor: grabbing;
+}
+
 
 .review-card {
     background: white;
@@ -643,7 +656,8 @@ form button:hover {
     animation: scroll 40s linear infinite;
 }
 
-.marquee-content:hover {
+.marquee-content:hover,
+.google-reviews-container:hover .marquee-content {
     animation-play-state: paused;
 }
 
