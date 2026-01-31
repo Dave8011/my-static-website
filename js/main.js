@@ -157,22 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Load Testimonials
-document.addEventListener('DOMContentLoaded', () => {
-    const testimonialContainer = document.getElementById('testimonial-container');
-    if (testimonialContainer) {
-        if (typeof testimonialsData !== 'undefined') {
-            testimonialContainer.innerHTML = testimonialsData.map(t => `
-                <div class="testimonial-card">
-                    <p>"${t.text}"</p>
-                    <h4>- ${t.author}</h4>
-                </div>
-            `).join('');
-        } else {
-            console.error("Testimonials data missing.");
-        }
-    }
-});
+
 
 // Load FAQs
 document.addEventListener('DOMContentLoaded', () => {
