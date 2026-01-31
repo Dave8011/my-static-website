@@ -60,7 +60,6 @@ function renderReviews(reviews, container) {
     const html = displayReviews.map(review => `
         <div class="review-card">
             <div class="review-header">
-                <img src="${review.profile_photo_url || 'images/default-avatar.png'}" alt="${review.author_name}" class="review-avatar" onerror="this.src='images/default-avatar.png'">
                 <div>
                     <div class="reviewer-name">${review.author_name}</div>
                     <div class="review-rating">${'★'.repeat(Math.round(review.rating || 5))}</div>
@@ -93,31 +92,26 @@ function getMockReviews() {
     return [
         {
             author_name: "Rahul Mehta",
-            profile_photo_url: "",
             rating: 5,
             text: "Excellent facility for stroke recovery. The therapists are very dedicated and the admission facility helped us a lot."
         },
         {
             author_name: "Sneha Kapoor",
-            profile_photo_url: "",
             rating: 5,
             text: "My mother had a knee replacement and the physiotherapy here was top notch. Highly recommended for ortho rehab."
         },
         {
             author_name: "Amit Patil",
-            profile_photo_url: "",
             rating: 5,
             text: "Clean, professional and effective. The neuro rehab program helped my father regain mobility after his accident."
         },
         {
             author_name: "Priya Sharma",
-            profile_photo_url: "",
             rating: 4,
             text: "Very good doctors and supportive staff. Best rehab centre in South Mumbai."
         },
         {
             author_name: "Vikram Singh",
-            profile_photo_url: "",
             rating: 5,
             text: "State of the art equipment and knowledgeable staff. Grateful for their service."
         }
