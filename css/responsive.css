@@ -118,6 +118,39 @@
         background: rgba(255, 255, 255, 0.08);
     }
 
+    /* Mobile Dropdown Overrides */
+    .dropdown-menu {
+        position: static;
+        display: block;
+        /* Always show in mobile menu for simplicity */
+        box-shadow: none;
+        background: transparent;
+        padding-left: 30px;
+        /* Indent */
+        width: 100%;
+        min-width: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .dropdown-menu li {
+        border-bottom: none;
+        /* Remove border for sub-items */
+    }
+
+    .dropdown-menu li a {
+        padding: 8px 0;
+        color: rgba(255, 255, 255, 0.8);
+        /* Slightly dimmer */
+        font-size: 14px;
+        text-transform: none;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        animation: none;
+        /* Disable desktop animation */
+    }
+
     /* =============================
        Search Box
     ============================= */

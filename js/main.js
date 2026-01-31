@@ -147,6 +147,16 @@ function toggleAccordion(header) {
     // Close other items (optional - currently allowing multiple open)
 }
 
+// Main Entry Point
+document.addEventListener('DOMContentLoaded', () => {
+    // console.log("Site Loaded");
+
+    // Initialize Google Reviews if present
+    if (window.initGoogleReviews) {
+        window.initGoogleReviews();
+    }
+});
+
 // Load Testimonials
 document.addEventListener('DOMContentLoaded', () => {
     const testimonialContainer = document.getElementById('testimonial-container');
