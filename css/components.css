@@ -537,8 +537,8 @@ form button:hover {
    FAQ Accordion
 ============================= */
 .faq-section {
-    max-width: 800px;
-    margin: 50px auto;
+    max-width: 980px;
+    margin: 5px auto;
     padding: 20px;
     background: #fff;
     border-radius: 10px;

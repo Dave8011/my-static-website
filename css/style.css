@@ -50,107 +50,170 @@
 
 /* 7 Unique Sections (Rehab Sections) */
 .rehab-sections {
-    padding: 80px 20px;
-    background-color: #f4f6f9;
-    /* Softer background */
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #fdfbf5 0%, #fff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative Background element */
+.rehab-sections::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(184, 134, 11, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .rehab-container {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    /* Align top */
+    align-items: center;
+    /* Center align vertically */
     justify-content: center;
-    gap: 60px;
+    gap: 80px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .rehab-pointers {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    /* Grid layout */
+    flex: 1.2;
+    /* Give slightly more space to pointers */
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
 .rehab-content {
-    flex: 1;
+    flex: 0.8;
     padding: 20px;
     position: sticky;
-    top: 100px;
-    /* Sticky content on desktop */
+    top: 120px;
 }
 
 .rehab-content h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-weight: 800;
     color: var(--primary-color);
-    margin-bottom: 20px;
-    line-height: 1.2;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
 
 .rehab-content p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #555;
+    line-height: 1.8;
+    margin-bottom: 30px;
 }
 
+/* Modern Pointer Item */
 .pointer-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 20px;
+    gap: 20px;
+    padding: 15px 25px;
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-left: 5px solid transparent;
+    border-radius: 50px;
+    /* Pill shape */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    width: fit-content;
+    /* Auto width */
+}
+
+/* Staggered widths for visual interest */
+.pointer-item:nth-child(odd) {
+    transform: translateX(0);
+}
+
+.pointer-item:nth-child(even) {
+    transform: translateX(20px);
+    /* Indent even items */
 }
 
 .pointer-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    border-left-color: var(--primary-color);
+    transform: translateX(10px) scale(1.02) !important;
+    /* Override indent on hover */
+    box-shadow: 0 15px 30px rgba(184, 134, 11, 0.15);
+    border-color: rgba(184, 134, 11, 0.2);
 }
 
 .pointer-item span {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--dark-color);
 }
 
+/* Icon Circle */
 .pointer-circle {
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    width: 50px;
+    height: 50px;
+    background: var(--gold-gradient);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(184, 134, 11, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.pointer-circle .material-icons {
+    font-size: 24px;
+}
+
+.pointer-item:hover .pointer-circle {
+    transform: rotate(360deg);
 }
 
 /* Responsive Design for Rehab Sections */
 @media (max-width: 900px) {
     .rehab-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        /* Content on top */
+        gap: 40px;
     }
 
     .rehab-content {
         text-align: center;
-        order: -1;
-        /* Content first */
         position: static;
-        /* Remove sticky on mobile */
-        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .rehab-content h2 {
+        font-size: 2.2rem;
     }
 
     .rehab-pointers {
         width: 100%;
-        grid-template-columns: 1fr;
-        /* Single column on mobile */
+        align-items: center;
+        /* Center items on mobile */
+    }
+
+    .pointer-item {
+        width: 100%;
+        /* Full width on mobile */
+        max-width: 400px;
+        justify-content: flex-start;
+        border-radius: 16px;
+        /* Rounded rect on mobile */
+    }
+
+    .pointer-item:nth-child(even) {
+        transform: none;
+        /* Remove indent on mobile */
+    }
+
+    .pointer-item:hover {
+        transform: translateY(-5px) !important;
     }
 }

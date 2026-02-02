@@ -39,6 +39,34 @@ The website has been optimized for speed, accessibility, and SEO (Lighthouse Sco
    ```
 3. Save the file.
 
+### Updating Services
+1. Open `js/services_data.js`.
+2. Locate the `servicesData` object.
+3. You can edit existing services or add a new one.
+   *   **Key**: A unique ID (e.g., `"service7"`).
+   *   **Title**: The name of the service.
+   *   **Image**: Path to the image (e.g., `"images/new-service.webp"`).
+   *   **Description**: Short summary for the list view.
+   *   **detailsHTML**: The full content for the detail page. You can use standard HTML tags like `<h4>`, `<p>`, and `<ul>` here.
+
+   ```javascript
+   "service7": {
+       "title": "New Service Name",
+       "image": "images/new-service.webp",
+       "description": "Short description.",
+       "detailsHTML": `
+           <h4>Overview</h4>
+           <p>Detailed description...</p>
+           <h4>Benefits</h4>
+           <ul>
+               <li>Benefit 1</li>
+               <li>Benefit 2</li>
+           </ul>
+       `
+   }
+   ```
+4. **Important**: If you add a new service ID (e.g., `service7`), you must also add a card for it in `services.html` that links to `service_detail.html?id=service7`.
+
 ### Adding a New Blog Post
 1. **Create the Post**:
    - Duplicate an existing blog file in the `blogs/` folder (e.g., `blogs/stroke-recovery.html`).
@@ -128,4 +156,21 @@ Colors are also managed globally in `css/variables.css`.
         --dark-color: #333333; /* Change this for main body text color */
         --gold-text: #DEAC01;  /* Change this for accent text color */
     }
+    ```
+
+### Customizing Icons in Rehab Sections
+The "7 Unique Sections" in `services.html` use Google Material Icons.
+
+1.  **Choose an Icon**: Visit [Google Material Icons](https://fonts.google.com/icons) and find a suitable icon name (e.g., `fitness_center`, `psychology`).
+2.  **Update HTML**:
+    *   Open `services.html`.
+    *   Locate the `rehab-pointers` section (approx line 108).
+    *   Find the `<span>` with class `material-icons`.
+    *   Replace the text inside the span with your new icon name.
+    
+    ```html
+    <div class="pointer-circle">
+        <!-- Change 'fitness_center' to your desired icon name -->
+        <span class="material-icons">fitness_center</span>
+    </div>
     ```
