@@ -50,56 +50,91 @@
 
 /* 7 Unique Sections (Rehab Sections) */
 .rehab-sections {
-    padding: 60px 20px;
-    background-color: #f9f9f9;
+    padding: 80px 20px;
+    background-color: #f4f6f9;
+    /* Softer background */
 }
 
 .rehab-container {
     display: flex;
     flex-direction: row;
-    /* Default: row */
-    align-items: center;
+    align-items: flex-start;
+    /* Align top */
     justify-content: center;
-    gap: 50px;
+    gap: 60px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .rehab-pointers {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Grid layout */
     gap: 20px;
 }
 
 .rehab-content {
     flex: 1;
     padding: 20px;
+    position: sticky;
+    top: 100px;
+    /* Sticky content on desktop */
+}
+
+.rehab-content h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.rehab-content p {
+    font-size: 1.1rem;
+    color: #555;
 }
 
 .pointer-item {
     display: flex;
     align-items: center;
     gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.pointer-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+}
+
+.pointer-item span {
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--dark-color);
 }
 
 .pointer-circle {
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-color);
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 1.2rem;
     flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design for Rehab Sections */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .rehab-container {
         flex-direction: column;
     }
@@ -107,6 +142,15 @@
     .rehab-content {
         text-align: center;
         order: -1;
-        /* Content first, then pointers */
+        /* Content first */
+        position: static;
+        /* Remove sticky on mobile */
+        margin-bottom: 20px;
+    }
+
+    .rehab-pointers {
+        width: 100%;
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
     }
 }
