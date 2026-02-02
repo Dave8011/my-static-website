@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #B69222;
+    --primary-color: #E3C059;
     /* Darker Gold for Contrast */
-    --secondary-color: #EEBD7B;
+    --secondary-color: #ddbf65;
     /* Dark Goldenrod */
     --dark-color: #333333;
     /* Dark Grey */
@@ -9,14 +9,14 @@
     /* Light Background */
     --white-color: #ffffff;
     /* White */
-    --gold-text: #946B00;
+    --gold-text: #DEAC01;
     /* Darker Gold Text */
     --head-color: #fff;
     /* Header BG */
 
     /* Typography */
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Libre Baskerville', serif;
+    --font-body: 'Libre Baskerville', serif;
 
     /* Gradients & Shadows */
     --gold-gradient: linear-gradient(135deg, #d4af37 0%, #EEBD7B 100%);

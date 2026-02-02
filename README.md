@@ -93,3 +93,39 @@ Each page uses a specific CSS class for its banner image. To change a banner:
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/new-banner.webp') center/cover no-repeat;
         }
         ```
+
+## Customization
+
+### Changing Fonts
+The website uses a centralized CSS variable system for fonts. To change the font family:
+
+1.  **Import the Font**: Ensure your desired font is loaded in the `head` of your HTML files (e.g., via Google Fonts).
+    *   Example: `<link href="https://fonts.googleapis.com/..." rel="stylesheet">`
+2.  **Update Variables**:
+    *   Open `css/variables.css`.
+    *   Update `--font-heading` for headings (h1, h2, h3...).
+    *   Update `--font-body` for main text.
+    ```css
+    :root {
+        --font-heading: 'Your New Font', sans-serif;
+        --font-body: 'Your New Font', sans-serif;
+    }
+    ```
+    *   This will automatically update the font across the entire website, including the Admin Dashboard and Blog.
+
+### Changing Text Colors
+Colors are also managed globally in `css/variables.css`.
+
+1.  Open `css/variables.css`.
+2.  Locate the color variables:
+    *   `--primary-color`: Main brand color (Gold/Yellow). used for headings and buttons.
+    *   `--dark-color`: Main text color for paragraphs and body text.
+    *   `--gold-text`: Accent text color.
+    *   `--white-color`: Backgrounds and inverse text.
+3.  Update the Hex code to your desired color:
+    ```css
+    :root {
+        --dark-color: #333333; /* Change this for main body text color */
+        --gold-text: #DEAC01;  /* Change this for accent text color */
+    }
+    ```
