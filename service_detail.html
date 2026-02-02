@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details – The Rehab House</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for detail page if needed, otherwise rely on style.css */
+        .service-detail-hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .service-detail-content {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .service-detail-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-back {
+            margin-top: 30px;
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="service-detail-hero" id="detail-hero">
+        <div class="hero-content">
+            <h1 id="service-title">Loading...</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="service-detail-content">
+        <img id="service-image" class="service-detail-image" src="" alt="Service Image" style="display: none;">
+
+        <div id="service-intro">
+            <!-- Description injected here -->
+        </div>
+
+        <hr class="my-4">
+
+        <div id="service-body">
+            <!-- Full HTML Details injected here -->
+        </div>
+
+        <a href="services.html" class="btn-back">← Back to Services</a>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JavaScript -->
+    <script src="js/header_footer.js" defer></script>
+    <script src="js/services_data.js"></script>
+    <script src="js/service_detail.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>
