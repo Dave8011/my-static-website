@@ -66,12 +66,40 @@ function loadFooter() {
             <!-- Social Media -->
             <div class="footer-section">
                 <h3>Social Media</h3>
-                <div style="display: flex; gap: 15px; justify-content: center;">
-                    <a href="https://www.instagram.com/the_rehab_house/" class="social-icon">
-                        <img src="${basePath}images/instagram-icon.webp" alt="Instagram" width="32" height="32">
+                <div class="social-buttons-container" style="justify-content: flex-start; margin-top: 10px;">
+                     <!-- Call -->
+                    <a href="tel:+919653699526" class="circle-btn">
+                        <div class="icon-container">
+                            <span class="material-icons">call</span>
+                        </div>
+                        <span class="btn-text">Call Now</span>
                     </a>
-                    <a href="https://wa.me/919653699526" class="social-icon" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="32" height="32">
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/919653699526" class="circle-btn" target="_blank">
+                        <div class="icon-container">
+                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                        </div>
+                        <span class="btn-text">WhatsApp</span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/the_rehab_house/" class="circle-btn" target="_blank">
+                        <div class="icon-container">
+                             <img src="${basePath}images/instagram-icon.webp" alt="Instagram">
+                        </div>
+                        <span class="btn-text">Instagram</span>
+                    </a>
+
+                    <!-- Google Profile -->
+                    <a href="https://www.google.com/maps/dir//Purandare+Diagnostic+Centre,+Dr+Purandare+Hospital,+Opposite+Girgaon+Chowpatty,+Charni+Road,+Mumbai" class="circle-btn" target="_blank">
+                         <div class="icon-container">
+                            <!-- Using a Google 'G' icon or Map icon -->
+                            <svg class="google-icon-svg" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.35 11.1h-9.17v2.98h5.69c-.59 2.77-2.86 4.45-5.29 4.45-3.27 0-5.91-2.63-5.91-5.91s2.64-5.91 5.91-5.91c1.29 0 2.52.41 3.49 1.15l2.25-2.25C16.96 4.24 14.8 3.5 12.18 3.5 7.4 3.5 3.5 7.4 3.5 12.18s3.9 8.68 8.68 8.68c4.68 0 8.84-3.4 8.84-8.84 0-.61-.06-1.3-.17-1.92z"/>
+                            </svg>
+                        </div>
+                        <span class="btn-text">Google Profile</span>
                     </a>
                 </div>
             </div>
