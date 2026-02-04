@@ -9,43 +9,52 @@ async function initGoogleReviews() {
     const marqueeContainer = document.getElementById('reviews-marquee');
     if (!marqueeContainer) return; // Not on home page
 
-    let reviews = [];
-    let rating = 0;
-    let reviewCount = 0;
+    // Lazy Load using Intersection Observer
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadReviews();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: "100px" });
 
-    // Check if API key is configured
-    if (typeof GOOGLE_PLACES_API_KEY === 'undefined' || GOOGLE_PLACES_API_KEY === 'YOUR_API_KEY') {
-        console.warn("Google Places API Key not configured. Using Mock Data.");
-        reviews = getMockReviews();
-        rating = 4.9;
-        reviewCount = 120;
-    } else {
-        try {
-            // NOTE: Client-side fetch to Google Places API often requires a Proxy due to CORS.
-            // For this static site, we are assuming the user might use a proxy or accepts the limitation.
-            // If CORS is an issue, a common workaround is using a service like cors-anywhere or a backend function.
-            // Here we implement the fetch as requested.
+    observer.observe(marqueeContainer);
 
-            const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=reviews,rating,user_ratings_total&key=${GOOGLE_PLACES_API_KEY}`;
-            const response = await fetch(url);
-            const data = await response.json();
+    async function loadReviews() {
+        let reviews = [];
+        let rating = 0;
+        let reviewCount = 0;
 
-            if (data.status === 'OK') {
-                reviews = data.result.reviews || [];
-                rating = data.result.rating || 0;
-                reviewCount = data.result.user_ratings_total || 0;
-            } else {
-                console.error("Google Places API Error:", data.status);
+        // Check if API key is configured
+        if (typeof GOOGLE_PLACES_API_KEY === 'undefined' || GOOGLE_PLACES_API_KEY === 'YOUR_API_KEY') {
+            console.warn("Google Places API Key not configured. Using Mock Data.");
+            reviews = getMockReviews();
+            rating = 4.9;
+            reviewCount = 120;
+        } else {
+            try {
+                const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=reviews,rating,user_ratings_total&key=${GOOGLE_PLACES_API_KEY}`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.status === 'OK') {
+                    reviews = data.result.reviews || [];
+                    rating = data.result.rating || 0;
+                    reviewCount = data.result.user_ratings_total || 0;
+                } else {
+                    console.error("Google Places API Error:", data.status);
+                    reviews = getMockReviews(); // Fallback
+                }
+            } catch (error) {
+                console.error("Failed to fetch reviews:", error);
                 reviews = getMockReviews(); // Fallback
             }
-        } catch (error) {
-            console.error("Failed to fetch reviews:", error);
-            reviews = getMockReviews(); // Fallback
         }
-    }
 
-    renderReviews(reviews, marqueeContainer);
-    injectSchema(rating, reviewCount);
+        renderReviews(reviews, marqueeContainer);
+        injectSchema(rating, reviewCount);
+    }
 }
 
 function renderReviews(reviews, container) {

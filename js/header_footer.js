@@ -82,7 +82,7 @@ function loadFooter() {
                     <!-- WhatsApp -->
                     <a href="https://wa.me/919653699526" class="circle-btn" target="_blank">
                         <div class="icon-container">
-                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                             <img src="${basePath}images/whatsapp.svg" alt="WhatsApp">
                         </div>
                         <span class="btn-text">WhatsApp</span>
                     </a>

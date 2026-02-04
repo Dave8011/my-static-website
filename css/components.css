@@ -720,6 +720,7 @@ form button:hover {
     width: 100%;
 }
 
+/* Default Simple Scale Effect (For Footer/General) */
 .circle-btn {
     display: flex;
     align-items: center;
@@ -727,10 +728,10 @@ form button:hover {
     border-radius: 50px;
     padding: 5px;
     width: 60px;
-    /* Base size */
+    /* Fixed width */
     height: 60px;
     overflow: hidden;
-    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-decoration: none;
     color: var(--primary-color);
@@ -739,11 +740,11 @@ form button:hover {
 }
 
 .circle-btn:hover {
-    width: 200px;
-    /* Expand width */
-    background: var(--primary-color);
-    color: white;
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    transform: scale(1.1);
+    /* Simple pop effect */
+    background: white;
+    /* Keep white usually */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .circle-btn .icon-container {
@@ -758,45 +759,121 @@ form button:hover {
     transition: background 0.3s;
 }
 
-.circle-btn:hover .icon-container {
-    background: rgba(255, 255, 255, 0.2);
-}
-
 .circle-btn img,
-.circle-btn svg {
+.circle-btn svg,
+.circle-btn .material-icons {
     width: 24px;
     height: 24px;
-    transition: filter 0.3s;
-    filter: none;
-}
-
-.circle-btn .material-icons {
     font-size: 24px;
+    /* Ensure icon font size matches SVG */
+    transition: transform 0.3s;
     color: var(--primary-color);
-    transition: color 0.3s;
 }
 
-.circle-btn:hover img,
-.circle-btn:hover svg {
-    /* filter: brightness(0) invert(1); */
-    transform: scale(1.1);
+/* =============================
+   Specific Hero Expand Effect
+============================= */
+/* Only apply the expansion logic to buttons inside .hero */
+.hero .circle-btn {
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, box-shadow 0.3s;
 }
 
-.circle-btn:hover .material-icons {
+.hero .circle-btn:hover {
+    width: 200px;
+    /* Expand */
+    background: var(--primary-color);
     color: white;
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    transform: none;
+    /* Reset the scale from default */
 }
 
-.circle-btn .btn-text {
+.hero .circle-btn .btn-text {
     margin-left: 12px;
     opacity: 0;
     font-weight: 600;
     font-size: 15px;
     transition: opacity 0.2s ease 0.1s;
+    display: inline-block;
+    /* Ensure it takes space */
 }
 
-.circle-btn:hover .btn-text {
+.hero .circle-btn:hover .btn-text {
     opacity: 1;
 }
+
+.hero .circle-btn:hover .icon-container {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hero .circle-btn:hover img,
+.hero .circle-btn:hover svg,
+.hero .circle-btn:hover .material-icons {
+    /* transform: scale(1.1); already handled by generic if needed, but here specifics might apply */
+    color: white;
+    /* Turn icons white on gold background */
+    filter: brightness(0) invert(1);
+    /* For bitmaps if needed, though SVG fill is better */
+}
+
+/* Fix SVG color in Hero Hover since we used filter above which might affect everything */
+.hero .circle-btn:hover svg {
+    fill: white;
+}
+
+/* Reset filter for material icons as color handles it */
+.hero .circle-btn:hover .material-icons {
+    filter: none;
+}
+
+/* Hide text by default in generic buttons if not targeted */
+.circle-btn .btn-text {
+    display: none;
+}
+
+.hero .circle-btn .btn-text {
+    display: block;
+    /* Show but opacity 0 initially */
+}
+
+/* Footer Specific Overrides */
+footer .circle-btn {
+    width: 40px;
+    /* Smaller size as requested */
+    height: 40px;
+    padding: 0;
+    /* Remove padding to center icon better */
+    justify-content: center;
+}
+
+footer .circle-btn:hover {
+    width: 40px;
+    /* Do not expand width */
+    transform: scale(1.1);
+}
+
+footer .circle-btn .icon-container {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    /* Clean look */
+    border-radius: 50%;
+}
+
+footer .circle-btn .icon-container img,
+footer .circle-btn .icon-container svg,
+footer .circle-btn .icon-container .material-icons {
+    width: 20px;
+    /* Smaller icon */
+    height: 20px;
+    font-size: 20px;
+}
+
+/* Ensure text is definitely hidden in footer */
+footer .circle-btn .btn-text {
+    display: none !important;
+}
+
 
 /* Google Icon SVG Style */
 .google-icon-svg path {
