@@ -16,7 +16,9 @@ function loadHeader() {
                 <li><a href="${basePath}index.html">Home</a></li>
                 <li><a href="${basePath}about_us.html">About Us</a></li>
                 <li><a href="${basePath}services.html">Our Services</a></li>
-                <li><a href="${basePath}blog.html">Blog</a></li>
+                <li><a href="${basePath}achievements.html">Achievements</a></li>
+                <li><a href="${basePath}blog.html">Blogs</a></li>
+                <li><a href="${basePath}gallery.html">Gallery</a></li>
                 <li><a href="${basePath}contact.html">Contact Us</a></li>
             </ul>
         </nav>
@@ -51,7 +53,9 @@ function loadFooter() {
                     <li><a href="${basePath}index.html" style="color: inherit; text-decoration: none;">Home</a></li>
                     <li><a href="${basePath}about_us.html" style="color: inherit; text-decoration: none;">About Us</a></li>
                     <li><a href="${basePath}services.html" style="color: inherit; text-decoration: none;">Our Services</a></li>
-                    <li><a href="${basePath}blog.html" style="color: inherit; text-decoration: none;">Blog</a></li>
+                    <li><a href="${basePath}achievements.html" style="color: inherit; text-decoration: none;">Achievements</a></li>
+                    <li><a href="${basePath}blog.html" style="color: inherit; text-decoration: none;">Blogs</a></li>
+                    <li><a href="${basePath}gallery.html" style="color: inherit; text-decoration: none;">Gallery</a></li>
                     <li><a href="${basePath}contact.html" style="color: inherit; text-decoration: none;">Contact Us</a></li>
                 </ul>
             </div>

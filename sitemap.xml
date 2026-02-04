@@ -21,6 +21,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.therehabhouse.in/achievements.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.therehabhouse.in/gallery.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.therehabhouse.in/blogs/stroke-recovery.html</loc>
     <priority>0.6</priority>
   </url>
