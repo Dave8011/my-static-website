@@ -174,3 +174,30 @@ The "7 Unique Sections" in `services.html` use Google Material Icons.
         <span class="material-icons">fitness_center</span>
     </div>
     ```
+
+## Managing About Us Content
+
+The "How are we different" section in `about_us.html` is dynamically generated.
+
+### **To Add or Edit Items:**
+1.  Open **`js/aboutus.js`**.
+2.  Locate the **`rehabDifferences`** array.
+3.  Each item is an object with:
+    -   `title`: The heading of the card.
+    -   `content`: The full description text.
+    -   `image`: Path to the image (e.g., `images/filename.jpg`).
+    -   `alt`: Alt text for accessibility.
+
+**Example Item:**
+```javascript
+{
+    title: "New Service Feature",
+    content: "Description of the new feature...",
+    image: "images/new-image.jpg",
+    alt: "Description of image"
+}
+```
+
+### **Adding New Images:**
+1.  Place your image file (JPG/PNG/WEBP) in the **`images/`** folder.
+2.  Update the `image` path in `js/aboutus.js` to match the new filename.

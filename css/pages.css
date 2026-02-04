@@ -363,3 +363,133 @@
 .hero-gallery {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/gallery-banner.png') center/cover no-repeat;
 }
+
+/* =============================
+   About Us Page Refinements
+============================= */
+
+.section-title-center {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.difference-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 60px;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    transition: transform 0.3s ease;
+}
+
+.difference-row:hover {
+    transform: translateY(-5px);
+}
+
+.difference-image {
+    flex: 1;
+    position: relative;
+}
+
+.difference-content {
+    flex: 1;
+}
+
+.difference-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.difference-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+.difference-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Ensure Button Alignment */
+.difference-content .know-more-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    /* Modern pill shape */
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .difference-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 30px;
+    }
+
+    /* Since we manually ordered the DOM for 'reverse' (Content, Image), 
+       column-reverse will put Image (2nd child) on top, Content (1st child) on bottom. 
+    */
+    .difference-row.reverse {
+        flex-direction: column-reverse;
+    }
+
+    .difference-image img {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .difference-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .difference-content .know-more-btn {
+        margin: 0 auto;
+    }
+}
+
+/* Smooth Text Expansion */
+.text-container {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.text-container.expandable {
+    max-height: 75px;
+    /* Approx 3 lines / 100 chars */
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.text-container.expanded {
+    max-height: 500px;
+    /* Large enough to fit content */
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+.know-more-btn {
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Desktop Zigzag Fix */
+@media (min-width: 992px) {
+    .difference-row.reverse {
+        flex-direction: row-reverse;
+    }
+}
