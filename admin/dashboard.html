@@ -329,16 +329,26 @@
             }
 
             // Populate table
-            tableBody.innerHTML = appointments.map(appt => `
+            tableBody.innerHTML = appointments.map(appt => {
+                // Determine what to show in the Service column
+                let serviceDisplay = appt.service || 'General';
+                if (appt.serviceType) {
+                    serviceDisplay = `${appt.serviceType}`;
+                    if (appt.serviceMode) {
+                        serviceDisplay += ` <br><small style="color: #666; font-weight: 400;">(${appt.serviceMode})</small>`;
+                    }
+                }
+
+                return `
                 <tr>
                     <td style="color: #666; font-size: 0.9rem;">${appt.date || '-'}</td>
                     <td style="font-weight: 600;">${appt.name || 'Unknown'}</td>
-                    <td><span class="service-badge">${appt.service || 'General'}</span></td>
+                    <td><span class="service-badge" style="height: auto; text-align: left; display: inline-block;">${serviceDisplay}</span></td>
                     <td><a href="tel:${appt.phone}" class="phone-link">${appt.phone || '-'}</a></td>
                     <td>${appt.location || '-'}</td>
                     <td style="line-height: 1.4;">${appt.issue || '-'}</td>
                 </tr>
-            `).join('');
+            `}).join('');
         });
     </script>
 </body>
