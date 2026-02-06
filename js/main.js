@@ -63,6 +63,10 @@ function openProfile(doctor) {
         frame.src = 'profiles/dr-vidhi.html';
     } else if (doctor === 'vinit') {
         frame.src = 'profiles/dr-vinit.html';
+    } else if (doctor === 'pooja') {
+        frame.src = 'profiles/dr-pooja.html';
+    } else if (doctor === 'sakshi') {
+        frame.src = 'profiles/dr-sakshi.html';
     }
 
     popup.classList.add('show');
