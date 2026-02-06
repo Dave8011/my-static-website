@@ -110,3 +110,22 @@ function renderDifferences() {
 
 // Run on load
 document.addEventListener('DOMContentLoaded', renderDifferences);
+
+// Logic for "Who Will Benefit" Mobile Interaction
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileBtns = document.querySelectorAll('.mobile-expand-btn');
+
+    mobileBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent card click if necessary
+            const card = btn.closest('.benefit-card');
+            
+            // Close others (optional - standard accordion behavior)
+            // document.querySelectorAll('.benefit-card.expanded').forEach(otherCard => {
+            //     if (otherCard !== card) otherCard.classList.remove('expanded');
+            // });
+
+            card.classList.toggle('expanded');
+        });
+    });
+});

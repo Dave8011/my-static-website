@@ -67,6 +67,21 @@ The website has been optimized for speed, accessibility, and SEO (Lighthouse Sco
    ```
 4. **Important**: If you add a new service ID (e.g., `service7`), you must also add a card for it in `services.html` that links to `service_detail.html?id=service7`.
 
+### Updating Doctors Section
+1. Open `js/doctors_data.js`.
+2. Locate the `doctorsData` array.
+3. Add a new object for the new doctor:
+   ```javascript
+   {
+       id: "unique_id", // e.g., "dr-name"
+       name: "Dr. Name Surname",
+       specialty: "Specialization details...",
+       image: "images/dr-photo.webp",
+       profileLink: "profiles/dr-name.html" // Optional if profile page exists
+   }
+   ```
+4. Save the file. The contact page will automatically update.
+
 ### Adding a New Blog Post
 1. **Create the Post**:
    - Duplicate an existing blog file in the `blogs/` folder (e.g., `blogs/stroke-recovery.html`).

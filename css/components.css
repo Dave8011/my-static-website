@@ -798,6 +798,41 @@ form button:hover {
     /* Ensure it takes space */
 }
 
+
+/* =============================
+   Social Button Hover Fixes
+============================= */
+
+/* Ensure SVGs use current text color */
+.circle-btn svg {
+    fill: currentColor;
+}
+
+/* Hero Section: Button becomes Primary, Icon/Text becomes White */
+.hero .circle-btn:hover .icon-container {
+    background: transparent;
+    /* Remove white background so white icon shows on Gold Button */
+}
+
+.hero .circle-btn:hover img {
+    filter: brightness(0) invert(1);
+    /* Make images white */
+}
+
+/* Footer Section: Button stays White, Icon stays Primary */
+/* Explicitly force color to avoid inheritance issues */
+footer .circle-btn:hover {
+    color: var(--primary-color);
+}
+
+footer .circle-btn:hover .icon-container {
+    background: #f8f8f8;
+}
+
+footer .circle-btn:hover img {
+    filter: none;
+}
+
 .hero .circle-btn:hover .btn-text {
     opacity: 1;
 }
