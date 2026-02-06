@@ -4,7 +4,7 @@ const doctorsData = [
         name: "Dr. Vidhi Dave",
         specialty: "Specialist in Neurorehabilitation and Physiotherapy.",
         image: "images/dr-vidhi.webp",
-        profileLink: "profiles/vidhi.html" // Assuming profile pages might exist or just for logic
+        profileLink: "profiles/dr-vidhi.html"
     },
     {
         id: "vinit",
