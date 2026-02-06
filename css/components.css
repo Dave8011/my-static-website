@@ -316,65 +316,177 @@ button:hover {
    Contact Form Styles
 ============================= */
 
+/* =============================
+   Contact Form Styles
+============================= */
+
 .contact-form {
     text-align: center;
-    padding: 40px;
-    background: var(--light-color);
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #fdfbf5 0%, #ede5ce 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative background elements for glass effect to pop */
+.contact-form::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.contact-form::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(184, 134, 11, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .contact-form h2 {
-    font-size: 26px;
+    font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-weight: 700;
 }
 
+/* Glassmorphism Container */
+.glass-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    position: relative;
+    z-index: 1;
+}
 
-/* Form Styling */
+/* Grid Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
 
-form {
-    max-width: 500px;
-    margin: auto;
+.form-group {
+    display: flex;
+    flex-direction: column;
     text-align: left;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group.full-width {
+    grid-column: span 2;
 }
 
 label {
-    font-weight: bold;
+    font-weight: 600;
     color: var(--dark-color);
-    display: block;
-    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
 }
 
 input,
 textarea,
 select {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    color: var(--dark-color);
+    transition: all 0.3s ease;
+    font-family: inherit;
 }
 
-select {
-    height: 40px;
-    background-color: white;
-    cursor: pointer;
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.1);
 }
 
+/* Placeholder Styling */
+input::placeholder,
+textarea::placeholder {
+    color: #666;
+    opacity: 0.8;
+}
+
+/* Style select when no option is chosen (placeholder effect) */
+select:required:invalid {
+    color: #666;
+    opacity: 0.8;
+}
+
+option {
+    color: var(--dark-color);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
 
 /* Submit Button */
-form button {
-    margin-top: 15px;
+.submit-btn {
     width: 100%;
-    background-color: white;
-    /* As per original CSS, though it seems odd compared to global button */
+    padding: 16px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    background: var(--gold-gradient);
+    border: none;
 }
 
-form button:hover {
-    background-color: var(--secondary-color);
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(184, 134, 11, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 60px 15px;
+    }
+
+    .glass-form-container {
+        padding: 30px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    .contact-form h2 {
+        font-size: 2rem;
+    }
 }
 
 

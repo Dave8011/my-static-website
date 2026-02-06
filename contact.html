@@ -75,46 +75,62 @@
         <!-- Book an Appointment Form -->
         <section class="contact-form" id="booking">
             <h2>Book an Appointment</h2>
-            <form onsubmit="handleAppointmentSubmit(event)">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
+            <form onsubmit="handleAppointmentSubmit(event)" class="glass-form-container">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
 
-                <label for="issue">Describe Your Issue</label>
-                <textarea id="issue" name="issue" rows="4" required></textarea>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                    </div>
 
-                <label for="serviceMode">Service Mode</label>
-                <select id="serviceMode" name="serviceMode" required>
-                    <option value="">Choose a Service Mode</option>
-                    <option value="Clinic Appointment">Clinic Appointment</option>
-                    <option value="Home Visit">Home Visit</option>
-                    <option value="Online Consultation">Online Consultation</option>
-                </select>
+                    <div class="form-group">
+                        <!-- <label for="serviceMode">Service Mode</label> -->
+                        <select id="serviceMode" name="serviceMode" required>
+                            <option value="" disabled selected hidden>Service Mode</option>
+                            <option value="Clinic Appointment">Clinic Appointment</option>
+                            <option value="Home Visit">Home Visit</option>
+                            <option value="Online Consultation">Online Consultation</option>
+                        </select>
+                    </div>
 
-                <label for="serviceType">Service Type</label>
-                <select id="serviceType" name="serviceType" required>
-                    <option value="">Choose a Service Type</option>
-                    <option value="Neurorehabilitation">Neurorehabilitation</option>
-                    <option value="Occupational Therapy">Occupational Therapy</option>
-                    <option value="Speech & Swallow Therapy">Speech & Swallow Therapy</option>
-                    <option value="Pediatric Therapy">Pediatric Therapy</option>
-                    <option value="Cognitive Therapy">Cognitive Therapy</option>
-                    <option value="Psychology Therapy">Psychology Therapy</option>
-                    <option value="Dietician Therapy">Dietician Therapy</option>
-                    <option value="Orthotic Therapy">Orthotic Therapy</option>
-                    <option value="Neurologist Consultation">Neurologist Consultation</option>
-                    <option value="Ortho Physiotherapy">Ortho Physiotherapy</option>
-                    <option value="Pain Management">Pain Management</option>
-                    <option value="Robotic Rehabilitation Therapy">Robotic Rehabilitation Therapy</option>
-                    <option value="Fitness Training">Fitness Training</option>
-                </select>
+                    <div class="form-group">
+                        <!-- <label for="serviceType">Service Type</label> -->
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="" disabled selected hidden>Select Service Type</option>
+                            <option value="Neurorehabilitation">Neurorehabilitation</option>
+                            <option value="Occupational Therapy">Occupational Therapy</option>
+                            <option value="Speech & Swallow Therapy">Speech & Swallow Therapy</option>
+                            <option value="Pediatric Therapy">Pediatric Therapy</option>
+                            <option value="Cognitive Therapy">Cognitive Therapy</option>
+                            <option value="Psychology Therapy">Psychology Therapy</option>
+                            <option value="Dietician Therapy">Dietician Therapy</option>
+                            <option value="Orthotic Therapy">Orthotic Therapy</option>
+                            <option value="Neurologist Consultation">Neurologist Consultation</option>
+                            <option value="Ortho Physiotherapy">Ortho Physiotherapy</option>
+                            <option value="Pain Management">Pain Management</option>
+                            <option value="Robotic Rehabilitation Therapy">Robotic Rehabilitation Therapy</option>
+                            <option value="Fitness Training">Fitness Training</option>
+                        </select>
+                    </div>
 
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
+                    <div class="form-group full-width">
+                        <label for="location">Your Location</label>
+                        <input type="text" id="location" name="location" placeholder="e.g. Bandra West, Mumbai"
+                            required>
+                    </div>
 
-                <label for="location">Your Location</label>
-                <input type="text" id="location" name="location" required>
+                    <div class="form-group full-width">
+                        <label for="issue">Describe Your Issue</label>
+                        <textarea id="issue" name="issue" rows="4"
+                            placeholder="Briefly describe your condition or requirements..." required></textarea>
+                    </div>
+                </div>
 
-                <button type="submit">Book an Appointment</button>
+                <button type="submit" class="submit-btn">Book an Appointment</button>
             </form>
         </section>
         <!-- Profile Popup Window -->
