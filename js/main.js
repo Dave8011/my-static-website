@@ -52,25 +52,18 @@ function toggleDetails(id) {
 }
 
 // Profile Popup Functions
-function openProfile(doctor) {
+function openProfile(profileUrl) {
     const popup = document.getElementById('profilePopup');
     const overlay = document.getElementById('popupOverlay');
     const frame = document.getElementById('profileFrame');
 
     if (!popup || !overlay || !frame) return;
 
-    if (doctor === 'vidhi') {
-        frame.src = 'profiles/dr-vidhi.html';
-    } else if (doctor === 'vinit') {
-        frame.src = 'profiles/dr-vinit.html';
-    } else if (doctor === 'pooja') {
-        frame.src = 'profiles/dr-pooja.html';
-    } else if (doctor === 'sakshi') {
-        frame.src = 'profiles/dr-sakshi.html';
+    if (profileUrl) {
+        frame.src = profileUrl;
+        popup.classList.add('show');
+        overlay.classList.add('show');
     }
-
-    popup.classList.add('show');
-    overlay.classList.add('show');
 }
 
 function closePopup() {

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${doctor.image}" alt="${doctor.name}" loading="lazy">
                 <h3>${doctor.name}</h3>
                 <p>${doctor.specialty}</p>
-                <button class="know-more-btn" onclick="openProfile('${doctor.id}')">Know More</button>
+                <button class="know-more-btn" onclick="openProfile('${doctor.profileLink}')">Know More</button>
             </div>
         `).join('');
     }
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="specialist-info">
                     <h4>${doctor.name}</h4>
                     <p>${doctor.specialty}</p>
-                    <button class="know-more-btn small-btn" onclick="openProfile('${doctor.id}')">View Profile</button>
+                    <button class="know-more-btn small-btn" onclick="openProfile('${doctor.profileLink}')">View Profile</button>
                 </div>
             </div>
         `).join('');
