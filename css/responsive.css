@@ -221,6 +221,11 @@
         flex-wrap: wrap;
     }
 
+    /* Footer Social Icons Alignment */
+    .footer-section .social-buttons-container {
+        justify-content: center !important;
+    }
+
     /* =============================
        Mobile Sticky CTA
     ============================= */
