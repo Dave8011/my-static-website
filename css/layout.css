@@ -121,88 +121,185 @@ p {
 }
 
 
+/* =============================
+   Footer Styling (Desktop Default)
+============================= */
+
 footer {
-    background-color: #1a1a1a;
-    /* Dark Luxury background */
-    color: #fff;
-    padding: 40px 20px;
-    border-top: 3px solid var(--primary-color);
-    display: block;
-    /* Change to block for content wrapping */
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 30px;
-    /* Better spacing between columns */
-}
-
-/* Left side: Copyright */
-
-.footer-left {
-    font-size: 14px;
-    color: #ccc;
-}
-
-.footer-left a {
-    color: var(--secondary-color);
-    transition: 0.3s;
-}
-
-.footer-left a:hover {
-    color: var(--primary-color);
-}
-
-
-/* Right side: Social Media */
-
-.footer-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.footer-right h2 {
-    font-size: 18px;
-    margin: 0;
-    color: var(--primary-color);
+    background-color: #111111;
+    color: #e0e0e0;
+    padding: 50px 20px 30px;
+    /* Reduced spacing */
+    border-top: 4px solid var(--primary-color);
     font-family: var(--font-heading);
 }
 
-
-/* Social Media Icons */
-
-/* Social Media Icons */
-
-.social-icon img {
-    width: 32px;
-    filter: invert(1);
-    /* Simple invert to verify visibility */
-    transition: 0.3s;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    margin-bottom: 60px;
 }
 
-.social-icon:hover img {
-    transform: translateY(-3px) scale(1.1);
-    filter: invert(1) drop-shadow(0 0 5px var(--primary-color));
+/* Brand Column */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    footer {
-        padding-bottom: 80px;
-        /* Space for fixed Back to Top button */
-    }
+.footer-logo img {
+    filter: brightness(0) invert(1);
+    /* Make logo white */
+    max-width: 220px;
+    opacity: 0.9;
+}
 
-    .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        z-index: 1001;
-        /* Above footer content */
-    }
+.brand-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #aaa;
+    max-width: 300px;
+}
+
+/* Social Icons (Row) */
+.social-icons-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons-row a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icons-row a:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.social-icons-row img,
+.social-icons-row svg,
+.social-icons-row .material-icons {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: white;
+    filter: brightness(0) invert(1);
+}
+
+/* Columns & Links */
+.footer-col h3 {
+    color: var(--primary-color);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s, padding-left 0.3s;
+    display: block;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+/* Contact Column */
+.contact-col p {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: #ccc;
+    font-size: 15px;
+}
+
+.contact-col .material-icons {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-top: 2px;
+}
+
+.contact-col a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-col a:hover {
+    color: white;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.admin-link {
+    color: #444;
+    text-decoration: none;
+}
+
+.admin-link:hover {
+    color: var(--primary-color);
+}
+
+/* Accordion Icon (Desktop Hidden) */
+.accordion-icon {
+    display: none;
+}
+
+/* Hide Mobile CTA on Desktop */
+.mobile-sticky-cta {
+    display: none;
+}
+
+/* Refined Admin Login */
+.admin-link {
+    color: #444;
+    text-decoration: none;
+    font-size: 11px;
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.admin-link:hover {
+    color: var(--primary-color);
+    opacity: 1;
 }
