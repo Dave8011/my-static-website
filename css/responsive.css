@@ -331,77 +331,78 @@
 
     .contact-col h3 {
         margin-bottom: 15px;
+    }
 
-        /* Footer Bottom */
-        .footer-bottom {
-            flex-direction: column;
-            gap: 5px;
-            text-align: center;
-            padding-top: 10px;
-        }
+    /* Footer Bottom */
+    .footer-bottom {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+        padding-top: 10px;
+    }
 
-        /* =============================
+    /* =============================
        Mobile Sticky CTA
     ============================= */
-        .mobile-sticky-cta {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            width: 90%;
-            max-width: 400px;
-            background: transparent;
-            padding: 0;
-            /* box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); */
-            z-index: 10000;
-            /* Highest priority */
-            display: flex;
-            /* Override desktop hidden */
-            justify-content: center;
-            align-items: center;
-            transform: translateX(-50%) translateY(100%);
-            /* Center and hide */
-            transition: transform 0.3s ease-out;
-        }
-
-        .mobile-sticky-cta.show {
-            transform: translateX(-50%) translateY(0);
-            /* Shown on scroll */
-        }
-
-        .mobile-sticky-cta a {
-            background: var(--gold-gradient);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 14px 24px;
-            border-radius: 50px;
-            width: 100%;
-            text-align: center;
-            font-size: 18px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Ensure content doesn't get hidden behind sticky bar */
-        footer {
-            padding-bottom: 50px;
-        }
-
-        /* Improve Button Touch Targets */
-        button,
-        .btn,
-        a.btn-hero {
-            min-height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Fix Back to Top Overlap */
-        .back-to-top {
-            bottom: 100px;
-            /* Above the sticky CTA (approx 60-70px height) */
-            right: 20px;
-            z-index: 10001;
-            /* Above sticky CTA if needed, or just positionally separated */
-        }
+    .mobile-sticky-cta {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        width: 90%;
+        max-width: 400px;
+        background: transparent;
+        padding: 0;
+        /* box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); */
+        z-index: 10000;
+        /* Highest priority */
+        display: flex;
+        /* Override desktop hidden */
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-50%) translateY(100%);
+        /* Center and hide */
+        transition: transform 0.3s ease-out;
     }
+
+    .mobile-sticky-cta.show {
+        transform: translateX(-50%) translateY(0);
+        /* Shown on scroll */
+    }
+
+    .mobile-sticky-cta a {
+        background: var(--gold-gradient);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 14px 24px;
+        border-radius: 50px;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Ensure content doesn't get hidden behind sticky bar */
+    footer {
+        padding-bottom: 50px;
+    }
+
+    /* Improve Button Touch Targets */
+    button,
+    .btn,
+    a.btn-hero {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fix Back to Top Overlap */
+    .back-to-top {
+        bottom: 100px;
+        /* Above the sticky CTA (approx 60-70px height) */
+        right: 20px;
+        z-index: 10001;
+        /* Above sticky CTA if needed, or just positionally separated */
+    }
+}
