@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rehab House CMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="login-screen" class="login-shell">
+    <div class="login-panel">
+      <p class="eyebrow">The Rehab House</p>
+      <h1>Content dashboard</h1>
+      <p class="login-copy">Manage pages, blogs, banners, FAQs, gallery, users and theme settings without editing code.</p>
+      <form id="login-form" class="card form-stack">
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" placeholder="admin@therehabhouse.in" required>
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" placeholder="Enter password" required>
+        </label>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        <p id="login-error" class="error-text"></p>
+      </form>
+    </div>
+    <aside class="login-aside">
+      <div class="glass-card">
+        <p class="eyebrow">Built for non-technical editors</p>
+        <ul class="feature-list">
+          <li>Safe publish workflow with preview before publish</li>
+          <li>One dashboard for pages, blogs, banners, FAQs and media</li>
+          <li>Separate admin subdomain with shared database</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <div id="app-shell" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <p class="eyebrow">Therehabhouse CMS</p>
+        <h2>Admin</h2>
+      </div>
+      <nav id="nav-items" class="nav-items"></nav>
+      <button id="logout-btn" class="btn btn-ghost full-width">Logout</button>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Shared database setup</p>
+          <h1 id="view-title">Dashboard</h1>
+        </div>
+        <div class="topbar-meta">
+          <span id="user-pill" class="pill"></span>
+          <a href="/api/public/bootstrap" target="_blank" rel="noreferrer" class="btn btn-ghost">Public API</a>
+        </div>
+      </header>
+
+      <section id="dashboard-view" class="view-panel"></section>
+      <section id="content-view" class="view-panel hidden"></section>
+      <section id="settings-view" class="view-panel hidden"></section>
+      <section id="seo-view" class="view-panel hidden"></section>
+      <section id="users-view" class="view-panel hidden"></section>
+      <section id="media-view" class="view-panel hidden"></section>
+    </main>
+  </div>
+
+  <dialog id="preview-modal" class="preview-modal">
+    <div class="preview-header">
+      <h3>Preview</h3>
+      <button id="close-preview" class="btn btn-ghost" type="button">Close</button>
+    </div>
+    <div id="preview-body" class="preview-body"></div>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "admin-cms",
+  "version": "1.0.0",
+  "description": "Custom CMS and admin dashboard for The Rehab House",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "db:setup": "node src/seed.js",
+    "seed": "node src/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@prisma/client": "^7.4.2",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.15.2",
+    "multer": "^2.1.1",
+    "prisma": "^7.4.2",
+    "sqlite3": "^5.1.7"
+  }
+}

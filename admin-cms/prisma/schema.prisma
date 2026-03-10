@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Page {
+  id             Int       @id @default(autoincrement())
+  title          String
+  slug           String    @unique
+  template       String    @default("default")
+  content        String?
+  status         String    @default("draft")
+  seoTitle       String?   @map("seo_title")
+  seoDescription String?   @map("seo_description")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  galleries      Gallery[]
+
+  @@map("Page")
+}
+
+model Blog {
+  id             Int      @id @default(autoincrement())
+  title          String
+  slug           String   @unique
+  content        String?
+  excerpt        String?
+  featuredImage  String?  @map("featured_image")
+  category       String?
+  status         String   @default("draft")
+  seoTitle       String?  @map("seo_title")
+  seoDescription String?  @map("seo_description")
+  publishedAt    DateTime? @map("published_at")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@map("Blog")
+}
+
+model Gallery {
+  id        Int     @id @default(autoincrement())
+  image     String
+  caption   String?
+  sortOrder Int     @default(0) @map("order")
+  pageId    Int?    @map("page_id")
+  page      Page?   @relation(fields: [pageId], references: [id], onDelete: SetNull)
+
+  @@map("Gallery")
+}
+
+model Faq {
+  id        Int    @id @default(autoincrement())
+  question  String
+  answer    String
+  sortOrder Int    @default(0) @map("order")
+  status    String @default("published")
+
+  @@map("Faq")
+}
+
+model Banner {
+  id       Int    @id @default(autoincrement())
+  page     String
+  image    String
+  title    String?
+  subtitle String?
+  ctaText  String? @map("cta_text")
+  ctaLink  String? @map("cta_link")
+  status   String  @default("published")
+
+  @@map("Banner")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("editor")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("User")
+}
+
+model Setting {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String
+
+  @@map("Setting")
+}
