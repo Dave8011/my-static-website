@@ -221,6 +221,17 @@ function mysqlCreateStatements() {
       \`key\` VARCHAR(255) NOT NULL UNIQUE,
       value LONGTEXT NOT NULL
     )`,
+    `CREATE TABLE IF NOT EXISTS \`Appointment\` (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NULL,
+      phone VARCHAR(50) NOT NULL,
+      location VARCHAR(255) NULL,
+      issue TEXT NULL,
+      service VARCHAR(255) NULL,
+      status VARCHAR(20) NOT NULL DEFAULT 'new',
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )`,
   ];
 }
 
@@ -290,6 +301,17 @@ function sqliteCreateStatements() {
       \`id\` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
       \`key\` TEXT NOT NULL UNIQUE,
       \`value\` TEXT NOT NULL
+    )`,
+    `CREATE TABLE IF NOT EXISTS \`Appointment\` (
+      \`id\` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+      \`name\` TEXT NOT NULL,
+      \`email\` TEXT,
+      \`phone\` TEXT NOT NULL,
+      \`location\` TEXT,
+      \`issue\` TEXT,
+      \`service\` TEXT,
+      \`status\` TEXT NOT NULL DEFAULT 'new',
+      \`created_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     )`,
   ];
 }

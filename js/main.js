@@ -78,42 +78,58 @@ function closePopup() {
     // frame.src = ''; // Optional: clear source to stop video playback etc if any
 }
 
-// Appointment System (Mock API)
-// TODO: Replace this with real API call when server is ready
-function saveAppointment(data) {
-    // 1. Get existing appointments
-    let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+// Appointment System (Real API)
+async function saveAppointment(data) {
+    try {
+        const response = await fetch('/api/appointments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
 
-    // 2. Add new data with timestamp
-    data.date = new Date().toISOString().split('T')[0]; // Simple YYYY-MM-DD
-    data.timestamp = new Date().toISOString();
-    appointments.unshift(data); // Add to top
+        if (!response.ok) {
+            throw new Error('Server returned ' + response.status);
+        }
 
-    // 3. Save back to localStorage
-    localStorage.setItem('appointments', JSON.stringify(appointments));
-
-    return true; // Simulate success
+        return true;
+    } catch (error) {
+        console.error('Failed to save appointment:', error);
+        return false;
+    }
 }
 
-function handleAppointmentSubmit(event) {
+async function handleAppointmentSubmit(event) {
     event.preventDefault();
     const form = event.target;
+    const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('.submit-btn');
+    const originalText = submitBtn ? submitBtn.innerText : 'Submit';
+
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Sending...';
+    }
 
     // Extract data
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // Save (Mock API call)
-    saveAppointment(data);
+    // Save
+    const success = await saveAppointment(data);
 
-    // Feedback
-    alert("Appointment Request Sent! We will contact you shortly.");
-    form.reset();
+    if (success) {
+        alert("Appointment Request Sent! We will contact you shortly.");
+        form.reset();
 
-    // If inside popup (iframe), close it?
-    // checking if we are inside the iframe logic or main page
-    if (window.parent && window.parent.closePopup && window.frameElement) {
-        window.parent.closePopup();
+        if (window.parent && window.parent.closePopup && window.frameElement) {
+            window.parent.closePopup();
+        }
+    } else {
+        alert("Failed to send request. Please try again later or call us directly.");
+    }
+
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalText;
     }
 }
 

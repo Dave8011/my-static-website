@@ -634,6 +634,45 @@ app.get("/api/public/settings", async (_req, res) => {
   );
 });
 
+app.get("/api/appointments", authMiddleware, async (_req, res) => {
+  const appointments = await db.query(
+    "SELECT id, name, email, phone, location, issue, service, status, created_at AS date FROM `Appointment` ORDER BY created_at DESC"
+  );
+  res.json(appointments);
+});
+
+app.post("/api/appointments", async (req, res) => {
+  const name = String(req.body.name || "").trim();
+  const email = String(req.body.email || "").trim();
+  const phone = String(req.body.phone || "").trim();
+  const location = String(req.body.location || "").trim();
+  const issue = String(req.body.issue || "").trim();
+
+  let service = String(req.body.service || "").trim();
+  const serviceType = String(req.body.serviceType || "").trim();
+  const serviceMode = String(req.body.serviceMode || "").trim();
+
+  // Combine service details for display if present
+  if (serviceType) {
+    service = serviceType;
+    if (serviceMode) {
+      service += ` (${serviceMode})`;
+    }
+  }
+
+  if (!name || !phone) {
+    res.status(400).json({ error: "Name and phone are required" });
+    return;
+  }
+
+  const result = await db.run(
+    "INSERT INTO `Appointment` (name, email, phone, location, issue, service) VALUES (?, ?, ?, ?, ?, ?)",
+    [name, email, phone, location, issue, service]
+  );
+
+  res.status(201).json({ success: true, id: result.lastID });
+});
+
 app.use(express.static(publicDir));
 
 app.get(/^(?!\/api\/|\/uploads\/).*/, (_req, res) => {
