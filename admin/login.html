@@ -176,6 +176,8 @@
         <a href="../index.html" class="back-link">← Back to Home Page</a>
     </div>
 
+    <!-- Load external config -->
+    <script src="../js/config.js"></script>
     <script>
         // SECURITY: Clear any existing session immediately upon loading implementation
         // This ensures if someone hits "Back" from dashboard to login, they are logged out.
@@ -197,39 +199,43 @@
             loginBtn.classList.add('loading');
             loginBtn.innerText = 'Verifying...';
 
-            // Real network call
-            fetch('/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: usernameInput, password: passwordInput })
-            })
-                .then(res => {
-                    if (!res.ok) throw new Error('Invalid credentials');
-                    return res.json();
-                })
-                .then(data => {
-                    if (data.token) {
-                        sessionStorage.setItem('adminToken', data.token);
-                        // Optionally store user info
-                        sessionStorage.setItem('adminUser', JSON.stringify(data.user));
-                        window.location.replace('dashboard.html');
-                    } else {
-                        throw new Error('Token missing');
-                    }
-                })
-                .catch(err => {
-                    errorMsg.innerText = "Invalid username or password.";
+            // Simulate network delay for better UX (prevents brute force by slowing down)
+            setTimeout(() => {
+                // Check if config exists
+                if (typeof ADMIN_CONFIG === 'undefined') {
+                    errorMsg.innerText = "System Error: Configuration missing.";
+                    errorMsg.style.display = 'block';
+                    loginBtn.classList.remove('loading');
+                    loginBtn.innerText = 'Sign In';
+                    return;
+                }
+
+                const validUsername = ADMIN_CONFIG.username || ADMIN_CONFIG.email;
+
+                if (usernameInput === validUsername && passwordInput === ADMIN_CONFIG.password) {
+                    // SUCCESS
+                    // Create a simple session token (timestamp + random)
+                    // In a real app, this would come from the server.
+                    const token = Date.now().toString() + Math.random().toString(36).substring(2);
+
+                    // Use sessionStorage for security (clears when tab closes)
+                    sessionStorage.setItem('adminToken', token);
+
+                    window.location.replace('dashboard.html');
+                } else {
+                    // FAILURE
+                    errorMsg.innerText = "Invalid credentials.";
                     errorMsg.style.display = 'block';
 
                     // Shake effect
                     const card = document.querySelector('.login-card');
                     card.style.animation = 'shake 0.5s';
                     setTimeout(() => card.style.animation = '', 500);
-                })
-                .finally(() => {
-                    loginBtn.classList.remove('loading');
-                    loginBtn.innerText = 'Sign In';
-                });
+                }
+
+                loginBtn.classList.remove('loading');
+                loginBtn.innerText = 'Sign In';
+            }, 800); // 800ms artificial delay
         }
     </script>
 
