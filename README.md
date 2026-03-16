@@ -3,6 +3,29 @@
 ## Overview
 This is the static website for The Rehab House, a neuro-rehabilitation center.
 
+## Admin API Setup
+This project now includes an Express backend for secure admin login and appointment storage in a local JSON file.
+
+1. Copy `.env.example` to `.env`
+2. Set `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `JWT_SECRET`, and `ALLOWED_ORIGINS`
+3. Install dependencies with `npm install`
+4. Start the server with `npm start`
+
+The server will:
+
+- serve the static website
+- accept public appointment submissions at `POST /api/appointments`
+- handle admin login at `POST /api/admin/login`
+- return protected appointment data at `GET /api/admin/appointments`
+
+For your split-domain setup:
+
+- `therehabhouse.in` submits to `https://api.therehabhouse.in/api/appointments`
+- `admin.therehabhouse.in` calls the backend API at `https://api.therehabhouse.in`
+- the backend must allow credentialed CORS for the website and admin origins
+
+For production on your home server, run it behind HTTPS and set `COOKIE_SECURE=true`.
+
 ## Performance & Optimization (New!)
 The website has been optimized for speed, accessibility, and SEO (Lighthouse Score > 95/100).
 

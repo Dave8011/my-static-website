@@ -176,17 +176,29 @@
         <a href="../index.html" class="back-link">← Back to Home Page</a>
     </div>
 
-    <!-- Load external config -->
-    <script src="../js/config.js"></script>
+    <script src="../js/api-config.js"></script>
     <script>
-        // SECURITY: Clear any existing session immediately upon loading implementation
-        // This ensures if someone hits "Back" from dashboard to login, they are logged out.
-        sessionStorage.removeItem('adminToken');
+        function buildApiUrl(path) {
+            return `${window.API_CONFIG.baseUrl}${path}`;
+        }
 
-        // Also clear legacy localStorage if it exists (cleanup)
-        localStorage.removeItem('adminLoggedIn');
+        async function checkExistingSession() {
+            try {
+                const response = await fetch(buildApiUrl('/api/admin/session'), {
+                    credentials: 'include'
+                });
 
-        function handleLogin(e) {
+                if (response.ok) {
+                    window.location.replace('dashboard.html');
+                }
+            } catch (error) {
+                console.error('Session check failed:', error);
+            }
+        }
+
+        checkExistingSession();
+
+        async function handleLogin(e) {
             e.preventDefault();
 
             const usernameInput = document.getElementById('username').value.trim();
@@ -194,48 +206,41 @@
             const errorMsg = document.getElementById('errorMsg');
             const loginBtn = document.getElementById('loginBtn');
 
-            // Reset UI
             errorMsg.style.display = 'none';
             loginBtn.classList.add('loading');
             loginBtn.innerText = 'Verifying...';
 
-            // Simulate network delay for better UX (prevents brute force by slowing down)
-            setTimeout(() => {
-                // Check if config exists
-                if (typeof ADMIN_CONFIG === 'undefined') {
-                    errorMsg.innerText = "System Error: Configuration missing.";
-                    errorMsg.style.display = 'block';
-                    loginBtn.classList.remove('loading');
-                    loginBtn.innerText = 'Sign In';
-                    return;
-                }
+            try {
+                const response = await fetch(buildApiUrl('/api/admin/login'), {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        username: usernameInput,
+                        password: passwordInput
+                    })
+                });
 
-                const validUsername = ADMIN_CONFIG.username || ADMIN_CONFIG.email;
-
-                if (usernameInput === validUsername && passwordInput === ADMIN_CONFIG.password) {
-                    // SUCCESS
-                    // Create a simple session token (timestamp + random)
-                    // In a real app, this would come from the server.
-                    const token = Date.now().toString() + Math.random().toString(36).substring(2);
-
-                    // Use sessionStorage for security (clears when tab closes)
-                    sessionStorage.setItem('adminToken', token);
-
+                if (response.ok) {
                     window.location.replace('dashboard.html');
                 } else {
-                    // FAILURE
-                    errorMsg.innerText = "Invalid credentials.";
+                    errorMsg.innerText = 'Invalid credentials.';
                     errorMsg.style.display = 'block';
 
-                    // Shake effect
                     const card = document.querySelector('.login-card');
                     card.style.animation = 'shake 0.5s';
                     setTimeout(() => card.style.animation = '', 500);
                 }
-
+            } catch (error) {
+                console.error('Login request failed:', error);
+                errorMsg.innerText = 'Unable to reach server. Please try again.';
+                errorMsg.style.display = 'block';
+            } finally {
                 loginBtn.classList.remove('loading');
                 loginBtn.innerText = 'Sign In';
-            }, 800); // 800ms artificial delay
+            }
         }
     </script>
 

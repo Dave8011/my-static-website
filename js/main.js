@@ -78,42 +78,61 @@ function closePopup() {
     // frame.src = ''; // Optional: clear source to stop video playback etc if any
 }
 
-// Appointment System (Mock API)
-// TODO: Replace this with real API call when server is ready
-function saveAppointment(data) {
-    // 1. Get existing appointments
-    let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+function getApiBaseUrl() {
+    if (window.API_CONFIG && window.API_CONFIG.baseUrl) {
+        return window.API_CONFIG.baseUrl;
+    }
 
-    // 2. Add new data with timestamp
-    data.date = new Date().toISOString().split('T')[0]; // Simple YYYY-MM-DD
-    data.timestamp = new Date().toISOString();
-    appointments.unshift(data); // Add to top
-
-    // 3. Save back to localStorage
-    localStorage.setItem('appointments', JSON.stringify(appointments));
-
-    return true; // Simulate success
+    const isLocalHost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    return isLocalHost ? 'http://localhost:4000' : 'https://api.therehabhouse.in';
 }
 
-function handleAppointmentSubmit(event) {
+async function saveAppointment(data) {
+    const response = await fetch(`${getApiBaseUrl()}/api/appointments`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to save appointment');
+    }
+
+    return response.json();
+}
+
+async function handleAppointmentSubmit(event) {
     event.preventDefault();
     const form = event.target;
+    const submitButton = form.querySelector('button[type="submit"]');
 
-    // Extract data
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // Save (Mock API call)
-    saveAppointment(data);
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.dataset.originalText = submitButton.innerText;
+        submitButton.innerText = 'Sending...';
+    }
 
-    // Feedback
-    alert("Appointment Request Sent! We will contact you shortly.");
-    form.reset();
+    try {
+        await saveAppointment(data);
+        alert("Appointment Request Sent! We will contact you shortly.");
+        form.reset();
 
-    // If inside popup (iframe), close it?
-    // checking if we are inside the iframe logic or main page
-    if (window.parent && window.parent.closePopup && window.frameElement) {
-        window.parent.closePopup();
+        if (window.parent && window.parent.closePopup && window.frameElement) {
+            window.parent.closePopup();
+        }
+    } catch (error) {
+        console.error('Appointment submission failed:', error);
+        alert("We couldn't submit your appointment right now. Please try again.");
+    } finally {
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.innerText = submitButton.dataset.originalText || 'Submit';
+        }
     }
 }
 

@@ -2,20 +2,23 @@
 <html lang="en">
 
 <head>
+    <script src="../js/api-config.js"></script>
     <script>
-        // CRITICAL SECURITY CHECK
-        // This must be the very first thing to run to prevent "flash of content"
+        function buildApiUrl(path) {
+            return `${window.API_CONFIG.baseUrl}${path}`;
+        }
+
         (function () {
-            // Check for session token
-            const token = sessionStorage.getItem('adminToken');
-
-            if (!token) {
-                // Not logged in? Bounce back to login immediately.
+            fetch(buildApiUrl('/api/admin/session'), {
+                credentials: 'include'
+            }).then(response => {
+                if (!response.ok) {
+                    window.location.replace('login.html');
+                }
+            }).catch(() => {
                 window.location.replace('login.html');
-            }
+            });
 
-            // Prevent back-button caching
-            // If user logs out and hits "Back", this forces a reload (which runs the check above)
             window.addEventListener('pageshow', function (event) {
                 if (event.persisted) {
                     window.location.reload();
@@ -294,61 +297,81 @@
     </div>
 
     <script>
-        // Logout Logic
-        function handleLogout() {
-            sessionStorage.removeItem('adminToken');
-            // Force replace to prevent back-button return
-            window.location.replace('login.html');
+        async function handleLogout() {
+            try {
+                await fetch(buildApiUrl('/api/admin/logout'), {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+            } catch (error) {
+                console.error('Logout failed:', error);
+            } finally {
+                window.location.replace('login.html');
+            }
         }
 
-        // Load data on page load
-        document.addEventListener('DOMContentLoaded', () => {
+        function formatDisplayDate(value) {
+            if (!value) {
+                return '-';
+            }
+
+            const parsed = new Date(value);
+            return Number.isNaN(parsed.getTime()) ? value : parsed.toLocaleString();
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
             const tableBody = document.getElementById('inquiriesTableBody');
             const totalCountEl = document.getElementById('totalCount');
             const todayCountEl = document.getElementById('todayCount');
 
-            // Get data from mock API (localStorage)
-            // In a real app, this would be a fetch() call to a secured API endpoint
-            const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            try {
+                const response = await fetch(buildApiUrl('/api/admin/appointments'), {
+                    credentials: 'include'
+                });
 
-            // Sort by date (newest first) - assuming date string format allows basic sorting or just reverse
-            // Since our date format isn't strictly ISO in the mock, we'll just reverse for now as they are engaged sequentially
-            appointments.reverse();
-
-            // Update stats
-            totalCountEl.innerText = appointments.length;
-
-            // Simple "Today" check (imperfect with localized strings, but functional for demo)
-            const todayStr = new Date().toLocaleDateString();
-            const todayCount = appointments.filter(a => a.date && a.date.includes(todayStr)).length;
-            todayCountEl.innerText = todayCount;
-
-            if (appointments.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">No inquiries found yet.</td></tr>';
-                return;
-            }
-
-            // Populate table
-            tableBody.innerHTML = appointments.map(appt => {
-                // Determine what to show in the Service column
-                let serviceDisplay = appt.service || 'General';
-                if (appt.serviceType) {
-                    serviceDisplay = `${appt.serviceType}`;
-                    if (appt.serviceMode) {
-                        serviceDisplay += ` <br><small style="color: #666; font-weight: 400;">(${appt.serviceMode})</small>`;
-                    }
+                if (response.status === 401) {
+                    window.location.replace('login.html');
+                    return;
                 }
 
-                return `
+                const payload = await response.json();
+                const appointments = payload.appointments || [];
+
+                totalCountEl.innerText = appointments.length;
+
+                const todayIso = new Date().toISOString().split('T')[0];
+                const todayCount = appointments.filter(a => (a.createdAt || '').startsWith(todayIso)).length;
+                todayCountEl.innerText = todayCount;
+
+                if (appointments.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">No inquiries found yet.</td></tr>';
+                    return;
+                }
+
+                tableBody.innerHTML = appointments.map(appt => {
+                    let serviceDisplay = appt.service || 'General';
+                    if (appt.serviceType) {
+                        serviceDisplay = `${appt.serviceType}`;
+                        if (appt.serviceMode) {
+                            serviceDisplay += ` <br><small style="color: #666; font-weight: 400;">(${appt.serviceMode})</small>`;
+                        }
+                    }
+
+                    return `
                 <tr>
-                    <td style="color: #666; font-size: 0.9rem;">${appt.date || '-'}</td>
+                    <td style="color: #666; font-size: 0.9rem;">${formatDisplayDate(appt.createdAt)}</td>
                     <td style="font-weight: 600;">${appt.name || 'Unknown'}</td>
                     <td><span class="service-badge" style="height: auto; text-align: left; display: inline-block;">${serviceDisplay}</span></td>
                     <td><a href="tel:${appt.phone}" class="phone-link">${appt.phone || '-'}</a></td>
                     <td>${appt.location || '-'}</td>
                     <td style="line-height: 1.4;">${appt.issue || '-'}</td>
                 </tr>
-            `}).join('');
+            `;
+                }).join('');
+            } catch (error) {
+                console.error('Failed to load appointments:', error);
+                tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">Unable to load inquiries right now.</td></tr>';
+            }
         });
     </script>
 </body>
