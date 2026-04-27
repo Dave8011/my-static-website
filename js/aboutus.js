@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent card click if necessary
             const card = btn.closest('.benefit-card');
-            
+
             // Close others (optional - standard accordion behavior)
             // document.querySelectorAll('.benefit-card.expanded').forEach(otherCard => {
             //     if (otherCard !== card) otherCard.classList.remove('expanded');

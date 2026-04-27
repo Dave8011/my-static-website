@@ -517,7 +517,7 @@
 }
 
 .text-container.expanded {
-    max-height: 500px;
+    max-height: 1500px;
     /* Large enough to fit content */
     mask-image: none;
     -webkit-mask-image: none;

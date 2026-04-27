@@ -51,6 +51,16 @@ The website has been optimized for speed, accessibility, and SEO (Lighthouse Sco
    ```
 3. Save the file.
 
+**To Adjust Testimonial Marquee Speed:**
+1. Open `css/components.css`.
+2. Locate the `.marquee-content` class.
+3. Adjust the seconds in the `animation` property (e.g., change `40s` to `30s` for faster scrolling, or `60s` for slower):
+   ```css
+   .marquee-content {
+       animation: scroll 30s linear infinite;
+   }
+   ```
+
 ### Updating FAQs
 1. Open `js/faqs.js`.
 2. Add a new object to the `faqsData` array:
@@ -89,6 +99,12 @@ The website has been optimized for speed, accessibility, and SEO (Lighthouse Sco
    }
    ```
 4. **Important**: If you add a new service ID (e.g., `service7`), you must also add a card for it in `services.html` that links to `service_detail.html?id=service7`.
+
+### Updating Book Appointment Service Types
+To update the "Service Type" dropdown in the Book an Appointment form:
+1. Open `contact.html`.
+2. Locate the `<select id="serviceType" name="serviceType" required>` element.
+3. Add, edit, or remove the `<option value="TypeName">TypeName</option>` tags inside it.
 
 ### Updating Doctors Section
 1. Open `js/doctors_data.js`.
