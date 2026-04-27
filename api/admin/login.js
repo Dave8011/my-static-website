@@ -6,7 +6,20 @@ export default function handler(req, res) {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    const { username, password } = req.body;
+    let username, password;
+    if (typeof req.body === 'string') {
+        try {
+            const parsed = JSON.parse(req.body);
+            username = parsed.username;
+            password = parsed.password;
+        } catch (e) { }
+    } else if (req.body) {
+        username = req.body.username;
+        password = req.body.password;
+    }
+
+    console.log("Login attempt for:", username);
+    console.log("Expected user:", process.env.ADMIN_USER);
 
     if (username === process.env.ADMIN_USER && password === process.env.ADMIN_PASS) {
         const token = jwt.sign({ username }, process.env.JWT_SECRET || 'fallback_secret', {

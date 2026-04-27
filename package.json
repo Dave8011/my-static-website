@@ -2,6 +2,7 @@
   "name": "therehabhouse-site",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "The Rehab House static site with admin API backend",
   "main": "server.js",
   "scripts": {

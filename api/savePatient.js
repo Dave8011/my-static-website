@@ -3,16 +3,27 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
+    let bodyParams;
+    if (typeof req.body === 'string') {
+        try {
+            bodyParams = JSON.parse(req.body);
+        } catch (e) {
+            bodyParams = {};
+        }
+    } else {
+        bodyParams = req.body || {};
+    }
+
     try {
         const response = await fetch(process.env.GOOGLE_SCRIPT_URL, {
             method: "POST",
             body: JSON.stringify({
                 key: process.env.REHAB_SECRET,
-                name: req.body.name,
-                service: req.body.service,
-                contact: req.body.contact,
-                location: req.body.location,
-                issue: req.body.issue,
+                name: bodyParams.name,
+                service: bodyParams.service,
+                contact: bodyParams.contact,
+                location: bodyParams.location,
+                issue: bodyParams.issue,
             }),
         });
 

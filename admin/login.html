@@ -162,8 +162,12 @@
 
             <div class="form-group">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" class="form-control" placeholder="••••••••" required
-                    autocomplete="current-password">
+                <div style="position: relative;">
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required
+                        autocomplete="current-password" style="padding-right: 45px;">
+                    <span class="material-icons" id="togglePassword"
+                        style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; user-select: none;">visibility</span>
+                </div>
             </div>
 
             <button type="submit" class="btn-login" id="loginBtn">Sign In</button>
@@ -181,6 +185,18 @@
         function buildApiUrl(path) {
             return `${window.API_CONFIG.baseUrl}${path}`;
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('togglePassword');
+            const pwdInput = document.getElementById('password');
+            if (toggleBtn && pwdInput) {
+                toggleBtn.addEventListener('click', function () {
+                    const type = pwdInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    pwdInput.setAttribute('type', type);
+                    this.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+                });
+            }
+        });
 
         async function checkExistingSession() {
             try {
