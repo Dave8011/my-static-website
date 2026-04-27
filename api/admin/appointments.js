@@ -28,14 +28,27 @@ export default async function handler(req, res) {
         }
 
         let data = await response.json();
+        console.log("Raw Google Script response:", JSON.stringify(data).substring(0, 500)); // Debug log for vercel
 
+        let appointments = [];
         if (Array.isArray(data)) {
-            data = { appointments: data };
-        } else if (!data.appointments) {
-            data.appointments = [];
+            appointments = data;
+        } else if (data && typeof data === 'object') {
+            if (Array.isArray(data.data)) appointments = data.data;
+            else if (Array.isArray(data.appointments)) appointments = data.appointments;
+            else if (Array.isArray(data.result)) appointments = data.result;
+            else if (Array.isArray(data.items)) appointments = data.items;
+            else {
+                for (const key of Object.keys(data)) {
+                    if (Array.isArray(data[key])) {
+                        appointments = data[key];
+                        break;
+                    }
+                }
+            }
         }
 
-        return res.status(200).json(data);
+        return res.status(200).json({ appointments });
     } catch (error) {
         console.error('Error fetching appointments:', error);
         return res.status(500).json({ error: 'Internal Server Error' });

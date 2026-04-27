@@ -349,22 +349,24 @@
                 }
 
                 tableBody.innerHTML = appointments.map(appt => {
-                    let serviceDisplay = appt.service || 'General';
-                    if (appt.serviceType) {
-                        serviceDisplay = `${appt.serviceType}`;
-                        if (appt.serviceMode) {
-                            serviceDisplay += ` <br><small style="color: #666; font-weight: 400;">(${appt.serviceMode})</small>`;
-                        }
+                    const dateVal = appt.createdAt || appt.Date || appt.date || appt.Timestamp || '';
+                    const nameVal = appt.name || appt['Client Name'] || appt.Name || 'Unknown';
+                    let serviceDisplay = appt.service || appt['Service Requested'] || appt.serviceType || 'General';
+                    if (appt.serviceMode && serviceDisplay !== 'General') {
+                        serviceDisplay += ` <br><small style="color: #666; font-weight: 400;">(${appt.serviceMode})</small>`;
                     }
+                    const contactVal = appt.contact || appt.phone || appt.Contact || '-';
+                    const locationVal = appt.location || appt.Location || '-';
+                    const issueVal = appt.issue || appt['Issue Description'] || appt.Issue || '-';
 
                     return `
                 <tr>
-                    <td style="color: #666; font-size: 0.9rem;">${formatDisplayDate(appt.createdAt)}</td>
-                    <td style="font-weight: 600;">${appt.name || 'Unknown'}</td>
+                    <td style="color: #666; font-size: 0.9rem;">${formatDisplayDate(dateVal)}</td>
+                    <td style="font-weight: 600;">${nameVal}</td>
                     <td><span class="service-badge" style="height: auto; text-align: left; display: inline-block;">${serviceDisplay}</span></td>
-                    <td><a href="tel:${appt.phone}" class="phone-link">${appt.phone || '-'}</a></td>
-                    <td>${appt.location || '-'}</td>
-                    <td style="line-height: 1.4;">${appt.issue || '-'}</td>
+                    <td><a href="tel:${contactVal}" class="phone-link">${contactVal}</a></td>
+                    <td>${locationVal}</td>
+                    <td style="line-height: 1.4;">${issueVal}</td>
                 </tr>
             `;
                 }).join('');
