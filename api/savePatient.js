@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     // Indian phone number regex: optional +91 or 91, optional space/dash, then 10 digits
     const phoneRegex = /^(?:\+?91[-\s]?)?[0-9]{10}$/;
     if (!phoneRegex.test(bodyParams.contact.trim())) {
-        return res.status(400).json({ error: 'Invalid phone number. Must be a valid 10-digit Indian number (e.g. +91 9876543210).' });
+        return res.status(400).json({ error: 'Invalid phone number. Must be a valid 10-digit number.' });
     }
 
     try {
