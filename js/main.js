@@ -87,29 +87,18 @@ function getApiBaseUrl() {
     return isLocalHost ? 'http://localhost:4000' : 'https://api.therehabhouse.in';
 }
 
-async function saveAppointment(data) {
-    const response = await fetch(`${getApiBaseUrl()}/api/appointments`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to save appointment');
-    }
-
-    return response.json();
-}
-
 async function handleAppointmentSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const submitButton = form.querySelector('button[type="submit"]');
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const formData = {
+        name: document.getElementById("name").value,
+        service: document.getElementById("service").value,
+        contact: document.getElementById("contact").value,
+        location: document.getElementById("location").value,
+        issue: document.getElementById("issue").value,
+    };
 
     if (submitButton) {
         submitButton.disabled = true;
@@ -118,7 +107,18 @@ async function handleAppointmentSubmit(event) {
     }
 
     try {
-        await saveAppointment(data);
+        const response = await fetch("/api/savePatient", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save appointment');
+        }
+
         alert("Appointment Request Sent! We will contact you shortly.");
         form.reset();
 

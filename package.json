@@ -5,14 +5,11 @@
   "description": "The Rehab House static site with admin API backend",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "vercel dev"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.7",
+    "cookie": "^1.1.1",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2"
   }
 }
