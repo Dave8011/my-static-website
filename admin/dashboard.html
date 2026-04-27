@@ -180,7 +180,8 @@
         }
 
         input[type="text"],
-        input[type="date"] {
+        input[type="date"],
+        select {
             padding: 12px 20px;
             border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 50px;
@@ -199,8 +200,14 @@
             min-width: 180px;
         }
 
+        select {
+            min-width: 150px;
+            cursor: pointer;
+        }
+
         input[type="text"]:focus,
-        input[type="date"]:focus {
+        input[type="date"]:focus,
+        select:focus {
             background: rgba(255, 255, 255, 0.9);
             border-color: var(--secondary-color);
         }
@@ -309,6 +316,53 @@
             color: #64748b;
             font-size: 1.1rem;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .dashboard-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .dashboard-content {
+                padding: 20px 15px;
+            }
+
+            .stats-grid {
+                gap: 15px;
+            }
+
+            .actions-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .actions-left,
+            .actions-right {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            select {
+                width: 100%;
+                box-sizing: border-box;
+                min-width: 100%;
+            }
+
+            .btn-export {
+                width: 100%;
+                justify-content: center;
+            }
+
+            th,
+            td {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 
@@ -343,8 +397,12 @@
         <!-- Filters & Actions -->
         <div class="actions-bar">
             <div class="actions-left">
-                <input type="text" id="searchInput" placeholder="Search name, phone, service..."
-                    onkeyup="filterTable()">
+                <select id="searchType" onchange="filterTable()">
+                    <option value="all">Search All</option>
+                    <option value="name">Name Only</option>
+                    <option value="phone">Phone Only</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="Type here..." oninput="filterTable()">
                 <input type="date" id="dateFilter" onchange="filterTable()">
             </div>
             <div class="actions-right">
@@ -496,15 +554,27 @@
 
         function filterTable() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchType = document.getElementById('searchType').value;
             const dateQ = document.getElementById('dateFilter').value;
 
             filteredAppointments = allAppointments.filter(appt => {
-                const matchSearch = (
-                    appt._name.toLowerCase().includes(query) ||
-                    appt._phone.toLowerCase().includes(query) ||
-                    appt._service.toLowerCase().includes(query) ||
-                    appt._location.toLowerCase().includes(query)
-                );
+                let matchSearch = false;
+
+                if (query === '') {
+                    matchSearch = true;
+                } else if (searchType === 'name') {
+                    matchSearch = appt._name.toLowerCase().includes(query);
+                } else if (searchType === 'phone') {
+                    matchSearch = appt._phone.toLowerCase().includes(query);
+                } else {
+                    matchSearch = (
+                        appt._name.toLowerCase().includes(query) ||
+                        appt._phone.toLowerCase().includes(query) ||
+                        appt._service.toLowerCase().includes(query) ||
+                        appt._location.toLowerCase().includes(query)
+                    );
+                }
+
                 const matchDate = dateQ ? appt._dateIso === dateQ : true;
                 return matchSearch && matchDate;
             });
