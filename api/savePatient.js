@@ -14,6 +14,15 @@ export default async function handler(req, res) {
         bodyParams = req.body || {};
     }
 
+    if (!bodyParams.name || !bodyParams.contact || !bodyParams.service) {
+        return res.status(400).json({ error: 'Missing required fields. Name, Contact, and Service are mandatory.' });
+    }
+
+    const phoneRegex = /^[+]?[0-9\s-]{10,15}$/;
+    if (!phoneRegex.test(bodyParams.contact.trim())) {
+        return res.status(400).json({ error: 'Invalid phone number format.' });
+    }
+
     try {
         const response = await fetch(process.env.GOOGLE_SCRIPT_URL, {
             method: "POST",
