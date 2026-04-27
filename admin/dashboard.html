@@ -320,22 +320,55 @@
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .dashboard-header {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
+                padding: 15px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .brand-text {
+                font-size: 1rem;
+            }
+
+            .logout-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
 
             .dashboard-content {
-                padding: 20px 15px;
+                padding: 15px 10px;
             }
 
             .stats-grid {
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                margin-bottom: 25px;
+            }
+
+            .stat-card {
+                padding: 15px;
+                border-radius: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+                margin-bottom: 4px;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
             }
 
             .actions-bar {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+                background: var(--card-bg);
+                backdrop-filter: blur(16px);
+                border: 1px solid var(--card-border);
+                padding: 15px;
+                border-radius: 16px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
             }
 
             .actions-left,
@@ -351,11 +384,14 @@
                 width: 100%;
                 box-sizing: border-box;
                 min-width: 100%;
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
 
             .btn-export {
                 width: 100%;
                 justify-content: center;
+                padding: 12px;
             }
 
             /* Card-based Mobile Table Override */
@@ -470,6 +506,10 @@
             <div class="stat-card">
                 <div class="stat-number" id="todayCount" style="color: #10b981;">0</div>
                 <div class="stat-label">New Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="weekCount" style="color: #f59e0b;">0</div>
+                <div class="stat-label">This Week</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="filteredCount" style="color: #8b5cf6;">0</div>
@@ -626,8 +666,23 @@
 
                 // Compute Stats
                 document.getElementById('totalCount').innerText = allAppointments.length;
-                const todayIso = new Date().toISOString().split('T')[0];
-                document.getElementById('todayCount').innerText = allAppointments.filter(a => a._dateIso === todayIso).length;
+
+                const now = new Date();
+                const todayIso = now.toISOString().split('T')[0];
+
+                // Calculate past 7 days tracking
+                const weekAgo = new Date();
+                weekAgo.setDate(now.getDate() - 7);
+                let weekCount = 0;
+                let todayCount = 0;
+
+                allAppointments.forEach(a => {
+                    if (a._dateIso === todayIso) todayCount++;
+                    if (a._dateObj && a._dateObj >= weekAgo) weekCount++;
+                });
+
+                document.getElementById('todayCount').innerText = todayCount;
+                document.getElementById('weekCount').innerText = weekCount;
 
                 filterTable();
             } catch (error) {
