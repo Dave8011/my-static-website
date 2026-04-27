@@ -320,20 +320,25 @@
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .dashboard-header {
-                padding: 15px;
+                padding: 15px 10px;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
                 gap: 5px;
             }
 
+            .brand img {
+                height: 32px;
+            }
+
             .brand-text {
-                font-size: 1rem;
+                display: none;
             }
 
             .logout-btn {
                 padding: 6px 12px;
                 font-size: 0.8rem;
+                white-space: nowrap;
             }
 
             .dashboard-content {
@@ -344,6 +349,10 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
                 margin-bottom: 25px;
+            }
+
+            .stat-card:last-child {
+                grid-column: span 2;
             }
 
             .stat-card {
@@ -508,10 +517,6 @@
                 <div class="stat-label">New Today</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="weekCount" style="color: #f59e0b;">0</div>
-                <div class="stat-label">This Week</div>
-            </div>
-            <div class="stat-card">
                 <div class="stat-number" id="filteredCount" style="color: #8b5cf6;">0</div>
                 <div class="stat-label">Visible Records</div>
             </div>
@@ -670,19 +675,12 @@
                 const now = new Date();
                 const todayIso = now.toISOString().split('T')[0];
 
-                // Calculate past 7 days tracking
-                const weekAgo = new Date();
-                weekAgo.setDate(now.getDate() - 7);
-                let weekCount = 0;
                 let todayCount = 0;
-
                 allAppointments.forEach(a => {
                     if (a._dateIso === todayIso) todayCount++;
-                    if (a._dateObj && a._dateObj >= weekAgo) weekCount++;
                 });
 
                 document.getElementById('todayCount').innerText = todayCount;
-                document.getElementById('weekCount').innerText = weekCount;
 
                 filterTable();
             } catch (error) {
