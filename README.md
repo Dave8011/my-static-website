@@ -27,14 +27,22 @@ For your split-domain setup:
 For production on your home server, run it behind HTTPS and set `COOKIE_SECURE=true`.
 
 ## Performance & Optimization (New!)
-The website has been optimized for speed, accessibility, and SEO (Lighthouse Score > 95/100).
+The website has been aggressively optimized for speed, accessibility, and Technical SEO (Lighthouse Score > 95/100).
 
 ### Key Features
-- **Modern Image Formats**: All images are converted to **WebP** for faster loading.
+- **Modern Image Formats & CLS Prevention**: All local images are converted to **WebP** for faster loading. Additionally, all `<img>` tags have explicit `width` and `height` attributes to prevent Cumulative Layout Shift (CLS).
+- **SEO & Social Sharing**: Every page features a self-referencing **Canonical Tag** to prevent duplicate content issues, and **Open Graph (OG) Tags** so links display beautifully with images/titles when shared on WhatsApp, Facebook, or Twitter.
+- **Sitemap Enhancements**: The `sitemap.xml` uses `<lastmod>` tags to notify Google of fresh content.
 - **Lazy Loading**: Images below the fold load only when scrolled into view.
 - **Resource Prioritization**: Critical assets (like the LCP hero banner) are preloaded.
 - **Accessibility**: High contrast colors, proper ARIA labels, and semantic HTML structure (`<main>`, landmarks).
 - **Fast Scripts**: Non-critical JavaScript is deferred.
+
+### How to Maintain SEO Standards
+When adding **new pages** or **new content**, follow these rules to maintain the site's high optimization:
+1. **New HTML Pages**: Always copy the `<head>` meta tags from an existing page. Be sure to update the `<link rel="canonical" href="...">` and `<meta property="og:url" content="...">` to match the exact new URL.
+2. **New Images**: Always define explicit `width` and `height` attributes matching the image's true dimensions (e.g., `<img src="..." width="600" height="600">`). Whenever possible, use `.webp` format instead of `.png` or `.jpg`.
+3. **Sitemap**: If you add a new page or significantly update an existing one, update the `<lastmod>` date in `sitemap.xml`.
 
 ---
 

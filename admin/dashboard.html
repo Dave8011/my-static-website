@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
-    <script src="../js/api-config.js"></script>
-    <script>
+<script src="../js/api-config.js"></script>
+<script>
         function buildApiUrl(path) {
             return `${window.API_CONFIG.baseUrl}${path}`;
         }
@@ -19,16 +19,14 @@
             });
         })();
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | The Rehab House</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard | The Rehab House</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
         :root {
             --primary-color: #1e293b;
             --secondary-color: #3b82f6;
@@ -492,81 +490,81 @@
             }
         }
     </style>
-</head>
-
+<link href="https://www.therehabhouse.in/admin/dashboard.html" rel="canonical">
+<meta content="The Rehab House | Neuro &amp; Ortho Rehabilitation in Mumbai" property="og:title">
+<meta content="Expert therapy for stroke, brain injury, orthopedic conditions." property="og:description">
+<meta content="https://www.therehabhouse.in/images/hero-banner.jpg" property="og:image"/>
+<meta content="https://www.therehabhouse.in/admin/dashboard.html" property="og:url"/>
+</meta></meta></link></head>
 <body>
-    <header class="dashboard-header">
-        <div class="brand">
-            <img src="../images/logo.png" alt="Logo">
-            <span class="brand-text">Admin Panel</span>
-        </div>
-        <div class="user-menu">
-            <button onclick="handleLogout()" class="logout-btn">Sign Out</button>
-        </div>
-    </header>
-
-    <div class="dashboard-content">
-        <!-- Quick Stats -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number" id="totalCount">0</div>
-                <div class="stat-label">Total Inquiries</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="todayCount" style="color: #10b981;">0</div>
-                <div class="stat-label">New Today</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="filteredCount" style="color: #8b5cf6;">0</div>
-                <div class="stat-label">Visible Records</div>
-            </div>
-        </div>
-
-        <!-- Filters & Actions -->
-        <div class="actions-bar">
-            <div class="actions-left">
-                <select id="searchType" onchange="filterTable()">
-                    <option value="all">Search All</option>
-                    <option value="name">Name Only</option>
-                    <option value="phone">Phone Only</option>
-                </select>
-                <input type="text" id="searchInput" placeholder="Type here..." oninput="filterTable()">
-                <input type="date" id="dateFilter" onchange="filterTable()">
-            </div>
-            <div class="actions-right">
-                <button class="btn-export" onclick="exportCSV()">
-                    <span class="material-icons">download</span> Export CSV
+<header class="dashboard-header">
+<div class="brand">
+<img alt="Logo" height="125" src="../images/logo.webp" width="750"/>
+<span class="brand-text">Admin Panel</span>
+</div>
+<div class="user-menu">
+<button class="logout-btn" onclick="handleLogout()">Sign Out</button>
+</div>
+</header>
+<div class="dashboard-content">
+<!-- Quick Stats -->
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number" id="totalCount">0</div>
+<div class="stat-label">Total Inquiries</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="todayCount" style="color: #10b981;">0</div>
+<div class="stat-label">New Today</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="filteredCount" style="color: #8b5cf6;">0</div>
+<div class="stat-label">Visible Records</div>
+</div>
+</div>
+<!-- Filters & Actions -->
+<div class="actions-bar">
+<div class="actions-left">
+<select id="searchType" onchange="filterTable()">
+<option value="all">Search All</option>
+<option value="name">Name Only</option>
+<option value="phone">Phone Only</option>
+</select>
+<input id="searchInput" oninput="filterTable()" placeholder="Type here..." type="text"/>
+<input id="dateFilter" onchange="filterTable()" type="date"/>
+</div>
+<div class="actions-right">
+<button class="btn-export" onclick="exportCSV()">
+<span class="material-icons">download</span> Export CSV
                 </button>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3>Appointments & Inquiries</h3>
-            </div>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Client Name</th>
-                            <th>Service Requested</th>
-                            <th>Contact</th>
-                            <th>Location</th>
-                            <th width="35%">Issue Description</th>
-                        </tr>
-                    </thead>
-                    <tbody id="inquiriesTableBody">
-                        <tr>
-                            <td colspan="6" class="empty-state">Loading...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <script>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<h3>Appointments &amp; Inquiries</h3>
+</div>
+<div class="table-responsive">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Client Name</th>
+<th>Service Requested</th>
+<th>Contact</th>
+<th>Location</th>
+<th width="35%">Issue Description</th>
+</tr>
+</thead>
+<tbody id="inquiriesTableBody">
+<tr>
+<td class="empty-state" colspan="6">Loading...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<script>
         let allAppointments = [];
         let filteredAppointments = [];
 
@@ -748,5 +746,4 @@
         }
     </script>
 </body>
-
 </html>
