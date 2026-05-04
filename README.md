@@ -186,6 +186,21 @@ Each page uses a specific CSS class for its banner image. To change a banner:
 
 ## Customization
 
+### Updating Social Media & External Links
+The links for WhatsApp, Instagram, Google Profile, and Phone numbers appear in two primary locations. To update them:
+
+1. **Homepage Hero Banner:**
+   - Open `index.html`.
+   - Locate the `<div class="social-buttons-container">` section (around line 45).
+   - Update the `href` attributes inside the `<a>` tags.
+   - Example: `<a href="https://www.instagram.com/your_new_handle" ...>`
+
+2. **Global Footer:**
+   - Open `js/header_footer.js`.
+   - Locate the `loadFooter()` function.
+   - Look for the `<div class="social-icons-row">` (around line 57).
+   - Update the `href` attributes for WhatsApp, Instagram, Google Search, and the Phone number.
+
 ### Changing Fonts
 The website uses a centralized CSS variable system for fonts. To change the font family:
 
