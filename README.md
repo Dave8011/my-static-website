@@ -65,7 +65,7 @@ When adding **new pages** or **new content**, follow these rules to maintain the
 3. Adjust the seconds in the `animation` property (e.g., change `40s` to `30s` for faster scrolling, or `60s` for slower):
    ```css
    .marquee-content {
-       animation: scroll 30s linear infinite;
+       animation: scroll 27s linear infinite;
    }
    ```
 
