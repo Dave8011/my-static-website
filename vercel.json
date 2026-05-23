@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "statusCode": 301 },
+    { "source": "/about_us.html", "destination": "/about-us", "statusCode": 301 },
+    { "source": "/about-us.html", "destination": "/about-us", "statusCode": 301 },
+    { "source": "/services.html", "destination": "/services", "statusCode": 301 },
+    { "source": "/achievements.html", "destination": "/achievements", "statusCode": 301 },
+    { "source": "/blog.html", "destination": "/blog", "statusCode": 301 },
+    { "source": "/gallery.html", "destination": "/gallery", "statusCode": 301 },
+    { "source": "/contact.html", "destination": "/contact", "statusCode": 301 },
+    { "source": "/sunday-reset.html", "destination": "/reset-sessions", "statusCode": 301 },
+    { "source": "/sunday-reset", "destination": "/reset-sessions", "statusCode": 301 },
+    { "source": "/reset-sessions.html", "destination": "/reset-sessions", "statusCode": 301 },
+    { "source": "/search_results.html", "destination": "/search-results", "statusCode": 301 },
+    { "source": "/search-results.html", "destination": "/search-results", "statusCode": 301 }
+  ]
+}

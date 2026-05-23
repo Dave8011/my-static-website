@@ -278,3 +278,128 @@ The "How are we different" section in `about_us.html` is dynamically generated.
 ### **Adding New Images:**
 1.  Place your image file (JPG/PNG/WEBP) in the **`images/`** folder.
 2.  Update the `image` path in `js/aboutus.js` to match the new filename.
+
+---
+
+## Homepage Announcement Strip (RE:SET Sessions)
+
+A premium horizontal announcement strip is added at the very top of the homepage (`index.html`) to highlight special campaigns (e.g., Sunday RE:SET Sessions).
+
+### **How to Enable or Disable the Announcement Strip**
+
+The banner is built to be extremely simple to toggle without breaking any desktop header layouts or mobile navigation flows.
+
+1. **Open the Homepage file:**
+   - Locate and open the `index.html` file in the root directory.
+
+2. **Toggle the Visibility Class:**
+   - Locate the `<div id="announcement-strip">` element (near line 45, right below `<body>`).
+   - **To HIDE the strip (Disabled by default):**
+     Ensure the `hidden` class is present:
+     ```html
+     <div id="announcement-strip" class="announcement-strip hidden">
+     ```
+   - **To SHOW the strip (Enabled):**
+     Remove the `hidden` class:
+     ```html
+     <div id="announcement-strip" class="announcement-strip">
+     ```
+
+3. **Automatic Layout Stabilization:**
+   - There is a custom script in `js/main.js` that automatically detects if the announcement strip is visible.
+   - If the banner is enabled, it automatically adds the `has-announcement` class to the `<body>` tag, shifting the desktop header down to prevent any overlap issues. No extra styling or manual offset configuration is required!
+
+---
+
+## Clean URL Architecture & Administrator Maintenance Guide
+
+We have migrated **The Rehab House (TRH)** website to premium, clean, search-engine-optimized URLs (e.g. `/about-us` instead of `/about_us.html`).
+
+### **How Clean URLs Work**
+
+The server uses Vercel's native routing configuration defined in [`vercel.json`](file:///home/dave/dev/my-static-website/vercel.json):
+1. **Clean URLs Enabled (`"cleanUrls": true`)**: Instantly strips all `.html` extensions from the address bar (e.g., loading `/about-us.html` automatically renders as `/about-us`).
+2. **Permanent 301 Redirects**: Any legacy request targeting underscores or `.html` extensions (e.g. `/about_us.html`, `/services.html`, `/contact.html`, `/sunday-reset.html`) is permanently redirected with a 301 status code to its corresponding modern clean path.
+3. **Hyphenated Standards**: All new clean URLs strictly use hyphens (`-`) rather than underscores (`_`) for modern aesthetic and standardized long-term SEO structure.
+
+---
+
+### **How to Add a New Page to the Website**
+
+To create a new page under this modern structure, follow this simple checklist:
+
+1. **Create the HTML File**:
+   - Save the file using lowercase letters and hyphens (e.g., `our-philosophy.html`).
+2. **Update the Head Metas**:
+   - Set the `<link rel="canonical" href="https://www.therehabhouse.in/our-philosophy" />` (use the clean extension-less path).
+3. **Configure Redirection**:
+   - Open [`vercel.json`](file:///home/dave/dev/my-static-website/vercel.json).
+   - Add a 301 redirect rule at the top of the `"redirects"` list:
+     ```json
+     { "source": "/our-philosophy.html", "destination": "/our-philosophy", "statusCode": 301 }
+     ```
+4. **Link to the Page**:
+   - When linking to the page from any header, footer, or body button, link to `/our-philosophy` (do **NOT** include `.html` or underscores).
+
+---
+
+### **How to Edit the Sunday RE:SET Page (`reset-sessions.html`)**
+
+The campaign page is fully optimized for custom styling, high-performance visual imagery, and conversion triggers. Here is how to maintain it:
+
+#### **1. Swapping / Modifying Page Images**
+*   **Hero Section Banner Background**:
+    - The full-bleed background image is loaded in [`css/sunday-reset.css`](file:///home/dave/dev/my-static-website/css/sunday-reset.css) under `.reset-hero`.
+    - To change it, upload your new image to the `images/` directory (e.g. `images/my-new-banner.jpg`) and replace line 69:
+      ```css
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.7)), 
+                  url('../images/my-new-banner.jpg') center/cover no-repeat;
+      ```
+*   **Assisted Stretch Section Image**:
+    - Locate the `SECTION 6 — WHY TRH IS DIFFERENT` block in [`reset-sessions.html`](file:///home/dave/dev/my-static-website/reset-sessions.html).
+    - Find the `<img>` tag at line 284:
+      ```html
+      <img src="images/pain-management.webp" alt="Therapist Guided Stretch Session" />
+      ```
+    - Replace `src="images/pain-management.webp"` with your new image path.
+*   **Inside the Recovery Lounge Gallery Images**:
+    - Locate `SECTION 7 — GALLERY / REAL PHOTOS` in `reset-sessions.html` (lines 290 to 326).
+    - There are 4 grid cards containing `<img>` nodes. Simply upload your photos to `images/` and update the corresponding `src` attributes and `alt` text labels for instant refresh.
+
+#### **2. Changing Text, Headers & Inclusions**
+*   **Editing marketing copy**: Locate the text tag you want to modify in [`reset-sessions.html`](file:///home/dave/dev/my-static-website/reset-sessions.html) and replace the copy directly inside the tag (e.g. changing dynamic stretching bullet descriptions under `SECTION 3`).
+*   **Adding/Updating Session Types (Packages)**:
+    - In `reset-sessions.html` under `SECTION 3`, you will see two card panels: `RE:SET Recovery` and `Express Recovery`.
+    - You can edit their durations, add details inside `<li>` nodes, or copy-paste a card to create a third customized tier.
+
+#### **3. Updating Booking WhatsApp Links**
+*   If you need to change the destination phone number or pre-filled message text on click:
+    - Generate a new WhatsApp shortlink (e.g., via wa.link).
+    - Find the three booking buttons in [`reset-sessions.html`](file:///home/dave/dev/my-static-website/reset-sessions.html) (search for `"https://wa.link/leqiek"`).
+    - Replace all instances with your new link.
+
+---
+
+### **How to Update Client-Side Search Indexes**
+
+When you create a new page, make sure users can easily find it using the search box:
+
+1. **Static HTML Indexing**:
+   - Open [`search-results.html`](file:///home/dave/dev/my-static-website/search-results.html).
+   - Scroll to `siteIndex` array (around line 70).
+   - Add a new object following this clean-URL layout:
+     ```javascript
+     {
+         title: "Our Philosophy",
+         url: "our-philosophy",
+         content: "keywords, mission, vision, holistic rehabilitation details..."
+     }
+     ```
+2. **Text Scanning Crawler**:
+   - Open [`js/search.js`](file:///home/dave/dev/my-static-website/js/search.js).
+   - Add the physical file reference to the `pages` fetching array (around line 13):
+     ```javascript
+     { name: "Our Philosophy", url: "our-philosophy.html" }
+     ```
+   - The search crawler will automatically fetch, index, and generate premium clean links for matching entries!
+

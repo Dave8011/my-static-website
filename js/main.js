@@ -12,7 +12,7 @@ function triggerSearch() {
 
     if (query) {
         // Redirect to search results page
-        window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
+        window.location.href = `search-results?q=${encodeURIComponent(query)}`;
     } else {
         // Toggle visibility
         searchBox.classList.toggle('active');
@@ -219,7 +219,7 @@ async function hydrateBlogCard(url) {
                     <span class="blog-date">${date}</span>
                     <h3 class="blog-title">${title}</h3>
                     <p class="blog-excerpt">${excerpt}</p>
-                    <a href="${url}" class="read-more">Read Article</a>
+                    <a href="${url.replace('.html', '')}" class="read-more">Read Article</a>
                 </div>
             </article>
         `;
@@ -327,4 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         observer.observe(section);
     });
+});
+
+// Auto-detect Homepage Announcement Strip visibility for layout adjustment
+document.addEventListener('DOMContentLoaded', () => {
+    const strip = document.getElementById('announcement-strip');
+    if (strip && !strip.classList.contains('hidden')) {
+        document.body.classList.add('has-announcement');
+    }
 });

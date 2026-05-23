@@ -6,20 +6,21 @@ function loadHeader() {
     const headerHTML = `
     <header>
         <div class="logo">
-            <a href="${basePath}index.html">
+            <a href="${basePath || '/'}">
                 <img src="${basePath}images/logo.webp" alt="The Rehab House Logo" width="250" height="41">
             </a>
         </div>
 
         <nav>
             <ul>
-                <li><a href="${basePath}index.html">Home</a></li>
-                <li><a href="${basePath}about_us.html">About Us</a></li>
-                <li><a href="${basePath}services.html">Our Services</a></li>
-                <li><a href="${basePath}achievements.html">Achievements</a></li>
-                <li><a href="${basePath}blog.html">Blogs</a></li>
-                <li><a href="${basePath}gallery.html">Gallery</a></li>
-                <li><a href="${basePath}contact.html">Contact Us</a></li>
+                <li><a href="${basePath || '/'}">Home</a></li>
+                <li><a href="${basePath}about-us">About Us</a></li>
+                <li><a href="${basePath}services">Our Services</a></li>
+                <li><a href="${basePath}reset-sessions" class="nav-reset-highlight">RE:SET Sundays</a></li>
+                <li><a href="${basePath}achievements">Achievements</a></li>
+                <li><a href="${basePath}blog">Blogs</a></li>
+                <li><a href="${basePath}gallery">Gallery</a></li>
+                <li><a href="${basePath}contact">Contact Us</a></li>
             </ul>
         </nav>
         
@@ -49,7 +50,7 @@ function loadFooter() {
         <div class="footer-container">
             <!-- 1. Brand Section -->
             <div class="footer-brand">
-                <a href="${basePath}index.html" class="footer-logo">
+                <a href="${basePath || '/'}" class="footer-logo">
                     <img src="${basePath}images/logo.webp" alt="The Rehab House" width="200" height="auto">
                 </a>
                 <p class="brand-desc">South Mumbai’s premier Neuro & Ortho Rehabilitation Centre. Restoring independence through expert care and advanced technology.</p>
@@ -70,13 +71,14 @@ function loadFooter() {
             <div class="footer-col accordion-col">
                 <h3 onclick="toggleFooterAccordion(this)">Quick Links <span class="accordion-icon">+</span></h3>
                 <ul>
-                    <li><a href="${basePath}index.html">Home</a></li>
-                    <li><a href="${basePath}about_us.html">About Us</a></li>
-                    <li><a href="${basePath}services.html">Our Services</a></li>
-                    <li><a href="${basePath}achievements.html">Achievements</a></li>
-                    <li><a href="${basePath}blog.html">Blogs</a></li>
-                    <li><a href="${basePath}gallery.html">Gallery</a></li>
-                    <li><a href="${basePath}contact.html">Contact Us</a></li>
+                    <li><a href="${basePath || '/'}">Home</a></li>
+                    <li><a href="${basePath}about-us">About Us</a></li>
+                    <li><a href="${basePath}services">Our Services</a></li>
+                    <li><a href="${basePath}reset-sessions">RE:SET Sundays</a></li>
+                    <li><a href="${basePath}achievements">Achievements</a></li>
+                    <li><a href="${basePath}blog">Blogs</a></li>
+                    <li><a href="${basePath}gallery">Gallery</a></li>
+                    <li><a href="${basePath}contact">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -114,7 +116,7 @@ function loadFooter() {
 
     <!-- Mobile Sticky CTA -->
     <div class="mobile-sticky-cta" id="mobileStickyCTA">
-        <a href="${basePath}contact.html#booking">Book Appointment</a>
+        <a href="${basePath}contact#booking">Book Appointment</a>
     </div>
     `;
     document.getElementById('footer-placeholder').innerHTML = footerHTML;
