@@ -6,7 +6,6 @@
   "description": "The Rehab House static site with admin API backend",
   "main": "server.js",
   "scripts": {
-    "dev": "vercel dev"
   },
   "dependencies": {
     "cookie": "^1.1.1",

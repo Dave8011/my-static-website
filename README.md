@@ -283,31 +283,20 @@ The "How are we different" section in `about_us.html` is dynamically generated.
 
 ## Homepage Announcement Strip (RE:SET Sessions)
 
-A premium horizontal announcement strip is added at the very top of the homepage (`index.html`) to highlight special campaigns (e.g., Sunday RE:SET Sessions).
+A premium structural horizontal announcement strip is implemented on the homepage (`index.html`) to highlight special campaigns (e.g., Sunday RE:SET Sessions).
 
-### **How to Enable or Disable the Announcement Strip**
-
-The banner is built to be extremely simple to toggle without breaking any desktop header layouts or mobile navigation flows.
-
-1. **Open the Homepage file:**
-   - Locate and open the `index.html` file in the root directory.
-
-2. **Toggle the Visibility Class:**
-   - Locate the `<div id="announcement-strip">` element (near line 45, right below `<body>`).
-   - **To HIDE the strip (Disabled by default):**
-     Ensure the `hidden` class is present:
-     ```html
-     <div id="announcement-strip" class="announcement-strip hidden">
-     ```
-   - **To SHOW the strip (Enabled):**
-     Remove the `hidden` class:
-     ```html
-     <div id="announcement-strip" class="announcement-strip">
-     ```
-
-3. **Automatic Layout Stabilization:**
-   - There is a custom script in `js/main.js` that automatically detects if the announcement strip is visible.
-   - If the banner is enabled, it automatically adds the `has-announcement` class to the `<body>` tag, shifting the desktop header down to prevent any overlap issues. No extra styling or manual offset configuration is required!
+### **Homepage Announcement Strip (Below Hero & Above Testimonials)**
+This is a sleek, dark horizontal strip placed right below the main homepage Hero and above the Patient Testimonials.
+*   **To HIDE the strip:**
+    Locate the `<div id="homepage-reset-strip">` element (near line 100) and add the `hidden` class:
+    ```html
+    <div id="homepage-reset-strip" class="homepage-reset-strip hidden">
+    ```
+*   **To SHOW the strip (Default):**
+    Ensure the `hidden` class is absent:
+    ```html
+    <div id="homepage-reset-strip" class="homepage-reset-strip">
+    ```
 
 ---
 

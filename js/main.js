@@ -329,10 +329,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Auto-detect Homepage Announcement Strip visibility for layout adjustment
-document.addEventListener('DOMContentLoaded', () => {
-    const strip = document.getElementById('announcement-strip');
-    if (strip && !strip.classList.contains('hidden')) {
-        document.body.classList.add('has-announcement');
-    }
-});
