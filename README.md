@@ -281,24 +281,7 @@ The "How are we different" section in `about_us.html` is dynamically generated.
 
 ---
 
-## Homepage Announcement Strip (RE:SET Sessions)
 
-A premium structural horizontal announcement strip is implemented on the homepage (`index.html`) to highlight special campaigns (e.g., Sunday RE:SET Sessions).
-
-### **Homepage Announcement Strip (Below Hero & Above Testimonials)**
-This is a sleek, dark horizontal strip placed right below the main homepage Hero and above the Patient Testimonials.
-*   **To HIDE the strip:**
-    Locate the `<div id="homepage-reset-strip">` element (near line 100) and add the `hidden` class:
-    ```html
-    <div id="homepage-reset-strip" class="homepage-reset-strip hidden">
-    ```
-*   **To SHOW the strip (Default):**
-    Ensure the `hidden` class is absent:
-    ```html
-    <div id="homepage-reset-strip" class="homepage-reset-strip">
-    ```
-
----
 
 ## Clean URL Architecture & Administrator Maintenance Guide
 
@@ -330,44 +313,7 @@ To create a new page under this modern structure, follow this simple checklist:
 4. **Link to the Page**:
    - When linking to the page from any header, footer, or body button, link to `/our-philosophy` (do **NOT** include `.html` or underscores).
 
----
 
-### **How to Edit the Sunday RE:SET Page (`reset-sessions.html`)**
-
-The campaign page is fully optimized for custom styling, high-performance visual imagery, and conversion triggers. Here is how to maintain it:
-
-#### **1. Swapping / Modifying Page Images**
-*   **Hero Section Banner Background**:
-    - The full-bleed background image is loaded in [`css/sunday-reset.css`](file:///home/dave/dev/my-static-website/css/sunday-reset.css) under `.reset-hero`.
-    - To change it, upload your new image to the `images/` directory (e.g. `images/my-new-banner.jpg`) and replace line 69:
-      ```css
-      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.7)), 
-                  url('../images/my-new-banner.jpg') center/cover no-repeat;
-      ```
-*   **Assisted Stretch Section Image**:
-    - Locate the `SECTION 6 — WHY TRH IS DIFFERENT` block in [`reset-sessions.html`](file:///home/dave/dev/my-static-website/reset-sessions.html).
-    - Find the `<img>` tag at line 284:
-      ```html
-      <img src="images/pain-management.webp" alt="Therapist Guided Stretch Session" />
-      ```
-    - Replace `src="images/pain-management.webp"` with your new image path.
-*   **Inside the Recovery Lounge Gallery Images**:
-    - Locate `SECTION 7 — GALLERY / REAL PHOTOS` in `reset-sessions.html` (lines 290 to 326).
-    - There are 4 grid cards containing `<img>` nodes. Simply upload your photos to `images/` and update the corresponding `src` attributes and `alt` text labels for instant refresh.
-
-#### **2. Changing Text, Headers & Inclusions**
-*   **Editing marketing copy**: Locate the text tag you want to modify in [`reset-sessions.html`](file:///home/dave/dev/my-static-website/reset-sessions.html) and replace the copy directly inside the tag (e.g. changing dynamic stretching bullet descriptions under `SECTION 3`).
-*   **Adding/Updating Session Types (Packages)**:
-    - In `reset-sessions.html` under `SECTION 3`, you will see two card panels: `RE:SET Recovery` and `Express Recovery`.
-    - You can edit their durations, add details inside `<li>` nodes, or copy-paste a card to create a third customized tier.
-
-#### **3. Updating Booking WhatsApp Links**
-*   If you need to change the destination phone number or pre-filled message text on click:
-    - Generate a new WhatsApp shortlink (e.g., via wa.link).
-    - Find the three booking buttons in [`reset-sessions.html`](file:///home/dave/dev/my-static-website/reset-sessions.html) (search for `"https://wa.link/leqiek"`).
-    - Replace all instances with your new link.
-
----
 
 ### **How to Update Client-Side Search Indexes**
 

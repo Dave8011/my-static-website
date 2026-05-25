@@ -16,7 +16,7 @@ function loadHeader() {
                 <li><a href="${basePath || '/'}">Home</a></li>
                 <li><a href="${basePath}about-us">About Us</a></li>
                 <li><a href="${basePath}services">Our Services</a></li>
-                <li><a href="${basePath}reset-sessions" class="nav-reset-highlight">RE:SET Sundays</a></li>
+
                 <li><a href="${basePath}achievements">Achievements</a></li>
                 <li><a href="${basePath}blog">Blogs</a></li>
                 <li><a href="${basePath}gallery">Gallery</a></li>
@@ -74,7 +74,7 @@ function loadFooter() {
                     <li><a href="${basePath || '/'}">Home</a></li>
                     <li><a href="${basePath}about-us">About Us</a></li>
                     <li><a href="${basePath}services">Our Services</a></li>
-                    <li><a href="${basePath}reset-sessions">RE:SET Sundays</a></li>
+
                     <li><a href="${basePath}achievements">Achievements</a></li>
                     <li><a href="${basePath}blog">Blogs</a></li>
                     <li><a href="${basePath}gallery">Gallery</a></li>

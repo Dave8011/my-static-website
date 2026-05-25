@@ -14,7 +14,7 @@ function performSearch(query) {
         { name: "Home", url: "index.html" },
         { name: "About Us", url: "about-us.html" },
         { name: "Our Services", url: "services.html" },
-        { name: "Sunday RE:SET Sessions", url: "reset-sessions.html" },
+
         { name: "Contact Us", url: "contact.html" }
     ];
 
