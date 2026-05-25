@@ -14,9 +14,15 @@
         name="keywords" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap" rel="stylesheet" />
+    <!-- Optimized Google Fonts Loading -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
+    </noscript>
     <!-- Preload LCP Image -->
     <link as="image" fetchpriority="high" href="images/hero-banner.jpg" rel="preload" />
     <link href="images/favicon.png" rel="icon" type="image/x-icon" />
@@ -71,7 +77,7 @@
                 <a class="circle-btn" href="https://wa.me/919653699526" target="_blank">
                     <div class="icon-container">
                         <img alt="Contact The Rehab House via WhatsApp for Admission Facility"
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" />
+                            src="images/whatsapp.svg" width="40" height="40" />
                     </div>
                     <span class="btn-text">WhatsApp</span>
                 </a>
@@ -208,7 +214,7 @@
     <!-- Back to Top Button -->
     <button aria-label="Back to Top" class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
     <!-- JavaScript -->
-    <script src="js/config.js"></script>
+
     <script defer="" src="js/google_reviews.js"></script>
     <script defer="" src="js/faqs.js"></script>
     <script defer="" src="js/header_footer.js"></script>
