@@ -136,8 +136,8 @@ function initStickyCTA() {
     const pageName = path.split("/").pop();
 
     // Check if Home or Contact
-    const isHome = pageName === "" || pageName === "index.html";
-    const isContact = pageName === "contact.html";
+    const isHome = pageName === "" || pageName === "index.html" || pageName === "index";
+    const isContact = pageName === "contact.html" || pageName === "contact";
 
     if (isHome || isContact) {
         // Remove completely
