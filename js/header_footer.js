@@ -7,7 +7,7 @@ function loadHeader() {
     <header>
         <div class="logo">
             <a href="${basePath || '/'}">
-                <img src="${basePath}images/logo.webp" alt="The Rehab House Logo" width="250" height="41">
+                <img src="${basePath}images/logo.webp" alt="The Rehab House Logo" width="282" height="47">
             </a>
         </div>
 
@@ -51,7 +51,7 @@ function loadFooter() {
             <!-- 1. Brand Section -->
             <div class="footer-brand">
                 <a href="${basePath || '/'}" class="footer-logo">
-                    <img src="${basePath}images/logo.webp" alt="The Rehab House" width="200" height="auto">
+                    <img src="${basePath}images/logo.webp" alt="The Rehab House" width="198" height="33">
                 </a>
                 <p class="brand-desc">South Mumbai’s premier Neuro & Ortho Rehabilitation Centre. Restoring independence through expert care and advanced technology.</p>
                 
