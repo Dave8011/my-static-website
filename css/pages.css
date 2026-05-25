@@ -915,3 +915,4 @@
         transform: rotate(180deg);
     }
 }
+\n/* Accessibility Contrast Fixes */\n.team-member p,\n.team-member h3,\n.specialist-card p,\n.team-subtitle,\n.contact-info a,\nfooter a.admin-link,\n.know-more-btn.small-btn {\n    color: #333333 !important;\n}\n
