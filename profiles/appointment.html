@@ -1,62 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book an Appointment</title>
+<html lang="en">
+  <head>
+    <title>Book an Appointment | The Rehab House</title>
+    <meta
+      content="Schedule your consultation or therapy session with The Rehab House specialists."
+      name="description"
+    />
+    <meta
+      content="Neurorehabilitation, Physiotherapy, Mumbai, Rehabilitation Centre, Paralysis, Stroke Recovery, Pain Management, Occupational Therapy, Inpatient Rehab"
+      name="keywords"
+    />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
     <link href="../css/variables.css" rel="stylesheet" />
-<link href="../css/base.css" rel="stylesheet" />
-<link href="../css/layout.css" rel="stylesheet" />
-<link href="../css/pages.css" rel="stylesheet" />
-<link href="../css/components.css" rel="stylesheet" />
-<link href="../css/responsive.css" rel="stylesheet" />
+    <link href="../css/base.css" rel="stylesheet" />
+    <link href="../css/layout.css" rel="stylesheet" />
+    <link href="../css/pages.css" rel="stylesheet" />
+    <link href="../css/components.css" rel="stylesheet" />
+    <link href="../css/responsive.css" rel="stylesheet" />
     <!-- Optimized Google Fonts Loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      rel="preload"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      media="print"
+      onload="this.media = 'all'"
+      rel="stylesheet"
+    />
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+        rel="stylesheet"
+      />
     </noscript>
 
-    <link rel="canonical" href="https://www.therehabhouse.in/profiles/appointment.html" />
-    <meta property="og:title" content="The Rehab House | Neuro & Ortho Rehabilitation in Mumbai" />
-    <meta property="og:description" content="Expert therapy for stroke, brain injury, orthopedic conditions." />
-    <meta property="og:image" content="https://www.therehabhouse.in/images/hero-banner.jpg" />
-    <meta property="og:url" content="https://www.therehabhouse.in/profiles/appointment.html" />
-</head>
-
-<body>
+    <link
+      href="https://www.therehabhouse.in/profiles/appointment"
+      rel="canonical"
+    />
+    <meta content="Book an Appointment | The Rehab House" property="og:title" />
+    <meta
+      content="Schedule your consultation or therapy session with The Rehab House specialists."
+      property="og:description"
+    />
+    <meta
+      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      property="og:image"
+    />
+    <meta
+      content="https://www.therehabhouse.in/profiles/appointment"
+      property="og:url"
+    />
+    <meta content="website" property="og:type" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="Book an Appointment | The Rehab House"
+      name="twitter:title"
+    />
+    <meta
+      content="Schedule your consultation or therapy session with The Rehab House specialists."
+      name="twitter:description"
+    />
+    <meta
+      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      name="twitter:image"
+    />
+  </head>
+  <body>
     <div class="popup-content">
-        <span class="close-popup" onclick="window.parent.closePopup()">×</span>
-
-        <h2>Book an Appointment</h2>
-        <form onsubmit="window.parent.handleAppointmentSubmit(event)">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="issue">Describe Your Issue</label>
-            <textarea id="issue" name="issue" rows="4" required></textarea>
-
-            <label for="service">Select Service</label>
-            <select id="service" name="service" required>
-                <option value="">Choose a Service</option>
-                <option value="Physiotherapy">Physiotherapy</option>
-                <option value="Neurorehabilitation">Neurorehabilitation</option>
-                <option value="Pain Management">Pain Management</option>
-                <option value="Orthopedic Therapy">Orthopedic Therapy</option>
-            </select>
-
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="location">Your Location</label>
-            <input type="text" id="location" name="location" required>
-
-            <button type="submit">Submit</button>
-        </form>
+      <span class="close-popup" onclick="window.parent.closePopup()">×</span>
+      <h2>Book an Appointment</h2>
+      <form onsubmit="window.parent.handleAppointmentSubmit(event)">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" required="" type="text" />
+        <label for="issue">Describe Your Issue</label>
+        <textarea id="issue" name="issue" required="" rows="4"></textarea>
+        <label for="service">Select Service</label>
+        <select id="service" name="service" required="">
+          <option value="">Choose a Service</option>
+          <option value="Physiotherapy">Physiotherapy</option>
+          <option value="Neurorehabilitation">Neurorehabilitation</option>
+          <option value="Pain Management">Pain Management</option>
+          <option value="Orthopedic Therapy">Orthopedic Therapy</option>
+        </select>
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" required="" type="tel" />
+        <label for="location">Your Location</label>
+        <input id="location" name="location" required="" type="text" />
+        <button type="submit">Submit</button>
+      </form>
     </div>
-</body>
-
+  </body>
 </html>

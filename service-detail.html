@@ -1,112 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
     <title>Service Details – The Rehab House</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+      content="Detailed information about our specialized rehabilitation services at The Rehab House."
+      name="description"
+    />
+    <meta
+      content="Neurorehabilitation, Physiotherapy, Mumbai, Rehabilitation Centre, Paralysis, Stroke Recovery, Pain Management, Occupational Therapy, Inpatient Rehab"
+      name="keywords"
+    />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <!-- Optimized Google Fonts Loading -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" media="print" onload="this.media='all'" />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      rel="preload"
+    />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap"
+      rel="preload"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      media="print"
+      onload="this.media = 'all'"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap"
+      media="print"
+      onload="this.media = 'all'"
+      rel="stylesheet"
+    />
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap"
+        rel="stylesheet"
+      />
     </noscript>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/variables.css" rel="stylesheet" />
-<link href="css/base.css" rel="stylesheet" />
-<link href="css/layout.css" rel="stylesheet" />
-<link href="css/pages.css" rel="stylesheet" />
-<link href="css/components.css" rel="stylesheet" />
-<link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/layout.css" rel="stylesheet" />
+    <link href="css/pages.css" rel="stylesheet" />
+    <link href="css/components.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
     <style>
-        /* Specific styles for detail page if needed, otherwise rely on style.css */
-        .service-detail-hero {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
+      /* Specific styles for detail page if needed, otherwise rely on style.css */
+      .service-detail-hero {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+      }
 
-        .service-detail-content {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+      .service-detail-content {
+        padding: 60px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
 
-        .service-detail-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+      .service-detail-image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
 
-        .btn-back {
-            margin-top: 30px;
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
+      .btn-back {
+        margin-top: 30px;
+        display: inline-block;
+        background: var(--accent-color);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
 
-        .btn-back:hover {
-            background: var(--primary-color);
-            color: white;
-        }
+      .btn-back:hover {
+        background: var(--primary-color);
+        color: white;
+      }
     </style>
-    <link rel="canonical" href="https://www.therehabhouse.in/service-detail" />
-    <meta property="og:title" content="The Rehab House | Neuro & Ortho Rehabilitation in Mumbai" />
-    <meta property="og:description" content="Expert therapy for stroke, brain injury, orthopedic conditions." />
-    <meta property="og:image" content="https://www.therehabhouse.in/images/hero-banner.jpg" />
-    <meta property="og:url" content="https://www.therehabhouse.in/service-detail" />
-</head>
 
-<body>
+    <link href="https://www.therehabhouse.in/service-detail" rel="canonical" />
+    <meta content="Service Details – The Rehab House" property="og:title" />
+    <meta
+      content="Detailed information about our specialized rehabilitation services at The Rehab House."
+      property="og:description"
+    />
+    <meta
+      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      property="og:image"
+    />
+    <meta
+      content="https://www.therehabhouse.in/service-detail"
+      property="og:url"
+    />
+    <meta content="website" property="og:type" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Service Details – The Rehab House" name="twitter:title" />
+    <meta
+      content="Detailed information about our specialized rehabilitation services at The Rehab House."
+      name="twitter:description"
+    />
+    <meta
+      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      name="twitter:image"
+    />
+  </head>
+  <body>
     <!-- Header Component -->
     <div id="header-placeholder"></div>
-
     <!-- Hero Section -->
     <section class="service-detail-hero" id="detail-hero">
-        <div class="hero-content">
-            <h1 id="service-title">Loading...</h1>
-        </div>
+      <div class="hero-content">
+        <h1 id="service-title">Loading...</h1>
+      </div>
     </section>
-
     <!-- Main Content -->
     <main class="service-detail-content">
-        <img id="service-image" class="service-detail-image" src="" alt="Service Image" style="display: none;">
-
-        <div id="service-intro">
-            <!-- Description injected here -->
-        </div>
-
-        <hr class="my-4">
-
-        <div id="service-body">
-            <!-- Full HTML Details injected here -->
-        </div>
-
-        <a href="services" class="btn-back">← Back to Services</a>
+      <img
+        alt="Service Image"
+        class="service-detail-image"
+        id="service-image"
+        src=""
+        style="display: none"
+      />
+      <div id="service-intro">
+        <!-- Description injected here -->
+      </div>
+      <hr class="my-4" />
+      <div id="service-body">
+        <!-- Full HTML Details injected here -->
+      </div>
+      <a class="btn-back" href="services">← Back to Services</a>
     </main>
-
     <!-- Footer Component -->
     <div id="footer-placeholder"></div>
-
     <!-- JavaScript -->
-    <script src="js/header_footer.js" defer></script>
+    <script defer="" src="js/header_footer.js"></script>
     <script src="js/services_data.js"></script>
-    <script src="js/service_detail.js" defer></script>
-    <script src="js/main.js" defer></script>
-</body>
-
+    <script defer="" src="js/service_detail.js"></script>
+    <script defer="" src="js/main.js"></script>
+  </body>
 </html>

@@ -1,130 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
     <title>Search Results | The Rehab House</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Optimized Google Fonts Loading -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
-    </noscript>
+    <meta
+      content="Search results for The Rehab House website."
+      name="description"
+    />
+    <meta
+      content="Neurorehabilitation, Physiotherapy, Mumbai, Rehabilitation Centre, Paralysis, Stroke Recovery, Pain Management, Occupational Therapy, Inpatient Rehab"
+      name="keywords"
+    />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <!-- Optimized Google Fonts Loading -->
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      rel="preload"
+    />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap"
+      rel="preload"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      media="print"
+      onload="this.media = 'all'"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap"
+      media="print"
+      onload="this.media = 'all'"
+      rel="stylesheet"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/variables.css" rel="stylesheet" />
     <link href="css/base.css" rel="stylesheet" />
     <link href="css/layout.css" rel="stylesheet" />
     <link href="css/pages.css" rel="stylesheet" />
     <link href="css/components.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet" />
-    <link rel="canonical" href="https://www.therehabhouse.in/search-results" />
-    <meta property="og:title" content="The Rehab House | Neuro & Ortho Rehabilitation in Mumbai" />
-    <meta property="og:description" content="Expert therapy for stroke, brain injury, orthopedic conditions." />
-    <meta property="og:image" content="https://www.therehabhouse.in/images/hero-banner.jpg" />
-    <meta property="og:url" content="https://www.therehabhouse.in/search-results" />
-</head>
 
-<body>
+    <link href="https://www.therehabhouse.in/search-results" rel="canonical" />
+    <meta content="Search Results | The Rehab House" property="og:title" />
+    <meta
+      content="Search results for The Rehab House website."
+      property="og:description"
+    />
+    <meta
+      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      property="og:image"
+    />
+    <meta
+      content="https://www.therehabhouse.in/search-results"
+      property="og:url"
+    />
+    <meta content="website" property="og:type" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Search Results | The Rehab House" name="twitter:title" />
+    <meta
+      content="Search results for The Rehab House website."
+      name="twitter:description"
+    />
+    <meta
+      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      name="twitter:image"
+    />
+  </head>
+  <body>
     <!-- Header Component -->
     <div id="header-placeholder"></div>
-
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1>Search Results</h1>
-            <p>Find what you are looking for</p>
-        </div>
+      <div class="hero-content">
+        <h1>Search Results</h1>
+        <p>Find what you are looking for</p>
+      </div>
     </section>
-
     <main>
-        <section class="search-results-container">
-            <h3>Results for: <span id="search-query">...</span></h3>
-            <hr>
-            <div id="results-list" class="result-page-header">
-                <!-- Results will be injected here -->
-                <p class="loading">Searching...</p>
-            </div>
-        </section>
+      <section class="search-results-container">
+        <h3>Results for: <span id="search-query">...</span></h3>
+        <hr />
+        <div class="result-page-header" id="results-list">
+          <!-- Results will be injected here -->
+          <p class="loading">Searching...</p>
+        </div>
+      </section>
     </main>
-
     <!-- Footer Component -->
     <div id="footer-placeholder"></div>
-
-    <script src="js/header_footer.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script defer="" src="js/header_footer.js"></script>
+    <script defer="" src="js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const query = params.get('q');
-            const display = document.getElementById('search-query');
-            const list = document.getElementById('results-list');
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get("q");
+        const display = document.getElementById("search-query");
+        const list = document.getElementById("results-list");
 
-            if (query) {
-                display.innerText = `"${query}"`;
-                performSearch(query, list);
-            } else {
-                display.innerText = "Nothing";
-                list.innerHTML = '<p class="no-results">Please enter a search term.</p>';
-            }
-        });
+        if (query) {
+          display.innerText = `"${query}"`;
+          performSearch(query, list);
+        } else {
+          display.innerText = "Nothing";
+          list.innerHTML =
+            '<p class="no-results">Please enter a search term.</p>';
+        }
+      });
 
-        function performSearch(query, container) {
-            // Simple Client-Side Index
-            const siteIndex = [
-                {
-                    title: "Home - The Rehab House",
-                    url: "/",
-                    content: "Neuro-rehabilitation, Physiotherapy, Admission Facility, Highlights, Testimonials, Wheelchair-Accessible, Lift available, Day Care Facility, Multiple Physiotherapy sessions per day, Physical, Cognitive, Occupational, Speech Therapy, In house Nutritionist, Psychologist, Orthotist, Diagnostic tests, Blood tests, Xrays, DEXA Scan, ECG, Neurogenetic Testing, Robotic Rehabilitation, Personalized Rehabilitation Plans"
-                },
-                {
-                    title: "About Us",
-                    url: "about-us",
-                    content: "Mission, Vision, Team, Dr. Vidhi Dave, Dr. Vinit Gada, Why Us, Stroke, MS, GBS, Spinal cord injury, Parkinson’s disease, Traumatic brain injury, Dementia, Alzheimer's, Vertigo, Orthopedic conditions, Post hip & knee replacement, Spine surgery, Arthritis, Frozen shoulder, Spondylitis, Sports Injuries, Scoliosis, Pediatric Population, Developmental delays, Cerebral Palsy, Autism"
-                },
-                {
-                    title: "Our Services",
-                    url: "services",
-                    content: "Physiotherapy, Neurorehabilitation, Pain Management, Orthopedic, Vestibular Rehabilitation, Visual Therapy, Spasticity & Posture Management, Cognition-Enhancing Activities, Balance & Postural Control, Fall Prevention, Motion Sensors, Dry Needling, Cupping, Manipulations, Kinesiotaping, Electrotherapy, Gait & Mobility Training, Strength & Conditioning, Hand function & Fine Motor Training"
+      function performSearch(query, container) {
+        // Simple Client-Side Index
+        const siteIndex = [
+          {
+            title: "Home - The Rehab House",
+            url: "/",
+            content:
+              "Neuro-rehabilitation, Physiotherapy, Admission Facility, Highlights, Testimonials, Wheelchair-Accessible, Lift available, Day Care Facility, Multiple Physiotherapy sessions per day, Physical, Cognitive, Occupational, Speech Therapy, In house Nutritionist, Psychologist, Orthotist, Diagnostic tests, Blood tests, Xrays, DEXA Scan, ECG, Neurogenetic Testing, Robotic Rehabilitation, Personalized Rehabilitation Plans",
+          },
+          {
+            title: "About Us",
+            url: "about-us",
+            content:
+              "Mission, Vision, Team, Dr. Vidhi Dave, Dr. Vinit Gada, Why Us, Stroke, MS, GBS, Spinal cord injury, Parkinson’s disease, Traumatic brain injury, Dementia, Alzheimer's, Vertigo, Orthopedic conditions, Post hip & knee replacement, Spine surgery, Arthritis, Frozen shoulder, Spondylitis, Sports Injuries, Scoliosis, Pediatric Population, Developmental delays, Cerebral Palsy, Autism",
+          },
+          {
+            title: "Our Services",
+            url: "services",
+            content:
+              "Physiotherapy, Neurorehabilitation, Pain Management, Orthopedic, Vestibular Rehabilitation, Visual Therapy, Spasticity & Posture Management, Cognition-Enhancing Activities, Balance & Postural Control, Fall Prevention, Motion Sensors, Dry Needling, Cupping, Manipulations, Kinesiotaping, Electrotherapy, Gait & Mobility Training, Strength & Conditioning, Hand function & Fine Motor Training",
+          },
+          {
+            title: "Contact Us",
+            url: "contact",
+            content:
+              "Address, Phone Number, Appointment, Map, Location, Booking, Purandare Diagnostic Centre, Girgaon Chowpatty, Charni Road, Mumbai",
+          },
+          {
+            title: "Blog",
+            url: "blog",
+            content:
+              "Health Insights, Articles, Updates, Tips, Stroke Recovery, Vestibular Therapy, Ergonomics",
+          },
+        ];
 
-                },
-                {
-                    title: "Contact Us",
-                    url: "contact",
-                    content: "Address, Phone Number, Appointment, Map, Location, Booking, Purandare Diagnostic Centre, Girgaon Chowpatty, Charni Road, Mumbai"
-                },
-                {
-                    title: "Blog",
-                    url: "blog",
-                    content: "Health Insights, Articles, Updates, Tips, Stroke Recovery, Vestibular Therapy, Ergonomics"
-                }
-            ];
+        const lowerQuery = query.toLowerCase();
+        const results = siteIndex.filter(
+          (item) =>
+            item.title.toLowerCase().includes(lowerQuery) ||
+            item.content.toLowerCase().includes(lowerQuery),
+        );
 
-            const lowerQuery = query.toLowerCase();
-            const results = siteIndex.filter(item =>
-                item.title.toLowerCase().includes(lowerQuery) ||
-                item.content.toLowerCase().includes(lowerQuery)
-            );
-
-            if (results.length > 0) {
-                container.innerHTML = '<ul>' + results.map(item => `
+        if (results.length > 0) {
+          container.innerHTML =
+            "<ul>" +
+            results
+              .map(
+                (item) => `
                     <li class="result-item">
                         <a href="${item.url}">
                             <h4>${item.title}</h4>
                             <p>${item.content.substring(0, 100)}...</p>
                         </a>
                     </li>
-                `).join('') + '</ul>';
-            } else {
-                container.innerHTML = '<p class="no-results">No results found matching your query.</p>';
-            }
+                `,
+              )
+              .join("") +
+            "</ul>";
+        } else {
+          container.innerHTML =
+            '<p class="no-results">No results found matching your query.</p>';
         }
+      }
     </script>
-</body>
-
+  </body>
 </html>

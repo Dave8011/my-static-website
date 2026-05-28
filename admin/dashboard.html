@@ -1,738 +1,789 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
-<head>
-<script src="../js/api-config.js"></script>
-<script>
-        function buildApiUrl(path) {
-            return `${window.API_CONFIG.baseUrl}${path}`;
-        }
-        (function () {
-            fetch(buildApiUrl('/api/admin/session'), {
-                credentials: 'include'
-            }).then(response => {
-                if (!response.ok) {
-                    window.location.replace('login.html');
-                }
-            }).catch(() => {
-                window.location.replace('login.html');
-            });
-        })();
+  <head>
+    <title>Admin/Dashboard | The Rehab House</title>
+    <meta
+      content="The Rehab House is a neuro &amp; ortho rehabilitation centre in South Mumbai."
+      name="description"
+    />
+    <meta
+      content="Neurorehabilitation, Physiotherapy, Mumbai, Rehabilitation Centre, Paralysis, Stroke Recovery, Pain Management, Occupational Therapy, Inpatient Rehab"
+      name="keywords"
+    />
+    <script src="../js/api-config.js"></script>
+    <script>
+      function buildApiUrl(path) {
+        return `${window.API_CONFIG.baseUrl}${path}`;
+      }
+      (function () {
+        fetch(buildApiUrl("/api/admin/session"), {
+          credentials: "include",
+        })
+          .then((response) => {
+            if (!response.ok) {
+              window.location.replace("login.html");
+            }
+          })
+          .catch(() => {
+            window.location.replace("login.html");
+          });
+      })();
     </script>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Admin Dashboard | The Rehab House</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<style>
-        :root {
-            --primary-color: #1e293b;
-            --secondary-color: #3b82f6;
-            --accent-color: #deac01;
-            --text-main: #334155;
-            --bg-gradient-start: #f8fafc;
-            --bg-gradient-end: #e2e8f0;
-            --card-bg: rgba(255, 255, 255, 0.7);
-            --card-border: rgba(255, 255, 255, 0.5);
-            --font-heading: 'Libre Baskerville', serif;
-            --font-body: 'Inter', sans-serif;
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #1e293b;
+        --secondary-color: #3b82f6;
+        --accent-color: #deac01;
+        --text-main: #334155;
+        --bg-gradient-start: #f8fafc;
+        --bg-gradient-end: #e2e8f0;
+        --card-bg: rgba(255, 255, 255, 0.7);
+        --card-border: rgba(255, 255, 255, 0.5);
+        --font-heading: "Libre Baskerville", serif;
+        --font-body: "Inter", sans-serif;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: linear-gradient(
+          135deg,
+          var(--bg-gradient-start) 0%,
+          var(--bg-gradient-end) 100%
+        );
+        margin: 0;
+        color: var(--text-main);
+        min-height: 100vh;
+      }
+
+      /* Glassmorphism Header */
+      .dashboard-header {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--card-border);
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .brand img {
+        height: 45px;
+        width: auto;
+      }
+
+      .brand-text {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--primary-color);
+      }
+
+      .user-menu {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logout-btn {
+        background: transparent;
+        border: 1px solid #ef4444;
+        color: #ef4444;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .logout-btn:hover {
+        background: #ef4444;
+        color: white;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+      }
+
+      .dashboard-content {
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        animation: fadeIn 0.6s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
         }
 
-        body {
-            font-family: var(--font-body);
-            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            margin: 0;
-            color: var(--text-main);
-            min-height: 100vh;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        /* Glassmorphism Header */
+      /* Stats Layer */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+      }
+
+      .stat-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--card-border);
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+      }
+
+      /* Actions Bar */
+      .actions-bar {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .actions-left,
+      .actions-right {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      select {
+        padding: 12px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        color: var(--text-main);
+        outline: none;
+        transition: all 0.3s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        min-width: 250px;
+      }
+
+      input[type="date"] {
+        min-width: 180px;
+      }
+
+      select {
+        min-width: 150px;
+        cursor: pointer;
+      }
+
+      input[type="text"]:focus,
+      input[type="date"]:focus,
+      select:focus {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: var(--secondary-color);
+      }
+
+      .btn-export {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        transition: all 0.3s;
+      }
+
+      .btn-export:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+      }
+
+      /* Table Card */
+      .card {
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .card-header {
+        padding: 25px 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .card-header h3 {
+        margin: 0;
+        color: var(--primary-color);
+        font-family: var(--font-heading);
+        font-weight: 600;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th {
+        background: rgba(255, 255, 255, 0.4);
+        color: #475569;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        padding: 18px 30px;
+        text-align: left;
+        letter-spacing: 0.5px;
+      }
+
+      td {
+        padding: 20px 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        color: var(--text-main);
+        font-size: 0.95rem;
+        vertical-align: top;
+      }
+
+      tr {
+        transition: background 0.3s;
+      }
+
+      tr:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .service-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--secondary-color);
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .phone-link {
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .phone-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .empty-state {
+        padding: 60px;
+        text-align: center;
+        color: #64748b;
+        font-size: 1.1rem;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
         .dashboard-header {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--card-border);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+          padding: 15px 10px;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          gap: 5px;
         }
 
         .brand img {
-            height: 45px;
-            width: auto;
+          height: 32px;
         }
 
         .brand-text {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--primary-color);
-        }
-
-        .user-menu {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+          display: none;
         }
 
         .logout-btn {
-            background: transparent;
-            border: 1px solid #ef4444;
-            color: #ef4444;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .logout-btn:hover {
-            background: #ef4444;
-            color: white;
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+          padding: 6px 12px;
+          font-size: 0.8rem;
+          white-space: nowrap;
         }
 
         .dashboard-content {
-            padding: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            animation: fadeIn 0.6s ease-out;
+          padding: 15px 10px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Stats Layer */
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+          margin-bottom: 25px;
+        }
+
+        .stat-card:last-child {
+          grid-column: span 2;
         }
 
         .stat-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
+          padding: 15px;
+          border-radius: 12px;
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 8px;
+          font-size: 1.8rem;
+          margin-bottom: 4px;
         }
 
         .stat-label {
-            color: #64748b;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
+          font-size: 0.75rem;
         }
 
-        /* Actions Bar */
         .actions-bar {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            justify-content: space-between;
+          flex-direction: column;
+          gap: 12px;
+          background: var(--card-bg);
+          backdrop-filter: blur(16px);
+          border: 1px solid var(--card-border);
+          padding: 15px;
+          border-radius: 16px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         }
 
         .actions-left,
         .actions-right {
-            display: flex;
-            gap: 15px;
-            align-items: center;
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
         }
 
         input[type="text"],
         input[type="date"],
         select {
-            padding: 12px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            color: var(--text-main);
-            outline: none;
-            transition: all 0.3s;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-            min-width: 250px;
-        }
-
-        input[type="date"] {
-            min-width: 180px;
-        }
-
-        select {
-            min-width: 150px;
-            cursor: pointer;
-        }
-
-        input[type="text"]:focus,
-        input[type="date"]:focus,
-        select:focus {
-            background: rgba(255, 255, 255, 0.9);
-            border-color: var(--secondary-color);
+          width: 100%;
+          box-sizing: border-box;
+          min-width: 100%;
+          padding: 10px 15px;
+          font-size: 0.9rem;
         }
 
         .btn-export {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-            transition: all 0.3s;
+          width: 100%;
+          justify-content: center;
+          padding: 12px;
         }
 
-        .btn-export:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        /* Card-based Mobile Table Override */
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
         }
 
-        /* Table Card */
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        .card-header {
-            padding: 25px 30px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .card-header h3 {
-            margin: 0;
-            color: var(--primary-color);
-            font-family: var(--font-heading);
-            font-weight: 600;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            background: rgba(255, 255, 255, 0.4);
-            color: #475569;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            padding: 18px 30px;
-            text-align: left;
-            letter-spacing: 0.5px;
-        }
-
-        td {
-            padding: 20px 30px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-            color: var(--text-main);
-            font-size: 0.95rem;
-            vertical-align: top;
+        thead tr {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
         }
 
         tr {
-            transition: background 0.3s;
+          margin-bottom: 25px;
+          background: var(--card-bg);
+          backdrop-filter: blur(16px);
+          border-radius: 16px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+          border: 1px solid var(--card-border);
+          padding: 10px;
         }
 
-        tr:hover {
-            background: rgba(255, 255, 255, 0.4);
+        td {
+          border: none !important;
+          position: relative;
+          padding: 12px 15px 12px 40% !important;
+          text-align: right;
+          min-height: 25px;
         }
 
-        .service-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--secondary-color);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
+        td:before {
+          position: absolute;
+          top: 12px;
+          left: 15px;
+          width: 35%;
+          padding-right: 10px;
+          white-space: nowrap;
+          text-align: left;
+          font-weight: 600;
+          color: #64748b;
+          font-size: 0.85rem;
+          text-transform: uppercase;
         }
 
-        .phone-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
+        td:nth-of-type(1):before {
+          content: "Date";
         }
 
-        .phone-link:hover {
-            color: var(--secondary-color);
+        td:nth-of-type(2):before {
+          content: "Name";
         }
 
-        .empty-state {
-            padding: 60px;
-            text-align: center;
-            color: #64748b;
-            font-size: 1.1rem;
+        td:nth-of-type(3):before {
+          content: "Service";
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .dashboard-header {
-                padding: 15px 10px;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 5px;
-            }
-
-            .brand img {
-                height: 32px;
-            }
-
-            .brand-text {
-                display: none;
-            }
-
-            .logout-btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-                white-space: nowrap;
-            }
-
-            .dashboard-content {
-                padding: 15px 10px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                margin-bottom: 25px;
-            }
-
-            .stat-card:last-child {
-                grid-column: span 2;
-            }
-
-            .stat-card {
-                padding: 15px;
-                border-radius: 12px;
-            }
-
-            .stat-number {
-                font-size: 1.8rem;
-                margin-bottom: 4px;
-            }
-
-            .stat-label {
-                font-size: 0.75rem;
-            }
-
-            .actions-bar {
-                flex-direction: column;
-                gap: 12px;
-                background: var(--card-bg);
-                backdrop-filter: blur(16px);
-                border: 1px solid var(--card-border);
-                padding: 15px;
-                border-radius: 16px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            }
-
-            .actions-left,
-            .actions-right {
-                flex-direction: column;
-                width: 100%;
-                gap: 10px;
-            }
-
-            input[type="text"],
-            input[type="date"],
-            select {
-                width: 100%;
-                box-sizing: border-box;
-                min-width: 100%;
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-
-            .btn-export {
-                width: 100%;
-                justify-content: center;
-                padding: 12px;
-            }
-
-            /* Card-based Mobile Table Override */
-            table,
-            thead,
-            tbody,
-            th,
-            td,
-            tr {
-                display: block;
-            }
-
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-
-            tr {
-                margin-bottom: 25px;
-                background: var(--card-bg);
-                backdrop-filter: blur(16px);
-                border-radius: 16px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-                border: 1px solid var(--card-border);
-                padding: 10px;
-            }
-
-            td {
-                border: none !important;
-                position: relative;
-                padding: 12px 15px 12px 40% !important;
-                text-align: right;
-                min-height: 25px;
-            }
-
-            td:before {
-                position: absolute;
-                top: 12px;
-                left: 15px;
-                width: 35%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: 600;
-                color: #64748b;
-                font-size: 0.85rem;
-                text-transform: uppercase;
-            }
-
-            td:nth-of-type(1):before {
-                content: "Date";
-            }
-
-            td:nth-of-type(2):before {
-                content: "Name";
-            }
-
-            td:nth-of-type(3):before {
-                content: "Service";
-            }
-
-            td:nth-of-type(4):before {
-                content: "Contact";
-            }
-
-            td:nth-of-type(5):before {
-                content: "Location";
-            }
-
-            td:nth-of-type(6):before {
-                content: "Issue";
-            }
-
-            .table-responsive {
-                overflow: visible;
-            }
-
-            .card {
-                background: transparent;
-                backdrop-filter: none;
-                box-shadow: none;
-                border: none;
-            }
-
-            .card-header {
-                padding: 10px 0 20px 0;
-                border: none;
-            }
+        td:nth-of-type(4):before {
+          content: "Contact";
         }
+
+        td:nth-of-type(5):before {
+          content: "Location";
+        }
+
+        td:nth-of-type(6):before {
+          content: "Issue";
+        }
+
+        .table-responsive {
+          overflow: visible;
+        }
+
+        .card {
+          background: transparent;
+          backdrop-filter: none;
+          box-shadow: none;
+          border: none;
+        }
+
+        .card-header {
+          padding: 10px 0 20px 0;
+          border: none;
+        }
+      }
     </style>
-<link href="https://www.therehabhouse.in/admin/dashboard.html" rel="canonical">
-<meta content="The Rehab House | Neuro &amp; Ortho Rehabilitation in Mumbai" property="og:title">
-<meta content="Expert therapy for stroke, brain injury, orthopedic conditions." property="og:description">
-<meta content="https://www.therehabhouse.in/images/hero-banner.jpg" property="og:image"/>
-<meta content="https://www.therehabhouse.in/admin/dashboard.html" property="og:url"/>
-</meta></meta></link></head>
-<body>
-<header class="dashboard-header">
-<div class="brand">
-<img alt="Logo" height="125" src="../images/logo.webp" width="750"/>
-<span class="brand-text">Admin Panel</span>
-</div>
-<div class="user-menu">
-<button class="logout-btn" onclick="handleLogout()">Sign Out</button>
-</div>
-</header>
-<div class="dashboard-content">
-<!-- Quick Stats -->
-<div class="stats-grid">
-<div class="stat-card">
-<div class="stat-number" id="totalCount">0</div>
-<div class="stat-label">Total Inquiries</div>
-</div>
-<div class="stat-card">
-<div class="stat-number" id="todayCount" style="color: #10b981;">0</div>
-<div class="stat-label">New Today</div>
-</div>
-<div class="stat-card">
-<div class="stat-number" id="filteredCount" style="color: #8b5cf6;">0</div>
-<div class="stat-label">Visible Records</div>
-</div>
-</div>
-<!-- Filters & Actions -->
-<div class="actions-bar">
-<div class="actions-left">
-<select id="searchType" onchange="filterTable()">
-<option value="all">Search All</option>
-<option value="name">Name Only</option>
-<option value="phone">Phone Only</option>
-</select>
-<input id="searchInput" oninput="filterTable()" placeholder="Type here..." type="text"/>
-<input id="dateFilter" onchange="filterTable()" type="date"/>
-</div>
-<div class="actions-right">
-<button class="btn-export" onclick="exportCSV()">
-<span class="material-icons">download</span> Export CSV
-                </button>
-</div>
-</div>
-<div class="card">
-<div class="card-header">
-<h3>Appointments &amp; Inquiries</h3>
-</div>
-<div class="table-responsive">
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Client Name</th>
-<th>Service Requested</th>
-<th>Contact</th>
-<th>Location</th>
-<th width="35%">Issue Description</th>
-</tr>
-</thead>
-<tbody id="inquiriesTableBody">
-<tr>
-<td class="empty-state" colspan="6">Loading...</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<script>
-        let allAppointments = [];
-        let filteredAppointments = [];
 
-        async function handleLogout() {
-            try {
-                await fetch(buildApiUrl('/api/admin/logout'), {
-                    method: 'POST',
-                    credentials: 'include'
-                });
-            } catch (error) { }
-            window.location.replace('login.html');
-        }
+    <meta content="noindex, nofollow" name="robots" />
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div class="brand">
+        <img alt="Logo" height="125" src="../images/logo.webp" width="750" />
+        <span class="brand-text">Admin Panel</span>
+      </div>
+      <div class="user-menu">
+        <button class="logout-btn" onclick="handleLogout()">Sign Out</button>
+      </div>
+    </header>
+    <div class="dashboard-content">
+      <!-- Quick Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="totalCount">0</div>
+          <div class="stat-label">Total Inquiries</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="todayCount" style="color: #10b981">
+            0
+          </div>
+          <div class="stat-label">New Today</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="filteredCount" style="color: #8b5cf6">
+            0
+          </div>
+          <div class="stat-label">Visible Records</div>
+        </div>
+      </div>
+      <!-- Filters & Actions -->
+      <div class="actions-bar">
+        <div class="actions-left">
+          <select id="searchType" onchange="filterTable()">
+            <option value="all">Search All</option>
+            <option value="name">Name Only</option>
+            <option value="phone">Phone Only</option>
+          </select>
+          <input
+            id="searchInput"
+            oninput="filterTable()"
+            placeholder="Type here..."
+            type="text"
+          />
+          <input id="dateFilter" onchange="filterTable()" type="date" />
+        </div>
+        <div class="actions-right">
+          <button class="btn-export" onclick="exportCSV()">
+            <span class="material-icons">download</span> Export CSV
+          </button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h3>Appointments &amp; Inquiries</h3>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Client Name</th>
+                <th>Service Requested</th>
+                <th>Contact</th>
+                <th>Location</th>
+                <th width="35%">Issue Description</th>
+              </tr>
+            </thead>
+            <tbody id="inquiriesTableBody">
+              <tr>
+                <td class="empty-state" colspan="6">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      let allAppointments = [];
+      let filteredAppointments = [];
 
-        function formatDisplayDate(value) {
-            if (!value) return '-';
-            const parsed = new Date(value);
-            return Number.isNaN(parsed.getTime()) ? value : parsed.toLocaleString(undefined, {
-                year: 'numeric', month: 'short', day: 'numeric',
-                hour: '2-digit', minute: '2-digit'
+      async function handleLogout() {
+        try {
+          await fetch(buildApiUrl("/api/admin/logout"), {
+            method: "POST",
+            credentials: "include",
+          });
+        } catch (error) {}
+        window.location.replace("login.html");
+      }
+
+      function formatDisplayDate(value) {
+        if (!value) return "-";
+        const parsed = new Date(value);
+        return Number.isNaN(parsed.getTime())
+          ? value
+          : parsed.toLocaleString(undefined, {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
             });
-        }
+      }
 
-        function escapeCSV(str) {
-            if (str == null) return '';
-            const s = String(str);
-            if (s.includes(',') || s.includes('"') || s.includes('\n')) {
-                return `"${s.replace(/"/g, '""')}"`;
+      function escapeCSV(str) {
+        if (str == null) return "";
+        const s = String(str);
+        if (s.includes(",") || s.includes('"') || s.includes("\n")) {
+          return `"${s.replace(/"/g, '""')}"`;
+        }
+        return s;
+      }
+
+      function exportCSV() {
+        if (filteredAppointments.length === 0)
+          return alert("No records to export");
+        let csv = "Date,Client Name,Service,Phone,Location,Issue\n";
+        filteredAppointments.forEach((appt) => {
+          const row = [
+            appt._dateStr || "",
+            appt._name || "",
+            appt._service || "",
+            appt._phone || "",
+            appt._location || "",
+            appt._issue || "",
+          ];
+          csv += row.map(escapeCSV).join(",") + "\n";
+        });
+        const blob = new Blob([csv], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `Appointments_${new Date().toISOString().split("T")[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        const tableBody = document.getElementById("inquiriesTableBody");
+
+        try {
+          const response = await fetch(buildApiUrl("/api/admin/appointments"), {
+            credentials: "include",
+          });
+
+          if (response.status === 401) {
+            window.location.replace("login.html");
+            return;
+          }
+
+          const payload = await response.json();
+          const rawAppts = payload.appointments || [];
+
+          // Normalization pass to safely map Google Object properties
+          allAppointments = rawAppts.map((appt) => {
+            const dateVal =
+              appt.createdAt || appt.Date || appt.date || appt.Timestamp || "";
+            const dObj = new Date(dateVal);
+            const isDateValid = !Number.isNaN(dObj.getTime());
+
+            let serviceDisplay =
+              appt.service ||
+              appt["Service Requested"] ||
+              appt.serviceType ||
+              "General";
+            if (appt.serviceMode && serviceDisplay !== "General") {
+              serviceDisplay += ` (${appt.serviceMode})`;
             }
-            return s;
+
+            return {
+              _raw: appt,
+              _dateObj: isDateValid ? dObj : null,
+              _dateIso: isDateValid ? dObj.toISOString().split("T")[0] : "",
+              _dateStr: formatDisplayDate(dateVal),
+              _name: appt.name || appt["Client Name"] || appt.Name || "Unknown",
+              _service: serviceDisplay,
+              _phone: appt.contact || appt.phone || appt.Contact || "-",
+              _location: appt.location || appt.Location || "-",
+              _issue:
+                appt.issue || appt["Issue Description"] || appt.Issue || "-",
+            };
+          });
+
+          // Sort by newest first
+          allAppointments.sort((a, b) => {
+            if (a._dateObj && b._dateObj) return b._dateObj - a._dateObj;
+            return 0; // fallback
+          });
+
+          // Compute Stats
+          document.getElementById("totalCount").innerText =
+            allAppointments.length;
+
+          const now = new Date();
+          const todayIso = now.toISOString().split("T")[0];
+
+          let todayCount = 0;
+          allAppointments.forEach((a) => {
+            if (a._dateIso === todayIso) todayCount++;
+          });
+
+          document.getElementById("todayCount").innerText = todayCount;
+
+          filterTable();
+        } catch (error) {
+          tableBody.innerHTML =
+            '<tr><td colspan="6" class="empty-state">Unable to load inquiries right now.</td></tr>';
         }
+      });
 
-        function exportCSV() {
-            if (filteredAppointments.length === 0) return alert('No records to export');
-            let csv = 'Date,Client Name,Service,Phone,Location,Issue\n';
-            filteredAppointments.forEach(appt => {
-                const row = [
-                    appt._dateStr || '',
-                    appt._name || '',
-                    appt._service || '',
-                    appt._phone || '',
-                    appt._location || '',
-                    appt._issue || ''
-                ];
-                csv += row.map(escapeCSV).join(',') + '\n';
-            });
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Appointments_${new Date().toISOString().split('T')[0]}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
+      function filterTable() {
+        const query = document
+          .getElementById("searchInput")
+          .value.toLowerCase()
+          .trim();
+        const searchType = document.getElementById("searchType").value;
+        const dateQ = document.getElementById("dateFilter").value;
 
-        document.addEventListener('DOMContentLoaded', async () => {
-            const tableBody = document.getElementById('inquiriesTableBody');
+        filteredAppointments = allAppointments.filter((appt) => {
+          let matchSearch = false;
 
-            try {
-                const response = await fetch(buildApiUrl('/api/admin/appointments'), {
-                    credentials: 'include'
-                });
+          if (query === "") {
+            matchSearch = true;
+          } else if (searchType === "name") {
+            matchSearch = appt._name.toLowerCase().includes(query);
+          } else if (searchType === "phone") {
+            matchSearch = appt._phone.toLowerCase().includes(query);
+          } else {
+            matchSearch =
+              appt._name.toLowerCase().includes(query) ||
+              appt._phone.toLowerCase().includes(query) ||
+              appt._service.toLowerCase().includes(query) ||
+              appt._location.toLowerCase().includes(query);
+          }
 
-                if (response.status === 401) {
-                    window.location.replace('login.html');
-                    return;
-                }
-
-                const payload = await response.json();
-                const rawAppts = payload.appointments || [];
-
-                // Normalization pass to safely map Google Object properties
-                allAppointments = rawAppts.map(appt => {
-                    const dateVal = appt.createdAt || appt.Date || appt.date || appt.Timestamp || '';
-                    const dObj = new Date(dateVal);
-                    const isDateValid = !Number.isNaN(dObj.getTime());
-
-                    let serviceDisplay = appt.service || appt['Service Requested'] || appt.serviceType || 'General';
-                    if (appt.serviceMode && serviceDisplay !== 'General') {
-                        serviceDisplay += ` (${appt.serviceMode})`;
-                    }
-
-                    return {
-                        _raw: appt,
-                        _dateObj: isDateValid ? dObj : null,
-                        _dateIso: isDateValid ? dObj.toISOString().split('T')[0] : '',
-                        _dateStr: formatDisplayDate(dateVal),
-                        _name: appt.name || appt['Client Name'] || appt.Name || 'Unknown',
-                        _service: serviceDisplay,
-                        _phone: appt.contact || appt.phone || appt.Contact || '-',
-                        _location: appt.location || appt.Location || '-',
-                        _issue: appt.issue || appt['Issue Description'] || appt.Issue || '-'
-                    };
-                });
-
-                // Sort by newest first
-                allAppointments.sort((a, b) => {
-                    if (a._dateObj && b._dateObj) return b._dateObj - a._dateObj;
-                    return 0; // fallback
-                });
-
-                // Compute Stats
-                document.getElementById('totalCount').innerText = allAppointments.length;
-
-                const now = new Date();
-                const todayIso = now.toISOString().split('T')[0];
-
-                let todayCount = 0;
-                allAppointments.forEach(a => {
-                    if (a._dateIso === todayIso) todayCount++;
-                });
-
-                document.getElementById('todayCount').innerText = todayCount;
-
-                filterTable();
-            } catch (error) {
-                tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">Unable to load inquiries right now.</td></tr>';
-            }
+          const matchDate = dateQ ? appt._dateIso === dateQ : true;
+          return matchSearch && matchDate;
         });
 
-        function filterTable() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const searchType = document.getElementById('searchType').value;
-            const dateQ = document.getElementById('dateFilter').value;
+        document.getElementById("filteredCount").innerText =
+          filteredAppointments.length;
+        renderTable();
+      }
 
-            filteredAppointments = allAppointments.filter(appt => {
-                let matchSearch = false;
+      function renderTable() {
+        const tableBody = document.getElementById("inquiriesTableBody");
 
-                if (query === '') {
-                    matchSearch = true;
-                } else if (searchType === 'name') {
-                    matchSearch = appt._name.toLowerCase().includes(query);
-                } else if (searchType === 'phone') {
-                    matchSearch = appt._phone.toLowerCase().includes(query);
-                } else {
-                    matchSearch = (
-                        appt._name.toLowerCase().includes(query) ||
-                        appt._phone.toLowerCase().includes(query) ||
-                        appt._service.toLowerCase().includes(query) ||
-                        appt._location.toLowerCase().includes(query)
-                    );
-                }
-
-                const matchDate = dateQ ? appt._dateIso === dateQ : true;
-                return matchSearch && matchDate;
-            });
-
-            document.getElementById('filteredCount').innerText = filteredAppointments.length;
-            renderTable();
+        if (filteredAppointments.length === 0) {
+          tableBody.innerHTML =
+            '<tr><td colspan="6" class="empty-state">No inquiries found matching your filters.</td></tr>';
+          return;
         }
 
-        function renderTable() {
-            const tableBody = document.getElementById('inquiriesTableBody');
-
-            if (filteredAppointments.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">No inquiries found matching your filters.</td></tr>';
-                return;
+        tableBody.innerHTML = filteredAppointments
+          .map((appt) => {
+            let serviceHTML = appt._service;
+            if (serviceHTML.includes("(")) {
+              // Make the mode pill text slightly muted format if requested
+              serviceHTML = serviceHTML
+                .replace(
+                  "(",
+                  '<br><small style="color: #64748b; font-weight: 500;">(',
+                )
+                .replace(")", ")</small>");
             }
 
-            tableBody.innerHTML = filteredAppointments.map(appt => {
-                let serviceHTML = appt._service;
-                if (serviceHTML.includes('(')) {
-                    // Make the mode pill text slightly muted format if requested
-                    serviceHTML = serviceHTML.replace('(', '<br><small style="color: #64748b; font-weight: 500;">(').replace(')', ')</small>');
-                }
-
-                return `
+            return `
                 <tr>
                     <td style="color: #64748b; font-size: 0.9rem;">${appt._dateStr}</td>
                     <td style="font-weight: 600; color: var(--primary-color);">${appt._name}</td>
@@ -742,8 +793,9 @@
                     <td style="line-height: 1.5; color: #475569;">${appt._issue}</td>
                 </tr>
             `;
-            }).join('');
-        }
+          })
+          .join("");
+      }
     </script>
-</body>
+  </body>
 </html>

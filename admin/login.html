@@ -1,277 +1,325 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Admin Login | The Rehab House</title>
-<!-- Use main site fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
-<link href="../css/variables.css" rel="stylesheet"/>
-<link href="../css/bootstrap.min.css" rel="stylesheet"/>
-<style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --bg-color: #f0f2f5;
-            --text-color: #333;
-        }
+  <head>
+    <title>Admin/Login | The Rehab House</title>
+    <meta
+      content="The Rehab House is a neuro &amp; ortho rehabilitation centre in South Mumbai."
+      name="description"
+    />
+    <meta
+      content="Neurorehabilitation, Physiotherapy, Mumbai, Rehabilitation Centre, Paralysis, Stroke Recovery, Pain Management, Occupational Therapy, Inpatient Rehab"
+      name="keywords"
+    />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bg-color);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-        }
+    <!-- Use main site fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="../css/variables.css" rel="stylesheet" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --bg-color: #f0f2f5;
+        --text-color: #333;
+      }
 
-        .login-card {
-            background: white;
-            padding: 40px;
-            width: 100%;
-            max-width: 420px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            position: relative;
-        }
+      body {
+        font-family: var(--font-body);
+        background-color: var(--bg-color);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
 
-        .logo-container {
-            margin-bottom: 30px;
-        }
+      .login-card {
+        background: white;
+        padding: 40px;
+        width: 100%;
+        max-width: 420px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        position: relative;
+      }
 
-        .logo-container img {
-            height: 60px;
-            width: auto;
-        }
+      .logo-container {
+        margin-bottom: 30px;
+      }
 
-        h2 {
-            font-family: var(--font-heading);
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
+      .logo-container img {
+        height: 60px;
+        width: auto;
+      }
 
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-        }
+      h2 {
+        font-family: var(--font-heading);
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
 
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+      }
 
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-color);
-            font-size: 0.9rem;
-        }
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
 
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e4e8;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
+      .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-color);
+        font-size: 0.9rem;
+      }
 
-        .form-control:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-        }
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e1e4e8;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
 
-        .btn-login {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
+      .form-control:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+      }
 
-        .btn-login:hover {
-            background-color: #1a252f;
-            transform: translateY(-1px);
-        }
+      .btn-login {
+        width: 100%;
+        padding: 14px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+      }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 25px;
-            color: #666;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
+      .btn-login:hover {
+        background-color: #1a252f;
+        transform: translateY(-1px);
+      }
 
-        .back-link:hover {
-            color: var(--secondary-color);
-        }
+      .back-link {
+        display: inline-block;
+        margin-top: 25px;
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+      }
 
-        .error-msg {
-            background-color: #fde8e8;
-            color: var(--accent-color);
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #fbd5d5;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            display: none;
-        }
+      .back-link:hover {
+        color: var(--secondary-color);
+      }
 
-        /* Loading state */
-        .btn-login.loading {
-            opacity: 0.8;
-            cursor: not-allowed;
-        }
+      .error-msg {
+        background-color: #fde8e8;
+        color: var(--accent-color);
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #fbd5d5;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      /* Loading state */
+      .btn-login.loading {
+        opacity: 0.8;
+        cursor: not-allowed;
+      }
     </style>
-<link href="https://www.therehabhouse.in/admin/login.html" rel="canonical">
-<meta content="The Rehab House | Neuro &amp; Ortho Rehabilitation in Mumbai" property="og:title">
-<meta content="Expert therapy for stroke, brain injury, orthopedic conditions." property="og:description">
-<meta content="https://www.therehabhouse.in/images/hero-banner.jpg" property="og:image"/>
-<meta content="https://www.therehabhouse.in/admin/login.html" property="og:url"/>
-</meta></meta></link></head>
-<body>
-<div class="login-card">
-<div class="logo-container">
-<img alt="The Rehab House" height="125" src="../images/logo.webp" width="750"/>
-</div>
-<h2>Welcome Back</h2>
-<p class="subtitle">Please enter your credentials to access the dashboard.</p>
-<form id="loginForm" onsubmit="handleLogin(event)">
-<div class="form-group">
-<label class="form-label" for="username">Username</label>
-<input autocomplete="username" class="form-control" id="username" placeholder="admin" required="" type="text"/>
-</div>
-<div class="form-group">
-<label class="form-label" for="password">Password</label>
-<div style="position: relative;">
-<input autocomplete="current-password" class="form-control" id="password" placeholder="••••••••" required="" style="padding-right: 45px;" type="password"/>
-<span class="material-icons" id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; user-select: none;">visibility</span>
-</div>
-</div>
-<button class="btn-login" id="loginBtn" type="submit">Sign In</button>
-<div class="error-msg" id="errorMsg">
-                Invalid username or password. Please try again.
-            </div>
-</form>
-<a class="back-link" href="../index.html">← Back to Home Page</a>
-</div>
-<script src="../js/api-config.js"></script>
-<script>
-        function buildApiUrl(path) {
-            return `${window.API_CONFIG.baseUrl}${path}`;
+
+    <meta content="noindex, nofollow" name="robots" />
+  </head>
+  <body>
+    <div class="login-card">
+      <div class="logo-container">
+        <img
+          alt="The Rehab House"
+          height="125"
+          src="../images/logo.webp"
+          width="750"
+        />
+      </div>
+      <h2>Welcome Back</h2>
+      <p class="subtitle">
+        Please enter your credentials to access the dashboard.
+      </p>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <input
+            autocomplete="username"
+            class="form-control"
+            id="username"
+            placeholder="admin"
+            required=""
+            type="text"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div style="position: relative">
+            <input
+              autocomplete="current-password"
+              class="form-control"
+              id="password"
+              placeholder="••••••••"
+              required=""
+              style="padding-right: 45px"
+              type="password"
+            />
+            <span
+              class="material-icons"
+              id="togglePassword"
+              style="
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: #888;
+                user-select: none;
+              "
+              >visibility</span
+            >
+          </div>
+        </div>
+        <button class="btn-login" id="loginBtn" type="submit">Sign In</button>
+        <div class="error-msg" id="errorMsg">
+          Invalid username or password. Please try again.
+        </div>
+      </form>
+      <a class="back-link" href="../index.html">← Back to Home Page</a>
+    </div>
+    <script src="../js/api-config.js"></script>
+    <script>
+      function buildApiUrl(path) {
+        return `${window.API_CONFIG.baseUrl}${path}`;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleBtn = document.getElementById("togglePassword");
+        const pwdInput = document.getElementById("password");
+        if (toggleBtn && pwdInput) {
+          toggleBtn.addEventListener("click", function () {
+            const type =
+              pwdInput.getAttribute("type") === "password"
+                ? "text"
+                : "password";
+            pwdInput.setAttribute("type", type);
+            this.textContent =
+              type === "password" ? "visibility" : "visibility_off";
+          });
         }
+      });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggleBtn = document.getElementById('togglePassword');
-            const pwdInput = document.getElementById('password');
-            if (toggleBtn && pwdInput) {
-                toggleBtn.addEventListener('click', function () {
-                    const type = pwdInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                    pwdInput.setAttribute('type', type);
-                    this.textContent = type === 'password' ? 'visibility' : 'visibility_off';
-                });
-            }
-        });
+      async function checkExistingSession() {
+        try {
+          const response = await fetch(buildApiUrl("/api/admin/session"), {
+            credentials: "include",
+          });
 
-        async function checkExistingSession() {
-            try {
-                const response = await fetch(buildApiUrl('/api/admin/session'), {
-                    credentials: 'include'
-                });
-
-                if (response.ok) {
-                    window.location.replace('dashboard.html');
-                }
-            } catch (error) {
-                console.error('Session check failed:', error);
-            }
+          if (response.ok) {
+            window.location.replace("dashboard.html");
+          }
+        } catch (error) {
+          console.error("Session check failed:", error);
         }
+      }
 
-        checkExistingSession();
+      checkExistingSession();
 
-        async function handleLogin(e) {
-            e.preventDefault();
+      async function handleLogin(e) {
+        e.preventDefault();
 
-            const usernameInput = document.getElementById('username').value.trim();
-            const passwordInput = document.getElementById('password').value.trim();
-            const errorMsg = document.getElementById('errorMsg');
-            const loginBtn = document.getElementById('loginBtn');
+        const usernameInput = document.getElementById("username").value.trim();
+        const passwordInput = document.getElementById("password").value.trim();
+        const errorMsg = document.getElementById("errorMsg");
+        const loginBtn = document.getElementById("loginBtn");
 
-            errorMsg.style.display = 'none';
-            loginBtn.classList.add('loading');
-            loginBtn.innerText = 'Verifying...';
+        errorMsg.style.display = "none";
+        loginBtn.classList.add("loading");
+        loginBtn.innerText = "Verifying...";
 
-            try {
-                const response = await fetch(buildApiUrl('/api/admin/login'), {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify({
-                        username: usernameInput,
-                        password: passwordInput
-                    })
-                });
+        try {
+          const response = await fetch(buildApiUrl("/api/admin/login"), {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+              username: usernameInput,
+              password: passwordInput,
+            }),
+          });
 
-                if (response.ok) {
-                    window.location.replace('dashboard.html');
-                } else {
-                    errorMsg.innerText = 'Invalid credentials.';
-                    errorMsg.style.display = 'block';
+          if (response.ok) {
+            window.location.replace("dashboard.html");
+          } else {
+            errorMsg.innerText = "Invalid credentials.";
+            errorMsg.style.display = "block";
 
-                    const card = document.querySelector('.login-card');
-                    card.style.animation = 'shake 0.5s';
-                    setTimeout(() => card.style.animation = '', 500);
-                }
-            } catch (error) {
-                console.error('Login request failed:', error);
-                errorMsg.innerText = 'Unable to reach server. Please try again.';
-                errorMsg.style.display = 'block';
-            } finally {
-                loginBtn.classList.remove('loading');
-                loginBtn.innerText = 'Sign In';
-            }
+            const card = document.querySelector(".login-card");
+            card.style.animation = "shake 0.5s";
+            setTimeout(() => (card.style.animation = ""), 500);
+          }
+        } catch (error) {
+          console.error("Login request failed:", error);
+          errorMsg.innerText = "Unable to reach server. Please try again.";
+          errorMsg.style.display = "block";
+        } finally {
+          loginBtn.classList.remove("loading");
+          loginBtn.innerText = "Sign In";
         }
+      }
     </script>
-<style>
-        @keyframes shake {
-            0% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-5px);
-            }
-
-            50% {
-                transform: translateX(5px);
-            }
-
-            75% {
-                transform: translateX(-5px);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
+    <style>
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
         }
+
+        25% {
+          transform: translateX(-5px);
+        }
+
+        50% {
+          transform: translateX(5px);
+        }
+
+        75% {
+          transform: translateX(-5px);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
     </style>
-</body>
+  </body>
 </html>

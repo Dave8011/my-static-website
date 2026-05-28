@@ -1,6 +1,6 @@
 .vercel
-js/config.js
-js/config.js
 .env
-node_modules
-data
+node_modules/
+venv/
+data/
+js/config.js
