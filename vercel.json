@@ -9,8 +9,25 @@
     { "source": "/blog.html", "destination": "/blog", "statusCode": 301 },
     { "source": "/gallery.html", "destination": "/gallery", "statusCode": 301 },
     { "source": "/contact.html", "destination": "/contact", "statusCode": 301 },
+    { "source": "/service-detail.html", "destination": "/service-detail", "statusCode": 301 },
 
     { "source": "/search_results.html", "destination": "/search-results", "statusCode": 301 },
-    { "source": "/search-results.html", "destination": "/search-results", "statusCode": 301 }
+    { "source": "/search-results.html", "destination": "/search-results", "statusCode": 301 },
+    
+    { "source": "/blogs/neuro-rehabilitation-process.html", "destination": "/blogs/neuro-rehabilitation-process", "statusCode": 301 },
+    { "source": "/blogs/physiotherapy-brain-injury.html", "destination": "/blogs/physiotherapy-brain-injury", "statusCode": 301 },
+    { "source": "/blogs/vestibular-therapy.html", "destination": "/blogs/vestibular-therapy", "statusCode": 301 },
+    {
+      "source": "/service-detail",
+      "has": [{ "type": "query", "key": "id", "value": "service1" }],
+      "destination": "/physiotherapy-in-mumbai",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-detail",
+      "has": [{ "type": "query", "key": "id", "value": "service2" }],
+      "destination": "/occupational-therapy-in-mumbai",
+      "statusCode": 301
+    }
   ]
 }

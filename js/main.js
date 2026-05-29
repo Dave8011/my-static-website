@@ -270,13 +270,13 @@ function createSchema() {
         injectSchema(faqSchema);
     }
 
-    // 2. MedicalBusiness Schema (Static with AggregateRating)
+    // 2. MedicalClinic, LocalBusiness & Physician Schema (Static with AggregateRating)
     const medicalSchema = {
         "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
+        "@type": ["MedicalClinic", "LocalBusiness", "Physician"],
         "name": "The Rehab House",
         "url": "https://www.therehabhouse.in/",
-        "image": window.location.origin + "/images/logo.png",
+        "image": "https://www.therehabhouse.in/images/logo.png", // Ensure absolute URL
         "telephone": "+919653699526",
         "address": {
             "@type": "PostalAddress",
@@ -285,10 +285,15 @@ function createSchema() {
             "postalCode": "400007",
             "addressCountry": "IN"
         },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 18.9566,
+            "longitude": 72.8153
+        },
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "17"
+            "ratingValue": "5.0",
+            "reviewCount": "66"
         }
     };
     injectSchema(medicalSchema);

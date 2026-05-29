@@ -30,8 +30,8 @@ async function initGoogleReviews() {
         if (typeof GOOGLE_PLACES_API_KEY === 'undefined' || GOOGLE_PLACES_API_KEY === 'YOUR_API_KEY') {
             console.warn("Google Places API Key not configured. Using Mock Data.");
             reviews = getMockReviews();
-            rating = 4.9;
-            reviewCount = 120;
+            rating = 5.0;
+            reviewCount = 66;
         } else {
             try {
                 const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=reviews,rating,user_ratings_total&key=${GOOGLE_PLACES_API_KEY}`;
@@ -53,7 +53,7 @@ async function initGoogleReviews() {
         }
 
         renderReviews(reviews, marqueeContainer);
-        injectSchema(rating, reviewCount);
+        injectDynamicSchema(rating, reviewCount);
     }
 }
 
@@ -81,17 +81,17 @@ function renderReviews(reviews, container) {
     container.innerHTML = html;
 }
 
-function injectSchema(rating, count) {
+function injectDynamicSchema(rating, count) {
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "MedicalOrganization",
+        "@type": "MedicalClinic",
         "name": "The Rehab House",
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": rating,
-            "reviewCount": count
+            "ratingValue": String(rating),
+            "reviewCount": String(count)
         }
     });
     document.head.appendChild(script);

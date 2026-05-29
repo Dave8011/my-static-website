@@ -38,6 +38,14 @@ The website has been aggressively optimized for speed, accessibility, and Techni
 - **Accessibility**: High contrast colors, proper ARIA labels, and semantic HTML structure (`<main>`, landmarks).
 - **Fast Scripts**: Non-critical JavaScript is deferred.
 
+### Local SEO & Structured Data (New!)
+- **Dedicated Service Pages:** Created highly optimized static landing pages for core services (e.g., `/physiotherapy-in-mumbai`, `/stroke-rehabilitation-in-mumbai`) rather than using dynamic query parameters.
+- **Doctor Profiles SEO:** All doctor profile popups in `profiles/*.html` are fully equipped with unique metadata, canonical tags, and individual `Physician` JSON-LD schema.
+- **Advanced Schema Markup:** 
+  - The site globally injects robust `LocalBusiness`, `MedicalClinic`, and `Physician` schema in `js/main.js` with exact GPS coordinates for Girgaon Chowpatty.
+  - Granular `Service` and `BreadcrumbList` schema is applied to all new static service pages.
+- **Privacy & Crawl Control:** Administrator dashboard pages and the `404.html` page explicitly use `<meta name="robots" content="noindex, nofollow">` to prevent Google from indexing secure or broken areas.
+
 ### How to Maintain SEO Standards
 When adding **new pages** or **new content**, follow these rules to maintain the site's high optimization:
 1. **New HTML Pages**: Always copy the `<head>` meta tags from an existing page. Be sure to update the `<link rel="canonical" href="...">` and `<meta property="og:url" content="...">` to match the exact new URL.

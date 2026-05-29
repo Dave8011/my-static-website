@@ -86,11 +86,11 @@ function loadFooter() {
             <div class="footer-col accordion-col">
                 <h3 onclick="toggleFooterAccordion(this)">Our Services <span class="accordion-icon">+</span></h3>
                 <ul>
-                    <li><a href="${basePath}services.html">Physiotherapy</a></li>
-                    <li><a href="${basePath}services.html">Occupational Therapy</a></li>
-                    <li><a href="${basePath}services.html">Speech Therapy</a></li>
-                    <li><a href="${basePath}services.html">Robotic Rehab</a></li>
-                    <li><a href="${basePath}services.html">Neuro Rehabilitation</a></li>
+                    <li><a href="${basePath}physiotherapy-in-mumbai">Physiotherapy</a></li>
+                    <li><a href="${basePath}occupational-therapy-in-mumbai">Occupational Therapy</a></li>
+                    <li><a href="${basePath}stroke-rehabilitation-in-mumbai">Stroke Rehabilitation</a></li>
+                    <li><a href="${basePath}vestibular-rehabilitation-in-mumbai">Vestibular Rehabilitation</a></li>
+                    <li><a href="${basePath}neuro-rehabilitation-in-mumbai">Neuro Rehabilitation</a></li>
                 </ul>
             </div>
 
