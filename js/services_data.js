@@ -1,7 +1,7 @@
 const servicesData = {
     "service1": {
         "title": "Physiotherapy",
-        "image": "images/physiotherapy.png",
+        "image": "images/services/physiotherapy.png",
         "description": "Our Physiotherapy department focuses on restoring movement and function to the body. Through a combination of manual therapy, therapeutic exercises, and advanced modalities, we help patients recover from injury, manage pain, and improve their overall physical quality of life. Whether you are recovering from surgery, a sports injury, or a neurological condition, our expert physiotherapists tailor a program specific to your needs.",
         "detailsHTML": `
             <h4>Key Focus Areas</h4>
@@ -17,7 +17,7 @@ const servicesData = {
     },
     "service2": {
         "title": "Occupational Therapy",
-        "image": "images/occupational_therapy.png",
+        "image": "images/services/occupational_therapy.png",
         "description": "Occupational Therapy (OT) at The Rehab House helps people across the lifespan to do the things they want and need to do through the therapeutic use of daily activities (occupations). Our goal is to enable people of all ages to live life to its fullest by helping them promote health, and prevent—or live better with—injury, illness, or disability.",
         "detailsHTML": `
             <h4>Therapy Goals</h4>
@@ -33,7 +33,7 @@ const servicesData = {
     },
     "service3": {
         "title": "Speech Therapy",
-        "image": "images/speech_therapy.png",
+        "image": "images/services/speech_therapy.png",
         "description": "Our Speech-Language Pathologists assess and treat speech, language, social communication, cognitive-communication, and swallowing disorders in children and adults. Communication is vital for connecting with others, and our team is dedicated to helping you or your loved one communicate effectively and confidently.",
         "detailsHTML": `
             <h4>Conditions Treated</h4>
@@ -49,7 +49,7 @@ const servicesData = {
     },
     "service4": {
         "title": "Cognitive Therapy",
-        "image": "images/cognitive_therapy.png",
+        "image": "images/services/cognitive_therapy.png",
         "description": "Cognitive Therapy focuses on improving cognitive functions such as attention, memory, executive function, and problem-solving, which may be affected by brain injury, stroke, or neurodegenerative diseases. Our program is designed to stimulate neuroplasticity and help patients regain their mental sharpness.",
         "detailsHTML": `
             <h4>Cognitive Domains</h4>
@@ -65,7 +65,7 @@ const servicesData = {
     },
     "service5": {
         "title": "Psychologist",
-        "image": "images/psychologist.png",
+        "image": "images/services/psychologist.png",
         "description": "Mental health is as important as physical health in the rehabilitation journey. Our clinical psychologists provide support for patients dealing with the emotional impact of injury, disability, or chronic illness. We offer a safe space to discuss fears, anxiety, depression, and adjustment issues.",
         "detailsHTML": `
             <h4>Therapeutic Support</h4>
@@ -81,7 +81,7 @@ const servicesData = {
     },
     "service6": {
         "title": "Pain Management",
-        "image": "images/pain_management.png",
+        "image": "images/services/pain_management.png",
         "description": "Chronic pain can be debilitating. Our Pain Management program uses a multidisciplinary approach to alleviate pain and restore function. We combine physical therapies with advanced modalities to manage pain without total reliance on medication.",
         "detailsHTML": `
             <h4>Pain Relief Modalities</h4>
@@ -97,7 +97,7 @@ const servicesData = {
     },
     "service7": {
         "title": "Dietitian",
-        "image": "images/dietitian.png",
+        "image": "images/services/dietitian.png",
         "description": "Nutrition plays a critical role in recovery and overall health. Our registered dietitians provide personalized nutrition plans to support rehabilitation goals, manage chronic diseases, and promote healthy living. Whether you need to gain weight, lose weight, or manage a specific condition, we are here to guide you.",
         "detailsHTML": `
             <h4>Nutritional Services</h4>
@@ -113,7 +113,7 @@ const servicesData = {
     },
     "service8": {
         "title": "Robotic Rehabilitation Therapy",
-        "image": "images/robotic_rehab.png",
+        "image": "images/services/robotic_rehab.png",
         "description": "We are proud to offer state-of-the-art Robotic Rehabilitation Therapy. This cutting-edge technology allows for high-repetition, precise movements that stimulate neuroplasticity in ways manual therapy alone cannot. It is particularly effective for stroke (CVA) and spinal cord injury recovery.",
         "detailsHTML": `
             <h4>Technology Benefits</h4>
@@ -129,7 +129,7 @@ const servicesData = {
     },
     "service9": {
         "title": "Yoga",
-        "image": "images/yoga_therapy.png",
+        "image": "images/services/yoga_therapy.png",
         "description": "Medical Yoga Therapy integrates traditional yoga practices with modern medical knowledge. It is a gentle yet effective way to improve flexibility, balance, strength, and mental focus. Our sessions are adapted to accommodate physical limitations and specific medical conditions.",
         "detailsHTML": `
             <h4>Yoga Benefits</h4>
@@ -145,7 +145,7 @@ const servicesData = {
     },
     "service10": {
         "title": "Fitness Training",
-        "image": "images/fitness_training.png",
+        "image": "images/services/fitness_training.png",
         "description": "Our Medical Fitness Training program bridges the gap between rehabilitation and general fitness. Once pain is managed and basic function is restored, it is essential to build strength and endurance to prevent re-injury. Our fitness experts design safe, effective workout routines supervised by medical professionals.",
         "detailsHTML": `
             <h4>Program Components</h4>
@@ -161,7 +161,7 @@ const servicesData = {
     },
     "service11": {
         "title": "Orthotic Therapy",
-        "image": "images/orthotic_therapy.png",
+        "image": "images/services/orthotic_therapy.png",
         "description": "Orthotic Therapy involves the design, fabrication, and fitting of custom braces and supports (orthoses). These devices are used to support weakened limbs, correct deformities, and improve function. Our orthotists work closely with the physiotherapy team to ensure the best fit and function.",
         "detailsHTML": `
             <h4>Orthotic Solutions</h4>

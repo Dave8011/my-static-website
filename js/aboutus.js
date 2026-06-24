@@ -4,38 +4,38 @@ const rehabDifferences = [
     {
         title: "Faster Recovery through Admission Facility",
         content: "Neurologically affected patients may take longer for recovery. It is only possible to take 2/3/4 treatment sessions per day in a Physiotherapy admission facility like ours. With multiple sessions per day, with each session focusing on a different problem (like walking, Balance training, cognitive rehabilitation, Hand strengthening, etc), the patient will recover faster with improvement in various domains all at once.",
-        image: "images/balance-training.jpg",
+        image: "images/services/balance-training.jpg",
         alt: "Admission Facility at The Rehab House"
     },
     {
         title: "Multispeciality Collaborative Approach",
         content: "Patients often get confused with different opinions coming from different specialists. At The Rehab House, the Rehabilitation team including the Physical, Cognitive, Occupational , Speech Therapists, the Neurologist, the Orthotist, the Dietician and the Psychologist work together to give a unified care plan.",
-        image: "images/visual-therapy.jpg",
+        image: "images/services/visual-therapy.jpg",
         alt: "Multispeciality Collaborative Approach"
     },
     {
         title: "Making Caregiving Easy",
         content: "Medical Conditions & Aging ring our bells and say 'Surprise!'. The family members and the caregivers are never prepared for this change. At The Rehab House, the caregivers get an insight of how to handle the patients, how to transfer/ dress/ motivate them. With the help of the support staff at The Rehab House, the sudden physical burden imposed on the family member is reduced and they can become emotionally and socially more available to take care of the patient well.",
-        image: "images/contactus.webp", // keeping webp if jpg not available, or check validity? sticking to prompt plan but using safer extensions. User said "images/contactus.jpg" in plan.
+        image: "images/home/contactus.webp", // keeping webp if jpg not available, or check validity? sticking to prompt plan but using safer extensions. User said "images/home/contactus.jpg" in plan.
         // Wait, directory list showed: contactus.jpg, contactus.webp. I'll use .jpg as per plan.
         alt: "Caregiver Support"
     },
     {
         title: "All Services under one roof",
         content: "Patients are often seen travelling from one place to another to seek consultations, treatments, blood tests, xrays, and other diagnostic tests. The Rehab House is a one stop solution with all the specialists and services available for the patient at one place.",
-        image: "images/hero-banner.webp",
+        image: "images/home/hero-banner.webp",
         alt: "All Services Under One Roof"
     },
     {
         title: "Specialized Rehabilitation Programs",
         content: "We do understand that this long journey of recovery can be boring. At The Rehab House, with our innovative and creative treatment strategies we assure better engagement and motivation for our patients.",
-        image: "images/vestibular-therapy.jpg",
+        image: "images/services/vestibular-therapy.jpg",
         alt: "Specialized Rehabilitation Programs"
     },
     {
         title: "Discharge Protocol for a Smooth Transition",
         content: "We believe Physiotherapy is a form of Medical Treatment and not a wellness program. And so, at The Rehab House, we aim at giving multiple treatment sessions per day for a faster recovery and a shorter hospitalisation stay, making it economically, socially and emotionally easier for the patient to get back to normalcy. We believe our patients must become independent soon and move ahead in their lives after getting treated and discharged from The Rehab House.",
-        image: "images/achievements-banner.png",
+        image: "images/home/achievements-banner.png",
         alt: "Discharge Protocol"
     }
 ];
@@ -50,8 +50,8 @@ const rehabDifferences = [
 // achievements-banner.png
 
 // Updating image array based on actual available files
-rehabDifferences[2].image = "images/contactus.jpg";
-rehabDifferences[3].image = "images/hero-banner.jpg";
+rehabDifferences[2].image = "images/home/contactus.jpg";
+rehabDifferences[3].image = "images/home/hero-banner.jpg";
 
 // Function to render the section
 function renderDifferences() {

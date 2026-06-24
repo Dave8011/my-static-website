@@ -154,6 +154,22 @@ To update the "Service Type" dropdown in the Book an Appointment form:
 3. **Homepage Update**:
    - The Homepage (`index.html`) automatically fetches the first 3 posts from `blog.html`. You do **not** need to edit the homepage.
 
+### Updating the Gallery (Dynamic System)
+The gallery page (`gallery.html`) is completely dynamic and builds itself based on the contents of the `images/gallery/` folders.
+
+**To add new images or videos to the gallery:**
+1. Drop your `.jpg`, `.webp`, or `.mp4` files directly into the appropriate category folder:
+   - `images/gallery/facilities/`
+   - `images/gallery/patients/`
+   - `images/gallery/therapies/`
+   - `images/gallery/videos/`
+2. Open your terminal in the project root.
+3. Run the following command to update the gallery data:
+   ```bash
+   python scripts/update_gallery.py
+   ```
+4. The script will automatically scan the folders and generate `js/gallery_data.js`. Your website's gallery grid and lightbox will instantly update!
+
 ## Development
 - **Styles**: Located in `css/`. Mobile styles are in `css/responsive.css`.
 - **Scripts**: located in `js/`. `main.js` handles dynamic loading.

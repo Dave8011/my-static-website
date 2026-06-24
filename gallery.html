@@ -63,7 +63,7 @@
       property="og:description"
     />
     <meta
-      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      content="https://www.therehabhouse.in/images/home/hero-banner.jpg"
       property="og:image"
     />
     <meta content="https://www.therehabhouse.in/gallery" property="og:url" />
@@ -75,7 +75,7 @@
       name="twitter:description"
     />
     <meta
-      content="https://www.therehabhouse.in/images/hero-banner.jpg"
+      content="https://www.therehabhouse.in/images/home/hero-banner.jpg"
       name="twitter:image"
     />
   </head>
@@ -91,12 +91,33 @@
     </section>
     <!-- Main Content -->
     <main>
-      <section class="highlights">
-        <div style="text-align: center; padding: 40px">
-          <p>Image gallery coming soon.</p>
+      <section class="gallery-section fade-in-section">
+        
+        <!-- Filter Buttons -->
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="facilities">Facilities</button>
+            <button class="filter-btn" data-filter="therapies">Therapies</button>
+            <button class="filter-btn" data-filter="patients">Patient Care</button>
+            <button class="filter-btn" data-filter="videos">Videos</button>
+        </div>
+
+        <!-- Collage Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Items will be dynamically injected here by js/gallery.js -->
         </div>
       </section>
     </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Full Screen Gallery Image" class="lightbox-img" id="lightboxImg">
+        <video controls class="lightbox-video" id="lightboxVideo" style="display:none;">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
     <!-- Footer Component -->
     <div id="footer-placeholder"></div>
     <!-- Back to Top Button -->
@@ -110,7 +131,9 @@
     </button>
     <!-- JavaScript -->
     <script src="js/config.js"></script>
+    <script src="js/gallery_data.js"></script>
     <script defer="" src="js/header_footer.js"></script>
     <script defer="" src="js/main.js"></script>
+    <script defer="" src="js/gallery.js"></script>
   </body>
 </html>

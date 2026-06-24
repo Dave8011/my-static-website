@@ -201,7 +201,7 @@ async function hydrateBlogCard(url) {
         // Extract Metadata
         const title = doc.querySelector('h1')?.innerText || 'Untitled Post';
         const date = doc.querySelector('.text-muted')?.innerText || 'Date Unknown'; // Assumes date has this class
-        let imageSrc = doc.querySelector('article img')?.getAttribute('src') || 'images/logo.png';
+        let imageSrc = doc.querySelector('article img')?.getAttribute('src') || 'images/icons/logo.png';
         const excerpt = doc.querySelector('article img + p')?.innerText.substring(0, 100) + '...' || 'Read more to find out...';
 
         // Fix relative image path (Assumes blog is in blogs/ and image is in ../images/)
@@ -276,7 +276,7 @@ function createSchema() {
         "@type": ["MedicalClinic", "LocalBusiness", "Physician"],
         "name": "The Rehab House",
         "url": "https://www.therehabhouse.in/",
-        "image": "https://www.therehabhouse.in/images/logo.png", // Ensure absolute URL
+        "image": "https://www.therehabhouse.in/images/icons/logo.png", // Ensure absolute URL
         "telephone": "+919653699526",
         "address": {
             "@type": "PostalAddress",
