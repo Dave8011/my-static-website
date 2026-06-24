@@ -159,6 +159,43 @@ function initStickyCTA() {
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('header-placeholder')) loadHeader();
     if (document.getElementById('footer-placeholder')) loadFooter();
+
+    // Inject LocalBusiness Schema for Local SEO
+    const schemaJSON = {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "The Rehab House",
+        "image": "https://www.therehabhouse.in/images/hero-banner.jpg",
+        "@id": "https://www.therehabhouse.in",
+        "url": "https://www.therehabhouse.in",
+        "telephone": "+919653699526",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Dr Purandare's Diagnostic Centre, 31-C, Dr. N. A. Purandare Rd, opposite Girgaon, Charni Road, Sea Face, Chowpatty",
+            "addressLocality": "Mumbai",
+            "postalCode": "400007",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "IN"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 18.95512,
+            "longitude": 72.79513
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+        },
+        "sameAs": [
+            "https://www.instagram.com/the_rehab_house/"
+        ]
+    };
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.text = JSON.stringify(schemaJSON);
+    document.head.appendChild(schemaScript);
 });
 
 // Sticky Header Effect
